@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:gausampada/backend/auth/auth_methods.dart';
 import 'package:gausampada/const/colors.dart';
 import 'package:gausampada/const/toast.dart';
-import 'package:gausampada/screens/auth/home.dart';
+
 import 'package:gausampada/screens/auth/login.dart';
 import 'package:gausampada/screens/auth/widgets/custom_auth_buttons.dart';
 import 'package:gausampada/screens/auth/widgets/customtextformfield.dart';
+import 'package:gausampada/screens/home/home_screen.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -63,7 +64,7 @@ class SignupScreenState extends State<SignupScreen> {
 
       if (res == "success") {
         Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => HomeScreen()),
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
         );
       } else {
         toastMessage(
@@ -172,7 +173,7 @@ class SignupScreenState extends State<SignupScreen> {
                   Image.asset(
                     "assets/auth/signup.jpg",
                     width: 270,
-                    height: 270,
+                    height: 140,
                   ),
                   const SizedBox(
                     height: 20,
@@ -255,7 +256,7 @@ class SignupScreenState extends State<SignupScreen> {
                     backgroundColor: Colors.blue[500],
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 4,
                   ),
                   const Text(
                     "Or",
@@ -263,7 +264,7 @@ class SignupScreenState extends State<SignupScreen> {
                         color: Colors.black, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 4,
                   ),
                   LoginSignupButtons(
                     imagepath: "assets/auth/google.jpg",
@@ -271,7 +272,7 @@ class SignupScreenState extends State<SignupScreen> {
                     onTap: signUpWithGoogle,
                     isLoading: isgoogleLoading,
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 4),
                   TextButton(
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(

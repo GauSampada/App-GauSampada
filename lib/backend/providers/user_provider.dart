@@ -7,9 +7,13 @@ import 'package:gausampada/const/profile_image_picker.dart';
 import 'package:image_picker/image_picker.dart';
 
 class UserProvider extends ChangeNotifier {
-  final String uid = FirebaseAuth.instance.currentUser!.uid;
+  final String uid = FirebaseAuth.instance.currentUser?.uid ?? "";
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  UserModel? _user;
+  UserModel? _user = UserModel(
+      uid: "1234567889900987",
+      name: "Naidu testing",
+      email: "naidu@gmail.com",
+      phonenumber: "8125150264");
   UserModel get user => _user!;
   bool _isLoading = true;
   bool get isLoading => _isLoading;

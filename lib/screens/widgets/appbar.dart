@@ -45,20 +45,23 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
                 ),
           ),
           actions: [
+            // IconButton(
+            //   icon: const Icon(Icons.help_outline_sharp),
+            //   tooltip: 'Help',
+            //   onPressed: () {
+            //     Navigator.of(context).push(
+            //       MaterialPageRoute(
+            //         builder: (context) => const SupportHelpScreen(),
+            //       ),
+            //     );
+            //   },
+            // ),
             IconButton(
-              icon: const Icon(Icons.help_outline_sharp),
-              tooltip: 'Help',
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const SupportHelpScreen(),
-                  ),
-                );
-              },
-            ),
-            IconButton(
-              icon: const Icon(Icons.notifications),
-              tooltip: 'Notifications',
+              icon: const Icon(
+                Icons.location_on,
+                color: Colors.white,
+              ),
+              tooltip: 'Location',
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
@@ -68,26 +71,40 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
               },
             ),
             IconButton(
-              icon: provider.user.photoURL != ''
-                  ? CircleAvatar(
-                      backgroundImage: NetworkImage(provider.user.photoURL!),
-                    )
-                  : CircleAvatar(
-                      radius: 15,
-                      backgroundColor: Colors.white,
-                      child: Text(
-                        provider.user.name[0].toUpperCase(),
-                        style: const TextStyle(
-                            color: themeColor, fontWeight: FontWeight.bold),
-                      ),
-                    ),
+              icon: const Icon(
+                Icons.notifications,
+                color: Colors.white,
+              ),
+              tooltip: 'Notifications',
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                      builder: (context) => const UserProfileScreen()),
+                    builder: (context) => const NotificationScreen(),
+                  ),
                 );
               },
             ),
+            // IconButton(
+            //   icon: provider.user.photoURL != ''
+            //       ? CircleAvatar(
+            //           backgroundImage: NetworkImage(provider.user.photoURL!),
+            //         )
+            //       : CircleAvatar(
+            //           radius: 15,
+            //           backgroundColor: Colors.white,
+            //           child: Text(
+            //             provider.user.name[0].toUpperCase(),
+            //             style: const TextStyle(
+            //                 color: themeColor, fontWeight: FontWeight.bold),
+            //           ),
+            //         ),
+            //   onPressed: () {
+            //     Navigator.of(context).push(
+            //       MaterialPageRoute(
+            //           builder: (context) => const UserProfileScreen()),
+            //     );
+            //   },
+            // ),
             const SizedBox(width: 15),
           ],
         );

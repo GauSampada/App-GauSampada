@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:gausampada/app/provider/ai_provider.dart';
+import 'package:gausampada/const/colors.dart';
 import 'package:gausampada/const/image_picker_.dart';
 import 'package:gausampada/screens/chat_bot/ai_assistance.dart';
 import 'package:provider/provider.dart';
@@ -17,23 +18,24 @@ class DiseasePredictionScreen extends StatelessWidget {
     final imagePickerService = Provider.of<ImagePickerService>(context);
 
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        // onPressed: () {
-        //   aiProvider.reset();
-        //   imagePickerService.clearImage();
-        // },
-        // child: const Icon(Icons.refresh),
-        // ),
-        child: const Icon(Icons.chat),
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const ChatScreen(),
-            ),
-          );
-        },
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   // onPressed: () {
+      //   //   aiProvider.reset();
+      //   //   imagePickerService.clearImage();
+      //   // },
+      //   // child: const Icon(Icons.refresh),
+      //   // ),
+      //   child: const Icon(Icons.chat),
+      //   onPressed: () {
+      //     Navigator.of(context).push(
+      //       MaterialPageRoute(
+      //         builder: (context) => const ChatScreen(),
+      //       ),
+      //     );
+      //   },
+      // ),
       appBar: AppBar(
+        backgroundColor: themeColor,
         title: const Text("Disease Prediction"),
         centerTitle: true,
       ),

@@ -4,9 +4,11 @@ import 'package:gausampada/backend/auth/auth_methods.dart';
 import 'package:gausampada/const/colors.dart';
 import 'package:gausampada/const/toast.dart';
 import 'package:gausampada/screens/auth/forgot_password.dart';
+
 import 'package:gausampada/screens/auth/signup.dart';
 import 'package:gausampada/screens/auth/widgets/custom_auth_buttons.dart';
 import 'package:gausampada/screens/auth/widgets/customtextformfield.dart';
+import 'package:gausampada/screens/home/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -50,10 +52,8 @@ class LoginScreenState extends State<LoginScreen> {
     String res = await authService.handleLoginWithEmail(
         email: email.text, password: password.text);
     if (res == "success") {
-      // Navigator.of(context).pushReplacement(MaterialPageRoute(
-      //     builder: (context) => const HomeScreen(
-      //           isLoginOrSignUp: true,
-      //         )));
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const HomeScreen()));
     } else {
       toastMessage(
           context: context,
@@ -76,9 +76,9 @@ class LoginScreenState extends State<LoginScreen> {
       String res = await authService.handleSignUpWithGoogle();
 
       if (res == "success") {
-        // Navigator.of(context).pushReplacement(
-        //   MaterialPageRoute(builder: (context) => const HomeScreen()),
-        // );
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
+        );
       } else {
         toastMessage(
             context: context,
@@ -149,7 +149,7 @@ class LoginScreenState extends State<LoginScreen> {
                   Image.asset(
                     "assets/auth/login.jpg",
                     width: 300,
-                    height: 310,
+                    height: 200,
                   ),
                   CustomTextFormField(
                     label: "Email",
