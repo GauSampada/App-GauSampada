@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:gausampada/backend/providers/user_provider.dart';
 import 'package:gausampada/const/colors.dart';
 import 'package:gausampada/screens/notifications/notification.dart';
@@ -63,11 +64,11 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
               ),
               tooltip: 'Location',
               onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const NotificationScreen(),
-                  ),
-                );
+                // Navigator.of(context).push(
+                //   MaterialPageRoute(
+                //     builder: (context) => const MapScreen(),
+                //   ),
+                // );
               },
             ),
             IconButton(

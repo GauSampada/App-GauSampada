@@ -13,6 +13,7 @@ import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'screens/DiseasePrediction/disease_prediction.dart';
 import 'screens/chat_bot/ai_assistance.dart';
+import 'screens/market/market_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ImagePickerService()),
         ChangeNotifierProvider(create: (_) => ChatProvider()),
         ChangeNotifierProvider(create: (_) => UserProvider()),
+        ChangeNotifierProvider(create: (_) => CartProvider()),
       ],
       child: MaterialApp(
         title: 'GauSampada',
@@ -44,6 +46,7 @@ class MyApp extends StatelessWidget {
           ),
           appBarTheme: const AppBarTheme(
             backgroundColor: themeColor,
+            foregroundColor: Colors.white,
           ),
         ),
 

@@ -142,4 +142,68 @@ List<Breed> breeds = [
     imageURl:
         "https://timesofagriculture.in/wp-content/uploads/2023/12/d8dd9c.jpg",
   ),
+  Breed(
+    breedName: "Hallikar",
+    origin: "Karnataka",
+    localNames: [],
+    milkYield: "2-4 liters/day",
+    lactationPeriod: "200-250 days",
+    description:
+        "One of the oldest and most well-known draught breeds in India, Hallikar cattle are valued for their endurance, speed, and strength. They have a sleek, well-muscled body with a white or greyish coat and long, curved horns. They are highly active and commonly used for plowing fields and pulling carts, particularly in Karnataka’s agricultural regions.",
+    cost: "₹30,000 - ₹80,000",
+    imageURl:
+        "https://timesofagriculture.in/wp-content/uploads/2023/12/80427b.jpg",
+  ),
+
+  Breed(
+    breedName: "Amrit Mahal",
+    origin: "Karnataka",
+    localNames: [],
+    milkYield: "2-3 liters/day",
+    lactationPeriod: "200-230 days",
+    description:
+        "Amrit Mahal cattle are a powerful draught breed, known for their incredible stamina and endurance. They have a compact, strong body with a well-developed hump and a predominantly grey or white coat. These cattle are extensively used in military and transport applications due to their ability to travel long distances under harsh conditions. Their aggressive nature makes them more suitable for work rather than dairy production.",
+    cost: "₹30,000 - ₹75,000",
+    imageURl:
+        "https://timesofagriculture.in/wp-content/uploads/2023/12/6afde2.jpg",
+  ),
+
+  Breed(
+    breedName: "Khillari",
+    origin: "Maharashtra, Karnataka",
+    localNames: [],
+    milkYield: "2-5 liters/day",
+    lactationPeriod: "200-250 days",
+    description:
+        "The Khillari breed is known for its agility, speed, and strength, making it ideal for farm work and transportation. These cattle are small to medium-sized with a compact, muscular build and a short, fine coat, often seen in shades of grey, white, or reddish-brown. Their horns curve backward in a distinctive manner. They are widely used in hilly and semi-arid regions for tilling fields and pulling heavy loads.",
+    cost: "₹30,000 - ₹85,000",
+    imageURl:
+        "https://timesofagriculture.in/wp-content/uploads/2023/12/d8dd9c.jpg",
+  ),
+
+  Breed(
+    breedName: "Kangayam",
+    origin: "Tamil Nadu",
+    localNames: [],
+    milkYield: "3-6 liters/day",
+    lactationPeriod: "220-260 days",
+    description:
+        "Kangayam cattle are medium-sized, well-built, and well-adapted to the dry climate of Tamil Nadu. They are typically white or grey, with short, strong legs and an upright posture. Their strength and endurance make them highly suitable for plowing, cart-pulling, and other agricultural activities. Though not primarily used for milk production, they provide a moderate yield that is sufficient for household dairy needs.",
+    cost: "₹35,000 - ₹90,000",
+    imageURl:
+        "https://timesofagriculture.in/wp-content/uploads/2023/12/d3bd97.jpg",
+  ),
+
+  Breed(
+    breedName: "Bargur",
+    origin: "Tamil Nadu",
+    localNames: ["Bargur Gidda"],
+    milkYield: "2-4 liters/day",
+    lactationPeriod: "200-240 days",
+    description:
+        "Bargur cattle are small, agile, and well-suited for working in hilly and rugged terrains. They are recognized by their reddish-brown coat, lean frame, and quick movements. These cattle are commonly used for plowing in regions with uneven land and for pulling carts in remote areas. Though they produce a small quantity of milk, it has high nutritional value and is used by local farmers.",
+    cost: "₹25,000 - ₹70,000",
+    imageURl:
+        "https://timesofagriculture.in/wp-content/uploads/2023/12/6978fb.jpg",
+  ),
 ];
