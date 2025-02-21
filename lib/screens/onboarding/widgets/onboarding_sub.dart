@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class OnboardingSubScreen extends StatelessWidget 
-{
-
+class OnboardingSubScreen extends StatelessWidget {
   final String title;
   final bool isLottie;
   final String address;
@@ -17,10 +15,9 @@ class OnboardingSubScreen extends StatelessWidget
     required this.address,
     required this.description,
     this.backgroundColor,
-    });
+  });
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: backgroundColor,
       body: SafeArea(
@@ -38,33 +35,35 @@ class OnboardingSubScreen extends StatelessWidget
                 ),
               ),
             ),
-        
-            isLottie 
-            ? Lottie.asset(
-              address,
-              height: 330, 
-              width: 420,
-              )
-            : Column(
-              children: [
-                const SizedBox(height: 15,),
-                Image.asset(
-                address,
-                height: 300,
-                width: 400,
-                fit: BoxFit.fitWidth,
-              ),
-              const SizedBox(height: 15,),
-
-              ],
-            ),
-            
+            isLottie
+                ? Lottie.asset(
+                    address,
+                    height: 330,
+                    width: 420,
+                  )
+                : Column(
+                    children: [
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Image.asset(
+                        address,
+                        height: 300,
+                        width: 400,
+                        fit: BoxFit.fitWidth,
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                    ],
+                  ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
               child: Text(
-                description,                
+                description,
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
           ],
