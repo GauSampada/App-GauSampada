@@ -7,6 +7,7 @@ import 'package:gausampada/const/colors.dart';
 import 'package:gausampada/const/image_picker_.dart';
 import 'package:gausampada/firebase_options.dart';
 import 'package:gausampada/screens/auth/login.dart';
+import 'package:gausampada/screens/feed/feed_screen.dart';
 import 'package:gausampada/screens/home/home_screen.dart';
 import 'package:gausampada/screens/onboarding/onboarding_main.dart';
 import 'package:provider/provider.dart';
@@ -68,7 +69,7 @@ class MyApp extends StatelessWidget {
         //       return const OnboardingMainScreen(); // for android
         //       // return const LoginScreen();
         //     }),
-        home: const HomeScreen(),
+        home: const FeedScreen(),
       ),
     );
   }

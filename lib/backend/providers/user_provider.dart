@@ -114,4 +114,34 @@ class UserProvider extends ChangeNotifier {
 
     return res;
   }
+
+  // List<Map<String, dynamic>> myBookings = [
+  //   {
+  //     "bookingId": "B12345",
+  //     "date": "2025-02-22",
+  //     "service": "Veterinary Checkup",
+  //     "status": "Confirmed",
+  //     "farmerName": "Ramesh Kumar",
+  //     "animalType": "Cow",
+  //     "issueType": "Fever"
+  //   },
+  //   {
+  //     "bookingId": "B12346",
+  //     "date": "2025-02-25",
+  //     "service": "Artificial Insemination",
+  //     "status": "Pending",
+  //     "farmerName": "Suresh Patil",
+  //     "animalType": "Buffalo",
+  //     "issueType": "Breeding"
+  //   },
+  //   {
+  //     "bookingId": "B12347",
+  //     "date": "2025-02-28",
+  //     "service": "Deworming",
+  //     "status": "Completed",
+  //     "farmerName": "Anita Sharma",
+  //     "animalType": "Goat",
+  //     "issueType": "Parasitic Infection"
+  //   }
+  // ];
 }
