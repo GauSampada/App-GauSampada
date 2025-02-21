@@ -8,39 +8,39 @@ class BreedInfoCardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 12, right: 12, top: 12, bottom: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 1),
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                "Breed Information",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF2E3E5C),
-                ),
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const BreadInfoScreen(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  "View All",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    color: Color(0xFF4A6CFA),
-                  ),
-                ),
-              ),
-            ],
-          ),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //   children: [
+          //     const Text(
+          //       "Breed Information",
+          //       style: TextStyle(
+          //         fontSize: 20,
+          //         fontWeight: FontWeight.bold,
+          //         color: Color(0xFF2E3E5C),
+          //       ),
+          //     ),
+          //     TextButton(
+          //       onPressed: () {
+          //         Navigator.of(context).push(
+          //           MaterialPageRoute(
+          //             builder: (context) => const BreadInfoScreen(),
+          //           ),
+          //         );
+          //       },
+          //       child: const Text(
+          //         "View All",
+          //         style: TextStyle(
+          //           fontSize: 14,
+          //           fontWeight: FontWeight.w500,
+          //           color: Color(0xFF4A6CFA),
+          //         ),
+          //       ),
+          //     ),
+          //   ],
+          // ),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             physics: const BouncingScrollPhysics(),
@@ -69,7 +69,7 @@ class BreedInfoCardScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
                               SizedBox(
-                                height: 172,
+                                height: 162,
                                 child: Image.network(
                                   breed.imageURl,
                                   fit: BoxFit.cover,

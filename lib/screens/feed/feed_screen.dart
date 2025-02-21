@@ -63,36 +63,6 @@ class _FeedScreenState extends State<FeedScreen> {
               height: 10,
             ),
 
-            // My Orders Section
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Column(
-                children: [
-                  CustomHeadingsScreen(
-                    label: "My Orders",
-                    onPressed: () {},
-                    icon: Icons.shopping_bag_rounded,
-                  ),
-                  const SizedBox(height: 8),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.05),
-                          blurRadius: 8,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
-                    ),
-                    child: const SwiperBuilder(),
-                  ),
-                ],
-              ),
-            ),
-
-            const SizedBox(height: 24),
-
             // Breed Information Section
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -163,7 +133,35 @@ class _FeedScreenState extends State<FeedScreen> {
               ),
             ),
 
-            const SizedBox(height: 40),
+            const SizedBox(height: 10),
+            // My Orders Section
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Column(
+                children: [
+                  CustomHeadingsScreen(
+                    label: "My Orders",
+                    onPressed: () {},
+                    icon: Icons.shopping_bag_rounded,
+                  ),
+                  const SizedBox(height: 8),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.05),
+                          blurRadius: 8,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: const SwiperBuilder(),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 10),
           ],
         ),
       ),
