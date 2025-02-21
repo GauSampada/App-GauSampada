@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "457935951014",
+    "project_id": "gausampada-gdg",
+    "storage_bucket": "gausampada-gdg.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457935951014:android:e725e3d11ae7cab1b9d067",
+        "android_client_info": {
+          "package_name": "com.example.gausampada"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBA5BK-h6_WgJHReB-nY0Op4PRDa-t7KLw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
