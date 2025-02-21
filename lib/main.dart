@@ -6,6 +6,7 @@ import 'package:gausampada/firebase_options.dart';
 import 'package:provider/provider.dart';
 
 import 'screens/DiseasePrediction/disease_prediction.dart';
+import 'screens/chat_bot/ai_assistance.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => AiProvider()),
         ChangeNotifierProvider(create: (_) => ImagePickerService()),
+        ChangeNotifierProvider(create: (_) => ChatProvider())
       ],
       child: MaterialApp(
           title: 'GauSampada',
