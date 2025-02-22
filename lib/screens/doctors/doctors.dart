@@ -1,5 +1,7 @@
+import 'package:direct_caller_sim_choice/direct_caller_sim_choice.dart';
 import 'package:flutter/material.dart';
 import 'package:gausampada/const/colors.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class DoctorListScreen extends StatelessWidget {
   DoctorListScreen({super.key});
@@ -26,6 +28,29 @@ class DoctorListScreen extends StatelessWidget {
       "image": "assets/ai_model/doctor.jpg",
     },
   ];
+
+  Future<void> _makePhoneCall(BuildContext context, String phoneNumber) async {
+    var status = await Permission.phone.request();
+    if (status.isGranted) {
+      bool? result = await DirectCaller().makePhoneCall(phoneNumber);
+      if (result != true) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              content: Text("Failed to make the call. Please try again.")),
+        );
+      }
+    } else if (status.isDenied) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Permission denied. Cannot make a call.")),
+      );
+    } else if (status.isPermanentlyDenied) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Permission permanently denied. Enable in settings."),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +93,7 @@ class DoctorListScreen extends StatelessWidget {
                 height: 40,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Add call functionality
+                    _makePhoneCall(context, "+917386154884");
                   },
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.zero,

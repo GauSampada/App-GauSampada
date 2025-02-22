@@ -1,10 +1,12 @@
 import 'dart:io';
+import 'package:direct_caller_sim_choice/direct_caller_sim_choice.dart';
 import 'package:flutter/material.dart';
 import 'package:gausampada/app/provider/ai_provider.dart';
 import 'package:gausampada/const/colors.dart';
 import 'package:gausampada/const/image_picker_.dart';
 import 'package:gausampada/screens/chat_bot/ai_assistance.dart';
 import 'package:gausampada/screens/doctors/doctors.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:formatted_text/formatted_text.dart';
 
@@ -12,6 +14,29 @@ class DiseasePredictionScreen extends StatelessWidget {
   DiseasePredictionScreen({super.key});
 
   final TextEditingController _promptController = TextEditingController();
+
+  Future<void> _makePhoneCall(BuildContext context, String phoneNumber) async {
+    var status = await Permission.phone.request();
+    if (status.isGranted) {
+      bool? result = await DirectCaller().makePhoneCall(phoneNumber);
+      if (result != true) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              content: Text("Failed to make the call. Please try again.")),
+        );
+      }
+    } else if (status.isDenied) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Permission denied. Cannot make a call.")),
+      );
+    } else if (status.isPermanentlyDenied) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Permission permanently denied. Enable in settings."),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -256,7 +281,7 @@ class DiseasePredictionScreen extends StatelessWidget {
                     ),
                     const Divider(),
                     ListTile(
-                      leading: ClipOval(
+                      leading: const ClipOval(
                         child: SizedBox(
                           width: 50.0,
                           height: 50.0,
@@ -272,7 +297,9 @@ class DiseasePredictionScreen extends StatelessWidget {
                         width: 40,
                         height: 40,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            _makePhoneCall(context, "+917386154884");
+                          },
                           style: ElevatedButton.styleFrom(
                             padding: EdgeInsets.zero,
                             shape: const CircleBorder(),
