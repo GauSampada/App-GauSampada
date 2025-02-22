@@ -73,7 +73,7 @@ class MyApp extends StatelessWidget {
         //       return const OnboardingMainScreen(); // for android
         //       // return const LoginScreen();
         //     }),
-        home: const MapScreen(),
+        home: const HomeScreen(),
       ),
     );
   }

@@ -55,7 +55,8 @@ dependencies:
   google_maps_flutter: ^2.10.0
   geolocator: ^13.0.2
   permission_handler: ^11.3.1
-  flutter_direct_call_plus: ^0.0.3
+  shared_preferences: ^2.3.3
+  # flutter_direct_call_plus: ^0.0.3
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -66,9 +67,24 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.0
+  flutter_launcher_icons: ^0.14.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/icon.png"
+  web:
+    generate: true
+    image_path: "assets/icon/icon.png"
+  windows:
+    generate: true
+    image_path: "assets/icon/icon.png"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: true
+    image_path: "assets/icon/icon.png"
 
 # The following section is specific to Flutter packages.
 flutter:
@@ -83,6 +99,8 @@ flutter:
     - assets/auth/
     - assets/feed/
     - assets/products/
+    - assets/icon/
+    - assets/ai_model/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

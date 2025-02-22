@@ -1,77 +1,84 @@
 import 'package:flutter/material.dart';
 import 'package:gausampada/screens/market/market_screen.dart';
 
-class DairyProductsCardScreen extends StatelessWidget {
+class DairyProductsCardScreen extends StatefulWidget {
   const DairyProductsCardScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final List<Map<String, dynamic>> dairyProducts = [
-      {
-        "image": "assets/products/milk.png",
-        "name": "Milk",
-        "price": "₹80",
-        "quantity": "1 Litre"
-      },
-      {
-        "image": "assets/products/cheese.png",
-        "name": "Cheese",
-        "price": "₹450",
-        "quantity": "200g"
-      },
-      {
-        "image": "assets/products/curd.png",
-        "name": "Curd",
-        "price": "₹60",
-        "quantity": "500g"
-      },
-      {
-        "image": "assets/products/yogurt.jpg",
-        "name": "Yogurt",
-        "price": "₹120",
-        "quantity": "1 kg"
-      },
-    ];
+  State<DairyProductsCardScreen> createState() =>
+      _DairyProductsCardScreenState();
+}
 
+class _DairyProductsCardScreenState extends State<DairyProductsCardScreen> {
+  // Track liked items and cart quantities
+  final Set<int> _likedProducts = {};
+  final Map<int, int> _cartItems = {};
+
+  final List<Map<String, dynamic>> dairyProducts = [
+    {
+      "image": "assets/products/milk.png",
+      "name": "Milk",
+      "price": "₹80",
+      "quantity": "1 Litre"
+    },
+    {
+      "image": "assets/products/cheese.png",
+      "name": "Cheese",
+      "price": "₹450",
+      "quantity": "200g"
+    },
+    {
+      "image": "assets/products/curd.png",
+      "name": "Curd",
+      "price": "₹60",
+      "quantity": "500g"
+    },
+    {
+      "image": "assets/products/yogurt.jpg",
+      "name": "Yogurt",
+      "price": "₹120",
+      "quantity": "1 kg"
+    },
+  ];
+
+  void _toggleFavorite(int index) {
+    setState(() {
+      if (_likedProducts.contains(index)) {
+        _likedProducts.remove(index);
+      } else {
+        _likedProducts.add(index);
+      }
+    });
+  }
+
+  void _addToCart(int index) {
+    setState(() {
+      _cartItems[index] = (_cartItems[index] ?? 0) + 1;
+    });
+
+    // Show confirmation snackbar
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('${dairyProducts[index]["name"]} added to cart'),
+        duration: const Duration(seconds: 1),
+        action: SnackBarAction(
+          label: 'VIEW CART',
+          onPressed: () {
+            // Navigate to cart screen
+            // Navigator.of(context).push(MaterialPageRoute(builder: (context) => CartScreen()));
+          },
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Padding(
-        //   padding:
-        //       const EdgeInsets.only(left: 12, right: 12, top: 12, bottom: 8),
-        //   child: Row(
-        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        //     children: [
-        //       const Text(
-        //         "Dairy Products",
-        //         style: TextStyle(
-        //           fontSize: 20,
-        //           fontWeight: FontWeight.bold,
-        //           color: Color(0xFF2E3E5C),
-        //         ),
-        //       ),
-        //       TextButton(
-        //         onPressed: () {
-        //           Navigator.of(context).push(
-        //             MaterialPageRoute(
-        //               builder: (context) => const MarketAccessScreen(),
-        //             ),
-        //           );
-        //         },
-        //         child: const Text(
-        //           "View All",
-        //           style: TextStyle(
-        //             fontSize: 14,
-        //             fontWeight: FontWeight.w500,
-        //             color: Color(0xFF4A6CFA),
-        //           ),
-        //         ),
-        //       ),
-        //     ],
-        //   ),
-        // ),
         Container(
-          height: 230, // Increased height for better fit
+          height: 230,
           padding: const EdgeInsets.only(bottom: 10),
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
@@ -80,8 +87,11 @@ class DairyProductsCardScreen extends StatelessWidget {
             itemCount: dairyProducts.length,
             itemBuilder: (context, index) {
               final product = dairyProducts[index];
+              final bool isLiked = _likedProducts.contains(index);
+              final int cartQuantity = _cartItems[index] ?? 0;
+
               return Container(
-                width: 164, // Increased width
+                width: 164,
                 margin: const EdgeInsets.only(left: 4, right: 12),
                 child: Card(
                   elevation: 3,
@@ -90,7 +100,9 @@ class DairyProductsCardScreen extends StatelessWidget {
                   ),
                   child: InkWell(
                     borderRadius: BorderRadius.circular(16),
-                    onTap: () {},
+                    onTap: () {
+                      // Navigate to product detail page
+                    },
                     child: Padding(
                       padding: const EdgeInsets.all(1.0),
                       child: Column(
@@ -103,7 +115,7 @@ class DairyProductsCardScreen extends StatelessWidget {
                                 borderRadius: const BorderRadius.vertical(
                                     top: Radius.circular(15)),
                                 child: Container(
-                                  height: 110, // Increased image height
+                                  height: 110,
                                   width: double.infinity,
                                   decoration: const BoxDecoration(
                                     color: Color(0xFFF7F9FC),
@@ -126,19 +138,45 @@ class DairyProductsCardScreen extends StatelessWidget {
                                   elevation: 2,
                                   shape: const CircleBorder(),
                                   child: InkWell(
-                                    onTap: () {},
+                                    onTap: () => _toggleFavorite(index),
                                     customBorder: const CircleBorder(),
                                     child: Padding(
                                       padding: const EdgeInsets.all(6.0),
                                       child: Icon(
-                                        Icons.favorite_border,
+                                        isLiked
+                                            ? Icons.favorite
+                                            : Icons.favorite_border,
                                         size: 18,
-                                        color: Colors.grey[600],
+                                        color: isLiked
+                                            ? Colors.red
+                                            : Colors.grey[600],
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
+                              // Cart badge if items added
+                              if (cartQuantity > 0)
+                                Positioned(
+                                  top: 8,
+                                  left: 8,
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 6, vertical: 2),
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xFF4A6CFA),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Text(
+                                      cartQuantity.toString(),
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ),
                             ],
                           ),
                           // Product details
@@ -189,7 +227,7 @@ class DairyProductsCardScreen extends StatelessWidget {
                                         color: const Color(0xFF4A6CFA),
                                         borderRadius: BorderRadius.circular(8),
                                         child: InkWell(
-                                          onTap: () {},
+                                          onTap: () => _addToCart(index),
                                           borderRadius:
                                               BorderRadius.circular(8),
                                           child: const Padding(

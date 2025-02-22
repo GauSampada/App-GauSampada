@@ -4,6 +4,7 @@ import 'package:gausampada/app/provider/ai_provider.dart';
 import 'package:gausampada/const/colors.dart';
 import 'package:gausampada/const/image_picker_.dart';
 import 'package:gausampada/screens/chat_bot/ai_assistance.dart';
+import 'package:gausampada/screens/doctors/doctors.dart';
 import 'package:provider/provider.dart';
 import 'package:formatted_text/formatted_text.dart';
 
@@ -220,6 +221,70 @@ class DiseasePredictionScreen extends StatelessWidget {
                   ],
                 ),
               ),
+
+            // Doctor Recommendation Section (Only shown after model response)
+            if (aiProvider.hasAnalyzed &&
+                aiProvider.imageTextResponse.isNotEmpty) ...[
+              const SizedBox(height: 16),
+              Container(
+                padding: const EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade100,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.grey.shade300),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        const Text(
+                          "Recommended Doctor",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        TextButton(
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => DoctorListScreen()));
+                            },
+                            child: Text("View All"))
+                      ],
+                    ),
+                    const Divider(),
+                    ListTile(
+                      leading: ClipOval(
+                        child: SizedBox(
+                          width: 50.0,
+                          height: 50.0,
+                          child: CircleAvatar(
+                            backgroundImage:
+                                AssetImage("assets/ai_model/doctor.jpg"),
+                          ),
+                        ),
+                      ),
+                      title: const Text("Dr. Rajesh Kumar"),
+                      subtitle: const Text("Specialist: Veterinarian"),
+                      trailing: SizedBox(
+                        width: 40,
+                        height: 40,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                            shape: const CircleBorder(),
+                          ),
+                          child: const Icon(Icons.call, size: 20),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ],
         ),
       ),

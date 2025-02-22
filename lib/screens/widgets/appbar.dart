@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:gausampada/backend/providers/user_provider.dart';
 import 'package:gausampada/const/colors.dart';
+import 'package:gausampada/screens/maps/maps.dart';
 import 'package:gausampada/screens/notifications/notification.dart';
-import 'package:gausampada/screens/profile/user_profile.dart';
-import 'package:gausampada/screens/support&help/help.dart';
 import 'package:provider/provider.dart';
 
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
@@ -64,11 +63,11 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
               ),
               tooltip: 'Location',
               onPressed: () {
-                // Navigator.of(context).push(
-                //   MaterialPageRoute(
-                //     builder: (context) => const MapScreen(),
-                //   ),
-                // );
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const MapScreen(),
+                  ),
+                );
               },
             ),
             IconButton(
