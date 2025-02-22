@@ -9,90 +9,150 @@ class CartProvider extends ChangeNotifier {
     {
       'name': 'Organic Cow Milk',
       'price': 60,
-      'category': 'Milk & Dairy Products'
+      'category': 'Milk & Dairy Products',
+      'image':
+          'https://img.freepik.com/premium-photo/dairy-products-cow-farm-selective-focus-food_73944-34183.jpg'
     },
     {
       'name': 'Desi Ghee (A2)',
       'price': 800,
-      'category': 'Milk & Dairy Products'
+      'category': 'Milk & Dairy Products',
+      'image':
+          'https://img.freepik.com/premium-photo/natural-ghee-healthy-lactosefree-oil-frying-black-background_528985-7733.jpg'
     },
     {
       'name': 'Fresh Paneer (Cottage Cheese)',
       'price': 350,
-      'category': 'Milk & Dairy Products'
+      'category': 'Milk & Dairy Products',
+      'image':
+          'https://img.freepik.com/premium-photo/paneer-cheese-cubes-plate-with-green-sauce-cilantro-table-generative-ai_118631-5899.jpg'
     },
-    {'name': 'Raw Butter', 'price': 700, 'category': 'Milk & Dairy Products'},
+    {
+      'name': 'Raw Butter',
+      'price': 700,
+      'category': 'Milk & Dairy Products',
+      'image':
+          "https://img.freepik.com/premium-photo/delicious-cheese-bread-baked-assortment_23-2149042424.jpg",
+    },
     {
       'name': 'Curd (Homemade Dahi)',
       'price': 100,
-      'category': 'Milk & Dairy Products'
+      'category': 'Milk & Dairy Products',
+      'image':
+          'https://img.freepik.com/premium-photo/plain-curd-yogurt-dahi-hindi-served-bowl-moody-background-selective-focus_466689-29254.jpg'
     },
     {
       'name': 'Flavored Buttermilk',
       'price': 50,
-      'category': 'Milk & Dairy Products'
+      'category': 'Milk & Dairy Products',
+      'image':
+          'https://img.freepik.com/free-photo/dovga-greens-dovga-inside-little-glass-along-with-crisps-grey-desk_140725-14591.jpg'
     },
 
     // Dung (for fertilizers, biogas, etc.) (4 items)
     {
       'name': 'Dried Cow Dung Cakes',
       'price': 150,
-      'category': 'Dung (for fertilizers, biogas, etc.)'
+      'category': 'Dung (for fertilizers, biogas, etc.)',
+      'image':
+          'https://img.freepik.com/free-photo/healthy-jaggery-still-life-assortment_23-2149161584.jpg'
     },
     {
       'name': 'Cow Dung Compost',
       'price': 200,
-      'category': 'Dung (for fertilizers, biogas, etc.)'
+      'category': 'Dung (for fertilizers, biogas, etc.)',
+      'image':
+          'https://img.freepik.com/premium-photo/shovel-collecting-soil-ground-prepare-urban-vegetable-garden-home-quality-substrate_851001-1949.jpg'
     },
     {
       'name': 'Cow Dung Briquettes (Fuel)',
       'price': 300,
-      'category': 'Dung (for fertilizers, biogas, etc.)'
+      'category': 'Dung (for fertilizers, biogas, etc.)',
+      'image':
+          'https://img.freepik.com/free-photo/stack-crispbread-pile-buckwheat-marble-surface_114579-25302.jpg'
     },
     {
       'name': 'Organic Cow Dung Fertilizer',
       'price': 250,
-      'category': 'Dung (for fertilizers, biogas, etc.)'
+      'category': 'Dung (for fertilizers, biogas, etc.)',
+      'image':
+          'https://img.freepik.com/free-photo/construction-technicians-are-mixing-cement-stone-sand-construction_1150-14774.jpg'
     },
 
     // Urine (for medicinal/Ayurvedic use) (4 items)
     {
       'name': 'Cow Urine Extract',
       'price': 250,
-      'category': 'Urine (for medicinal/Ayurvedic use)'
+      'category': 'Urine (for medicinal/Ayurvedic use)',
+      'image': 'https://m.media-amazon.com/images/I/61R7djMB1vL.jpg'
     },
+
     {
       'name': 'Panchagavya Tonic',
       'price': 500,
-      'category': 'Urine (for medicinal/Ayurvedic use)'
+      'category': 'Urine (for medicinal/Ayurvedic use)',
+      'image':
+          "https://img.freepik.com/free-photo/green-smoothie-jar-with-lime-kiwi-berry_169016-1625.jpg",
     },
     {
       'name': 'Distilled Cow Urine',
       'price': 350,
-      'category': 'Urine (for medicinal/Ayurvedic use)'
+      'category': 'Urine (for medicinal/Ayurvedic use)',
+      'image':
+          "https://img.freepik.com/free-photo/fresh-apple-juice-close-up-shot_53876-32270.jpg",
     },
     {
       'name': 'Gomutra Arka',
       'price': 400,
-      'category': 'Urine (for medicinal/Ayurvedic use)'
+      'category': 'Urine (for medicinal/Ayurvedic use)',
+      'image':
+          "https://img.freepik.com/premium-photo/pair-apothecary-bottles-with-potion-tincture_133994-1916.jpg",
     },
 
     // Buyers (3 items)
-    {'name': 'Wholesale Dairy Supply', 'price': 0, 'category': 'Buyers'},
-    {'name': 'Bulk Panchagavya Supplier', 'price': 0, 'category': 'Buyers'},
-    {'name': 'Dung-Based Biogas Buyer', 'price': 0, 'category': 'Buyers'},
+    {
+      'name': 'Wholesale Dairy Supply',
+      'price': 0,
+      'category': 'Buyers',
+      'image':
+          "https://img.freepik.com/free-photo/dairy-products_114579-8767.jpg",
+    },
+    {
+      'name': 'Bulk Panchagavya Supplier',
+      'price': 0,
+      'category': 'Buyers',
+      'image':
+          "https://img.freepik.com/free-photo/person-holding-grains-table_209204-14.jpg",
+    },
+    {
+      'name': 'Dung-Based Biogas Buyer',
+      'price': 0,
+      'category': 'Buyers',
+      "image":
+          "https://img.freepik.com/free-photo/agricultural-silos-building-exterior_146671-19369.jpg",
+    },
 
     // Miscellaneous (3 items)
-    {'name': 'Organic Cow Manure', 'price': 180, 'category': 'Miscellaneous'},
+    {
+      'name': 'Organic Cow Manure',
+      'price': 180,
+      'category': 'Miscellaneous',
+      'image':
+          "https://img.freepik.com/premium-photo/farmer-cleans-cow-s-stall-collects-manure-old-straw-natural-fertilizer-future-compost_277130-3809.jpg",
+    },
     {
       'name': 'Herbal Cow Urine Soap',
       'price': 120,
-      'category': 'Miscellaneous'
+      'category': 'Miscellaneous',
+      'image':
+          "https://img.freepik.com/premium-photo/traditional-french-cheese-hay-sale-normandy-marketfrance_633611-733.jpg"
     },
     {
       'name': 'Cow-Based Herbal Incense Sticks',
       'price': 200,
-      'category': 'Miscellaneous'
+      'category': 'Miscellaneous',
+      'image':
+          "https://img.freepik.com/free-photo/burning-incense-sticks_1122-1240.jpg"
     },
   ];
 
@@ -294,7 +354,12 @@ class _MarketAccessScreenState extends State<MarketAccessScreen> {
                   const BorderRadius.vertical(top: Radius.circular(8)),
             ),
             width: double.infinity,
-            child: const Icon(Icons.image, size: 40, color: Colors.grey),
+            child: product['image'] != ''
+                ? Image(
+                    image: NetworkImage(product['image']),
+                    fit: BoxFit.fill,
+                  )
+                : const Icon(Icons.image, size: 40, color: Colors.grey),
           ),
 
           // Product Name - More compact
