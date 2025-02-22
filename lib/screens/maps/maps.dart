@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:direct_caller_sim_choice/direct_caller_sim_choice.dart';
 
 import 'dart:math' as math;
 
@@ -59,27 +60,28 @@ class _MapScreenState extends State<MapScreen> {
     }
   }
 
-  // Future<void> _makePhoneCall(BuildContext context, String phoneNumber) async {
-  //   var status = await Permission.phone.request();
-  //   if (status.isGranted) {
-  //     bool? result = await FlutterDirectCall.makeDirectCalll('+916303642297');
-  //     if (result != true) {
-  //       ScaffoldMessenger.of(context).showSnackBar(
-  //         SnackBar(content: Text("Failed to make the call. Please try again.")),
-  //       );
-  //     }
-  //   } else if (status.isDenied) {
-  //     ScaffoldMessenger.of(context).showSnackBar(
-  //       SnackBar(content: Text("Permission denied. Cannot make a call.")),
-  //     );
-  //   } else if (status.isPermanentlyDenied) {
-  //     ScaffoldMessenger.of(context).showSnackBar(
-  //       SnackBar(
-  //           content:
-  //               Text("Permission permanently denied. Enable in settings.")),
-  //     );
-  //   }
-  // }
+  Future<void> _makePhoneCall(BuildContext context, String phoneNumber) async {
+    var status = await Permission.phone.request();
+    if (status.isGranted) {
+      bool? result = await DirectCaller().makePhoneCall(phoneNumber);
+      if (result != true) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              content: Text("Failed to make the call. Please try again.")),
+        );
+      }
+    } else if (status.isDenied) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Permission denied. Cannot make a call.")),
+      );
+    } else if (status.isPermanentlyDenied) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Permission permanently denied. Enable in settings."),
+        ),
+      );
+    }
+  }
 
   Future<void> _checkLocationPermission() async {
     LocationPermission permission = await Geolocator.checkPermission();
@@ -233,7 +235,7 @@ class _MapScreenState extends State<MapScreen> {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text("Calling ${person.name}...")),
                 );
-                // _makePhoneCall(context, person.phone);
+                _makePhoneCall(context, "8125150264");
               },
             ),
           ],

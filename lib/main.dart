@@ -43,6 +43,7 @@ class MyApp extends StatelessWidget {
         title: 'GauSampada',
         debugShowCheckedModeBanner: false,
         theme: ThemeData().copyWith(
+          scaffoldBackgroundColor: Colors.white,
           textTheme: GoogleFonts.dmSansTextTheme(
             Theme.of(context).textTheme,
           ),
