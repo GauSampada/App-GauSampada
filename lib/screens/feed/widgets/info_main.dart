@@ -38,7 +38,7 @@ class InfoMainScreenState extends State<InfoMainScreen>
     },
     {
       "title": "AI Assistance for\nCow Health",
-      "image": "assets/feed/farmers.jpg",
+      "image": "assets/feed/ai_assist.jpg",
       "color": const Color(0xFFE91E63),
     },
     {
