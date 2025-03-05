@@ -33,7 +33,7 @@ class UserProfileScreen extends StatelessWidget {
                         provider.user.photoURL == ''
                             ? CircleAvatar(
                                 radius: 60,
-                                backgroundColor: themeColor,
+                                backgroundColor: Colors.lightGreen,
                                 child: Text(
                                   provider.user.name[0],
                                   style: const TextStyle(
@@ -45,7 +45,7 @@ class UserProfileScreen extends StatelessWidget {
                                 radius: 60,
                                 backgroundImage:
                                     NetworkImage(provider.user.photoURL!),
-                                backgroundColor: Colors.blueAccent,
+                                backgroundColor: Colors.green,
                               ),
                         Positioned(
                           bottom: 0,
@@ -76,7 +76,7 @@ class UserProfileScreen extends StatelessWidget {
                       style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
-                        color: Colors.blueAccent,
+                        color: Colors.green,
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -227,7 +227,7 @@ class ProfileMenuItem extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Icon(icon, color: Colors.blueAccent),
+            Icon(icon, color: Colors.green),
             const SizedBox(width: 16),
             Expanded(
               child: Text(
@@ -239,8 +239,7 @@ class ProfileMenuItem extends StatelessWidget {
                 ),
               ),
             ),
-            const Icon(Icons.arrow_forward_ios,
-                color: Colors.blueAccent, size: 16),
+            const Icon(Icons.arrow_forward_ios, color: Colors.green, size: 16),
           ],
         ),
       ),

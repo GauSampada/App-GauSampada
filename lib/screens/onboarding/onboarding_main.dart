@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gausampada/screens/auth/login.dart';
+import 'package:gausampada/screens/home/home_screen.dart';
 import 'package:gausampada/screens/onboarding/widgets/onboarding_sub.dart';
 import 'package:gausampada/screens/widgets/buttons/elevated.dart';
 import 'package:gausampada/screens/widgets/buttons/textfield.dart';
@@ -22,51 +23,60 @@ class OnboardingMainScreenState extends State<OnboardingMainScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          PageView(
-            controller: controller,
-            onPageChanged: (index) {
-              setState(() {
-                isLastPage = index == 3;
-              });
-            },
-            children: [
-              OnboardingSubScreen(
-                  title: "Welcome to NaviGaurd!",
-                  isLottie: true,
-                  address: "assets/onboarding_screen/screen1.json",
-                  description:
-                      "Your safety on the road is our priority. SafeRoads is designed to help drivers and commuters reduce the risk of accidents and ensure a safer journey for everyone.",
-                  backgroundColor: Colors.blueAccent[100]),
-              OnboardingSubScreen(
-                  title: "Stay Informed with Real-Time Alerts",
-                  isLottie: true,
-                  address: "assets/onboarding_screen/screen2.json",
-                  description:
-                      "Get instant notifications about road hazards, weather conditions, and accident-prone zones. Be prepared and stay ahead to avoid risks.",
-                  backgroundColor: Colors.indigo[100]),
-              OnboardingSubScreen(
-                  title: "Your Reliable Dashcam Companion",
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: PageView(
+              controller: controller,
+              onPageChanged: (index) {
+                setState(() {
+                  isLastPage = index == 4;
+                });
+              },
+              children: const [
+                OnboardingSubScreen(
+                    title: "Welcome to GauSampada!",
+                    isLottie: false,
+                    address: "assets/feed/cow_info.jpg",
+                    description:
+                        "Connect with nearby farmers and buyers via local markets, cooperatives, and online platforms for fair pricing and efficient transactions."),
+                OnboardingSubScreen(
+                  title: "AI-Powered Disease Detection & Prevention",
                   isLottie: false,
-                  address: "assets/onboarding_screen/screen3.jpg",
+                  address: "assets/feed/ai_assist.jpg",
                   description:
-                      "Secure your journey with real-time dashcam access, protecting against false accusations and simplifying insurance claims.",
-                  backgroundColor: Colors.lightGreen[100]),
-              const OnboardingSubScreen(
-                title: "Quick Emergency Assistance",
-                isLottie: false,
-                address: "assets/onboarding_screen/screen4.png",
-                description:
-                    "In case of emergencies, SafeRoads connects you with nearby help and alerts your emergency contacts instantly.",
-              ),
-            ],
+                      "AI-driven analytics detect diseases early, monitor vitals, optimize nutrition, and send alerts for better cattle health and productivity.",
+                ),
+                OnboardingSubScreen(
+                    title: "Sell Dairy Products Effortlessly",
+                    isLottie: false,
+                    address: "assets/feed/farmers.jpg",
+                    description:
+                        "Successful product sales depend on smart pricing, inventory management, and customer engagement. Quality, timely supply, and marketing drive higher sales and satisfaction."),
+                OnboardingSubScreen(
+                    title: "Find Nearby Farmers & Buyers",
+                    isLottie: false,
+                    address: "assets/feed/products.jpg",
+                    description:
+                        "Strategic pricing, inventory management, and customer engagement boost sales, ensure quality, and enhance satisfaction."),
+                OnboardingSubScreen(
+                    title: "Veterinary Doctor Appoinments",
+                    isLottie: false,
+                    address: "assets/feed/vetenary.jpg",
+                    description:
+                        "Veterinarians analyze cow health and farm data for accurate diagnosis, enabling timely treatment and appointment scheduling."),
+              ],
+            ),
           ),
           Positioned(
             bottom: 90,
             left: screenWidth * 0.37,
             child: SmoothPageIndicator(
               controller: controller,
-              count: 4,
-              effect: const WormEffect(),
+              count: 5,
+              effect: const WormEffect(
+                dotWidth: 10.0,
+                dotHeight: 10.0,
+              ),
               onDotClicked: (index) {
                 controller.animateToPage(
                   index,
@@ -86,7 +96,7 @@ class OnboardingMainScreenState extends State<OnboardingMainScreen> {
                     onPressed: () {
                       Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
-                          builder: (context) => const LoginScreen(),
+                          builder: (context) => const HomeScreen(),
                         ),
                       );
                     },
@@ -105,7 +115,7 @@ class OnboardingMainScreenState extends State<OnboardingMainScreen> {
                         foregroundColor: Colors.white,
                         text: "Skip",
                         onPressed: () {
-                          controller.jumpToPage(3);
+                          controller.jumpToPage(4);
                         },
                       ),
                       CustomTextButton(

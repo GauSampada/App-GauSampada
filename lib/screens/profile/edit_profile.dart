@@ -44,7 +44,7 @@ class EditProfileScreen extends StatelessWidget {
                                 : provider.photoURL == null
                                     ? CircleAvatar(
                                         radius: 60,
-                                        backgroundColor: themeColor,
+                                        backgroundColor: Colors.lightGreen,
                                         child: Text(
                                           provider.user.name[0],
                                           style: const TextStyle(

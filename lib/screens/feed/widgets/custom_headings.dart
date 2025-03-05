@@ -8,18 +8,32 @@ class CustomHeadingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(
-          label,
-          style: TextStyle(
-            color: Colors.red,
-            fontWeight: FontWeight.bold,
+    return Padding(
+      padding: const EdgeInsets.only(left: 12, right: 12, top: 12, bottom: 8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            label,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF2E3E5C),
+            ),
           ),
-        ),
-        Spacer(),
-        TextButton(onPressed: () {}, child: Text("View All"))
-      ],
+          TextButton(
+            onPressed: onPressed,
+            child: const Text(
+              "View All",
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: Color(0xFF4A6CFA),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

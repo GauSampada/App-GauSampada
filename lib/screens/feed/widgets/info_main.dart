@@ -4,7 +4,6 @@ import 'package:gausampada/screens/feed/widgets/info_cards.dart';
 import 'package:gausampada/screens/onboarding/widgets/onboarding_sub.dart';
 import 'package:gausampada/screens/widgets/buttons/elevated.dart';
 import 'package:gausampada/screens/widgets/buttons/textfield.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class InfoMainScreen extends StatefulWidget {
   const InfoMainScreen({super.key});
@@ -13,63 +12,292 @@ class InfoMainScreen extends StatefulWidget {
   State<InfoMainScreen> createState() => InfoMainScreenState();
 }
 
-class InfoMainScreenState extends State<InfoMainScreen> {
+class InfoMainScreenState extends State<InfoMainScreen>
+    with SingleTickerProviderStateMixin {
   final PageController controller = PageController(initialPage: 0);
   bool isLastPage = false;
+  int currentPage = 0;
+  late AnimationController _animationController;
+  late Animation<double> _scaleAnimation;
+
+  final List<Map<String, dynamic>> _features = [
+    {
+      "title": "AI-Powered Disease\nDetection & Prevention",
+      "image": "assets/feed/cow_info.jpg",
+      "color": const Color(0xFF4CAF50),
+    },
+    {
+      "title": "Sell Dairy Products\nEffortlessly",
+      "image": "assets/feed/products.jpg",
+      "color": const Color(0xFFF57C00),
+    },
+    {
+      "title": "Find Nearby\nFarmers & Buyers",
+      "image": "assets/feed/farmers.jpg",
+      "color": const Color(0xFF9C27B0),
+    },
+    {
+      "title": "AI Assistance for\nCow Health",
+      "image": "assets/feed/ai_assist.jpg",
+      "color": const Color(0xFFE91E63),
+    },
+    {
+      "title": "Veterinary Doctor\nAppointments",
+      "image": "assets/feed/vetenary.jpg",
+      "color": const Color(0xFF2196F3),
+      "width": 0.7,
+    },
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 300),
+    );
+    _scaleAnimation = Tween<double>(begin: 0.97, end: 1.0).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeOutQuad),
+    );
+    _animationController.forward();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    _animationController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
-    return Scaffold(
-      body: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            height: screenHeight * 0.2,
-            child: PageView(
-              controller: controller,
-              onPageChanged: (index) {
-                setState(() {
-                  isLastPage = index == 3;
-                });
-              },
-              children: [
-                InfoSubScreen(
-                    title: "AI-Powered Disease\n Detection & Prevention",
-                    address: "assets/feed/cow_info.jpg"),
-                InfoSubScreen(
-                  title: "Veterinary Doctor \n Appointments",
-                  address: "assets/feed/vetenary.jpg",
-                  width: 0.7,
+
+    return AnimatedBuilder(
+        animation: _animationController,
+        builder: (context, child) {
+          return Transform.scale(
+            scale: _scaleAnimation.value,
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    theme.primaryColor.withOpacity(0.05),
+                    Colors.white,
+                  ],
                 ),
-                InfoSubScreen(
-                    title: "Sell Dairy Products \nEffortlessly",
-                    address: "assets/feed/products.jpg"),
-                InfoSubScreen(
-                    title: "AI Assistance for\n Cow Health",
-                    address: "assets/feed/farmers.jpg"),
-                InfoSubScreen(
-                    title: "Find Nearby \nFarmers & Buyers",
-                    address: "assets/feed/farmers.jpg"),
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.08),
+                    blurRadius: 10,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
+              ),
+              clipBehavior: Clip.antiAlias,
+              child: Stack(
+                children: [
+                  // Main PageView
+                  PageView.builder(
+                    controller: controller,
+                    onPageChanged: (index) {
+                      setState(() {
+                        isLastPage = index == _features.length - 1;
+                        currentPage = index;
+                        // Reset and forward animation for each page change
+                        _animationController.reset();
+                        _animationController.forward();
+                      });
+                    },
+                    itemCount: _features.length,
+                    itemBuilder: (context, index) {
+                      return _buildInfoPage(
+                        _features[index]["title"],
+                        _features[index]["image"],
+                        theme,
+                        color: _features[index]["color"],
+                        imageWidth: _features[index]["width"] ?? 1.0,
+                      );
+                    },
+                  ),
+
+                  // Left navigation icon (positioned at leftmost edge)
+                  if (currentPage > 0)
+                    Positioned(
+                      left: 0,
+                      top: 0,
+                      bottom: 0,
+                      child: Center(
+                        child: Container(
+                          padding: const EdgeInsets.only(left: 8, right: 4),
+                          decoration: const BoxDecoration(
+                            color: Colors.black38,
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(20),
+                              bottomRight: Radius.circular(20),
+                            ),
+                          ),
+                          child: IconButton(
+                            padding: EdgeInsets.zero,
+                            constraints: const BoxConstraints(),
+                            onPressed: () {
+                              controller.previousPage(
+                                duration: const Duration(milliseconds: 300),
+                                curve: Curves.easeOut,
+                              );
+                            },
+                            icon: const Icon(
+                              Icons.arrow_back_ios_rounded,
+                              size: 20,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                  // Right navigation icon (positioned at rightmost edge)
+                  if (currentPage < _features.length - 1)
+                    Positioned(
+                      right: 0,
+                      top: 0,
+                      bottom: 0,
+                      child: Center(
+                        child: Container(
+                          padding: const EdgeInsets.only(left: 4, right: 8),
+                          decoration: const BoxDecoration(
+                            color: Colors.black38,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              bottomLeft: Radius.circular(20),
+                            ),
+                          ),
+                          child: IconButton(
+                            padding: EdgeInsets.zero,
+                            constraints: const BoxConstraints(),
+                            onPressed: () {
+                              controller.nextPage(
+                                duration: const Duration(milliseconds: 300),
+                                curve: Curves.easeOut,
+                              );
+                            },
+                            icon: const Icon(
+                              Icons.arrow_forward_ios_rounded,
+                              size: 20,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                  // Small dots indicator at bottom
+                  Positioned(
+                    bottom: 16,
+                    left: 0,
+                    right: 0,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(
+                        _features.length,
+                        (index) => Container(
+                          width: index == currentPage ? 16 : 8,
+                          height: 8,
+                          margin: const EdgeInsets.symmetric(horizontal: 2),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4),
+                            color: index == currentPage
+                                ? _features[index]["color"]
+                                : Colors.white.withOpacity(0.5),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
+  Widget _buildInfoPage(String title, String imageAsset, ThemeData theme,
+      {double imageWidth = 1.0, Color? color}) {
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        // Background image with gradient overlay
+        Image.asset(
+          imageAsset,
+          fit: BoxFit.cover,
+        ),
+        Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Colors.black.withOpacity(0.1),
+                Colors.black.withOpacity(0.7),
               ],
             ),
           ),
-          SizedBox(height: 5),
-          SmoothPageIndicator(
-            controller: controller,
-            count: 5,
-            effect: const WormEffect(),
-            onDotClicked: (index) {
-              controller.animateToPage(
-                index,
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeOut,
-              );
-            },
+        ),
+
+        // Content
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  shadows: [
+                    Shadow(
+                      offset: Offset(1, 1),
+                      blurRadius: 3,
+                      color: Colors.black45,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 12),
+              Row(
+                children: [
+                  Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                    decoration: BoxDecoration(
+                      color: color ?? theme.primaryColor,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: const Text(
+                      'Learn More',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              // Extra space at bottom for page indicator
+              const SizedBox(height: 30),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

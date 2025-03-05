@@ -29,7 +29,7 @@ class CustomDialog {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Image.asset(
-                    "assets/home/notification.jpg",
+                    "assets/all_images/bell.jpg",
                     width: 40,
                     height: 40,
                   ),

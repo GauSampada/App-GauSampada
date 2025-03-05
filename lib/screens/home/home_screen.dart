@@ -72,7 +72,7 @@ class HomeScreenState extends State<HomeScreen> {
   final List<Widget> screens = [
     const FeedScreen(),
     // MapScreen(),
-    const MarketScreen(),
+    const MarketAccessScreen(),
     DiseasePredictionScreen(),
     const BreadInfoScreen(),
     const UserProfileScreen(),
@@ -123,7 +123,7 @@ class HomeScreenState extends State<HomeScreen> {
                     currentIndex = index;
                   });
                 },
-                selectedItemColor: Colors.blue,
+                selectedItemColor: const Color(0xFF0A7643),
                 unselectedItemColor: Colors.grey,
                 iconSize: 30,
                 selectedLabelStyle: const TextStyle(

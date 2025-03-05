@@ -9,11 +9,13 @@ import 'package:gausampada/firebase_options.dart';
 import 'package:gausampada/screens/auth/login.dart';
 import 'package:gausampada/screens/feed/feed_screen.dart';
 import 'package:gausampada/screens/home/home_screen.dart';
+import 'package:gausampada/screens/maps/maps.dart';
 import 'package:gausampada/screens/onboarding/onboarding_main.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'screens/DiseasePrediction/disease_prediction.dart';
 import 'screens/chat_bot/ai_assistance.dart';
+import 'screens/market/market_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,16 +37,19 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ImagePickerService()),
         ChangeNotifierProvider(create: (_) => ChatProvider()),
         ChangeNotifierProvider(create: (_) => UserProvider()),
+        ChangeNotifierProvider(create: (_) => CartProvider()),
       ],
       child: MaterialApp(
         title: 'GauSampada',
         debugShowCheckedModeBanner: false,
         theme: ThemeData().copyWith(
+          scaffoldBackgroundColor: Colors.white,
           textTheme: GoogleFonts.dmSansTextTheme(
             Theme.of(context).textTheme,
           ),
           appBarTheme: const AppBarTheme(
             backgroundColor: themeColor,
+            foregroundColor: Colors.white,
           ),
         ),
 
@@ -69,7 +74,8 @@ class MyApp extends StatelessWidget {
         //       return const OnboardingMainScreen(); // for android
         //       // return const LoginScreen();
         //     }),
-        home: const FeedScreen(),
+        // home: const HomeScreen(),
+        home: const OnboardingMainScreen(),
       ),
     );
   }
