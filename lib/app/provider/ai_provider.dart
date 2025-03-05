@@ -71,7 +71,7 @@ class AiProvider extends ChangeNotifier {
     required String imageBase64,
   }) async {
     final response = await http.post(
-      Uri.parse("http://10.0.43.124:5000/image_to_text"),
+      Uri.parse("https://ai-model-gausampada.onrender.com/image_to_text"),
       headers: {"Content-Type": "application/json"},
       body: jsonEncode({
         "image_base64": imageBase64,

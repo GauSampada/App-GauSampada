@@ -9,6 +9,7 @@ import 'package:gausampada/firebase_options.dart';
 import 'package:gausampada/screens/auth/login.dart';
 import 'package:gausampada/screens/feed/feed_screen.dart';
 import 'package:gausampada/screens/home/home_screen.dart';
+import 'package:gausampada/screens/maps/maps.dart';
 import 'package:gausampada/screens/onboarding/onboarding_main.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
         title: 'GauSampada',
         debugShowCheckedModeBanner: false,
         theme: ThemeData().copyWith(
+          scaffoldBackgroundColor: Colors.white,
           textTheme: GoogleFonts.dmSansTextTheme(
             Theme.of(context).textTheme,
           ),
@@ -72,7 +74,8 @@ class MyApp extends StatelessWidget {
         //       return const OnboardingMainScreen(); // for android
         //       // return const LoginScreen();
         //     }),
-        home: const HomeScreen(),
+        // home: const HomeScreen(),
+        home: const OnboardingMainScreen(),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gausampada/const/colors.dart';
 import 'package:gausampada/screens/bread/bread_info_screen.dart';
 import 'package:gausampada/screens/bread/breed_details.dart';
 import 'package:gausampada/screens/chat_bot/ai_assistance.dart';
@@ -7,7 +8,9 @@ import 'package:gausampada/screens/feed/widgets/breed_info_card.dart';
 import 'package:gausampada/screens/feed/widgets/custom_headings.dart';
 import 'package:gausampada/screens/feed/widgets/info_main.dart';
 import 'package:gausampada/screens/feed/widgets/products.dart';
+import 'package:gausampada/screens/maps/maps.dart';
 import 'package:gausampada/screens/market/market_screen.dart';
+import 'package:gausampada/screens/notifications/notification.dart';
 import 'package:gausampada/screens/widgets/appbar.dart';
 
 class FeedScreen extends StatefulWidget {
@@ -44,8 +47,48 @@ class _FeedScreenState extends State<FeedScreen> {
           );
         },
       ),
-      appBar: const CustomAppbar(
-        label: "GauSampada",
+      appBar: AppBar(
+        backgroundColor: themeColor,
+        toolbarHeight: 70,
+        title: Text(
+          "GauSampada",
+          style: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.location_on,
+              color: Colors.white,
+            ),
+            tooltip: 'Location',
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const MapScreen(),
+                ),
+              );
+            },
+          ),
+          IconButton(
+            icon: const Icon(
+              Icons.notifications,
+              color: Colors.white,
+            ),
+            tooltip: 'Notifications',
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const NotificationScreen(),
+                ),
+              );
+            },
+          ),
+          const SizedBox(width: 15),
+        ],
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
