@@ -1,13 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
 import 'package:gausampada/backend/models/user_model.dart';
 
 class AuthService {
   final FirebaseAuth auth = FirebaseAuth.instance;
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
+  UserModel? userModel;
 
   // Signup with Email
   Future<String> handleSignUpWithEmail({
@@ -54,7 +53,6 @@ class AuthService {
   }) async {
     String res = "";
     try {
-      // await FirebaseAppCheck.instance.activate();
       final UserCredential result = await auth.signInWithEmailAndPassword(
           email: email, password: password);
       final User? user = result.user;
@@ -124,6 +122,7 @@ class AuthService {
     } catch (e) {
       res = "Error signing in with Google: ${e.toString()}";
     }
+    print("❌: $res");
     return res;
   }
 
@@ -140,7 +139,20 @@ class AuthService {
   }
 
   // Logout
-  Future<void> logout() async {
-    await auth.signOut();
-  }
+  // Future<void> logout() async {
+  //   await auth.signOut();
+  // }
+  // Future<void> logout() async {
+  //   try {
+  //     await _auth.signOut();
+  //     await GoogleSignIn().signOut();
+
+  //     _user = null; // Reset user model
+  //     notifyListeners(); // Ensure UI updates
+
+  //     print("✅ User successfully logged out.");
+  //   } catch (e) {
+  //     print("❌ Error during logout: $e");
+  //   }
+  // }
 }

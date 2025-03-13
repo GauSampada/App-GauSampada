@@ -56,13 +56,10 @@ class OnboardingSubScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15.0),
-            child: Text(
-              description,
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-            ),
+          Text(
+            description,
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
           ),
         ],
       ),

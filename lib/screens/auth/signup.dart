@@ -1,12 +1,11 @@
 import 'package:delightful_toast/toast/utils/enums.dart';
 import 'package:flutter/material.dart';
-import 'package:gausampada/backend/auth/auth_methods.dart';
 import 'package:gausampada/const/colors.dart';
 import 'package:gausampada/const/toast.dart';
-
 import 'package:gausampada/screens/auth/login.dart';
 import 'package:gausampada/screens/auth/widgets/custom_auth_buttons.dart';
 import 'package:gausampada/screens/auth/widgets/customtextformfield.dart';
+import 'package:gausampada/backend/auth/auth_methods.dart';
 import 'package:gausampada/screens/home/home_screen.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -64,7 +63,10 @@ class SignupScreenState extends State<SignupScreen> {
 
       if (res == "success") {
         Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const HomeScreen()),
+          MaterialPageRoute(
+              builder: (context) => const HomeScreen(
+                    isLoginOrSignUp: true,
+                  )),
         );
       } else {
         toastMessage(
@@ -74,7 +76,6 @@ class SignupScreenState extends State<SignupScreen> {
             toastColor: Colors.yellow[300],
             borderColor: Colors.orange,
             position: DelightSnackbarPosition.top);
-        print(res);
       }
     } catch (e) {
       toastMessage(
@@ -84,7 +85,6 @@ class SignupScreenState extends State<SignupScreen> {
           toastColor: Colors.red[200],
           borderColor: Colors.red,
           position: DelightSnackbarPosition.top);
-      print(e.toString());
     } finally {
       setState(() {
         isLoading = false;
@@ -100,9 +100,9 @@ class SignupScreenState extends State<SignupScreen> {
       String res = await authService.handleSignUpWithGoogle();
 
       if (res == "success") {
-        // Navigator.of(context).pushReplacement(
-        //   MaterialPageRoute(builder: (context) => const HomeScreen()),
-        // );
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
+        );
       } else {
         toastMessage(
             context: context,
@@ -129,12 +129,14 @@ class SignupScreenState extends State<SignupScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: backgroundColor,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 18.0),
             child: Form(
               key: formKey,
               child: Column(
@@ -172,8 +174,8 @@ class SignupScreenState extends State<SignupScreen> {
                   ),
                   Image.asset(
                     "assets/auth/signup.jpg",
-                    width: 270,
-                    height: 140,
+                    width: screenWidth * 0.65,
+                    height: screenHeight * .25,
                   ),
                   const SizedBox(
                     height: 20,
@@ -246,25 +248,25 @@ class SignupScreenState extends State<SignupScreen> {
                             ? 'Please enter a valid phone number'
                             : null,
                   ),
-                  const SizedBox(
-                    height: 10,
+                  SizedBox(
+                    height: screenHeight * .01,
                   ),
                   LoginSignupButtons(
                     label: "SignUP",
                     onTap: signUpEmail,
                     isLoading: isLoading,
-                    backgroundColor: Colors.blue[500],
+                    backgroundColor: Colors.green[500],
                   ),
-                  const SizedBox(
-                    height: 4,
+                  SizedBox(
+                    height: screenHeight * .015,
                   ),
                   const Text(
                     "Or",
                     style: TextStyle(
                         color: Colors.black, fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(
-                    height: 4,
+                  SizedBox(
+                    height: screenHeight * .015,
                   ),
                   LoginSignupButtons(
                     imagepath: "assets/auth/google.jpg",
@@ -272,7 +274,6 @@ class SignupScreenState extends State<SignupScreen> {
                     onTap: signUpWithGoogle,
                     isLoading: isgoogleLoading,
                   ),
-                  const SizedBox(height: 4),
                   TextButton(
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
@@ -282,7 +283,10 @@ class SignupScreenState extends State<SignupScreen> {
                       "Already Have an Account?",
                       style: TextStyle(color: Colors.red, fontSize: 15),
                     ),
-                  )
+                  ),
+                  SizedBox(
+                    height: screenHeight * .05,
+                  ),
                 ],
               ),
             ),

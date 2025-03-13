@@ -1,6 +1,5 @@
 import 'package:delightful_toast/toast/utils/enums.dart';
 import 'package:flutter/material.dart';
-import 'package:gausampada/backend/auth/auth_methods.dart';
 import 'package:gausampada/backend/providers/user_provider.dart';
 import 'package:gausampada/const/colors.dart';
 import 'package:gausampada/const/logout_dialog.dart';
@@ -14,7 +13,6 @@ import 'package:gausampada/screens/market/market_screen.dart';
 import 'package:gausampada/screens/notifications/notification.dart';
 import 'package:gausampada/screens/profile/user_profile.dart';
 import 'package:gausampada/screens/settings/settings.dart';
-import 'package:gausampada/screens/widgets/appbar.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -37,27 +35,11 @@ class HomeScreenState extends State<HomeScreen> {
     if (widget.isLoginOrSignUp) {
       toastMessage(
         context: context,
-        message: "Welcome Back!",
+        message: "Welcome Back",
         leadingIcon: const Icon(Icons.emoji_emotions),
         position: DelightSnackbarPosition.top,
       );
     }
-
-    // // Delayed execution for dialogs
-    // Future.delayed(const Duration(seconds: 1), () {
-    //   const CustomDialog().showLogoutDialog(
-    //     context: context,
-    //     label: "Notifications",
-    //     message: "Allow SafeGaurd to send notifications",
-    //     option1: "Allow",
-    //     onPressed1: () {
-    //       Navigator.of(context).pop();
-    //     },
-    //     option2: "Deny",
-    //     onPressed2: () {
-    //     },
-    //   );
-    // });
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       getData();
@@ -81,57 +63,53 @@ class HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Consumer<UserProvider>(builder: (context, userProvider, _) {
-      return userProvider.isLoading
-          ? const Scaffold(
-              backgroundColor: Colors.white,
-              body: Center(
+      return Scaffold(
+        key: _scaffoldKey,
+        body: userProvider.isLoading
+            ? const Center(
                 child: CircularProgressIndicator(
                   color: themeColor,
                 ),
-              ),
-            )
-          : Scaffold(
-              key: _scaffoldKey,
-              drawer: customNavigationBar(provider: userProvider),
-              body: screens[currentIndex],
-              bottomNavigationBar: BottomNavigationBar(
-                currentIndex: currentIndex,
-                items: const [
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.home),
-                    label: 'Home',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.shopping_bag),
-                    label: 'Market',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.smart_toy_outlined),
-                    label: 'AI Diagnosis',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.pets),
-                    label: 'Breed Info',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.person_pin),
-                    label: 'Profile',
-                  ),
-                ],
-                onTap: (index) {
-                  setState(() {
-                    currentIndex = index;
-                  });
-                },
-                selectedItemColor: const Color(0xFF0A7643),
-                unselectedItemColor: Colors.grey,
-                iconSize: 30,
-                selectedLabelStyle: const TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            );
+              )
+            : screens[currentIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: currentIndex,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_bag),
+              label: 'Market',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.smart_toy_outlined),
+              label: 'AI Diagnosis',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.pets),
+              label: 'Breed Info',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person_pin),
+              label: 'Profile',
+            ),
+          ],
+          onTap: (index) {
+            setState(() {
+              currentIndex = index;
+            });
+          },
+          selectedItemColor: const Color(0xFF0A7643),
+          unselectedItemColor: Colors.grey,
+          iconSize: 30,
+          selectedLabelStyle: const TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      );
     });
   }
 
@@ -169,7 +147,6 @@ class HomeScreenState extends State<HomeScreen> {
                     ),
             ),
             const SizedBox(height: 10),
-
             Navbaritems(
               icon: Icons.home,
               label: "Home",
@@ -178,9 +155,14 @@ class HomeScreenState extends State<HomeScreen> {
                     builder: (context) => const HomeScreen()));
               },
             ),
-            // Navbaritems(icon: Icons.person, label: "Profile", onTap: () {
-            //     Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const UserProfileScreen()));
-            //   },),
+            Navbaritems(
+              icon: Icons.person,
+              label: "Profile",
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const UserProfileScreen()));
+              },
+            ),
             Navbaritems(
               icon: Icons.notifications,
               label: "Notifications",
@@ -211,7 +193,7 @@ class HomeScreenState extends State<HomeScreen> {
                   },
                   option1: "Yes",
                   onPressed1: () {
-                    AuthService().logout();
+                    UserProvider().logout();
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
                         builder: (context) => const LoginScreen()));
                   },

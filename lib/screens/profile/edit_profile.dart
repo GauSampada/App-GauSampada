@@ -15,7 +15,7 @@ class EditProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<UserProvider>(
-      builder: (context, provider, child) {
+      builder: (context, provider, _) {
         return provider.isLoading
             ? const Center(child: CircularProgressIndicator())
             : Scaffold(
@@ -41,7 +41,7 @@ class EditProfileScreen extends StatelessWidget {
                                 ? const CircularProgressIndicator(
                                     color: themeColor,
                                   )
-                                : provider.photoURL == null
+                                : provider.photoURL == ""
                                     ? CircleAvatar(
                                         radius: 60,
                                         backgroundColor: Colors.lightGreen,

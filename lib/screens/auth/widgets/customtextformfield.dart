@@ -15,8 +15,8 @@ class CustomTextFormField extends StatelessWidget {
     required this.label,
     required this.hinttext,
     required this.controller,
-    this.isobsure=false,
-    this.keyboard=TextInputType.name,
+    this.isobsure = false,
+    this.keyboard = TextInputType.name,
     required this.prefixicon,
     this.suffixicon,
     this.validator,
@@ -25,7 +25,7 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.symmetric(vertical: 6.0),
       child: TextFormField(
         controller: controller,
         decoration: InputDecoration(
@@ -46,7 +46,7 @@ class CustomTextFormField extends StatelessWidget {
           filled: true,
           labelText: label,
           labelStyle: const TextStyle(color: Colors.black),
-          floatingLabelStyle: TextStyle(color: Colors.blue[600] ?? Colors.blue), 
+          floatingLabelStyle: TextStyle(color: Colors.blue[600] ?? Colors.blue),
           prefixIcon: Icon(prefixicon),
           suffixIcon: suffixicon,
         ),

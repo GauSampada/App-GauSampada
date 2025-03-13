@@ -172,7 +172,7 @@ class UserProfileScreen extends StatelessWidget {
                           },
                           option1: "Yes",
                           onPressed1: () {
-                            AuthService().logout();
+                            UserProvider().logout();
                             Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(
                                     builder: (context) => const LoginScreen()));

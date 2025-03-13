@@ -4,7 +4,6 @@ import 'package:gausampada/backend/auth/auth_methods.dart';
 import 'package:gausampada/const/colors.dart';
 import 'package:gausampada/const/toast.dart';
 import 'package:gausampada/screens/auth/forgot_password.dart';
-
 import 'package:gausampada/screens/auth/signup.dart';
 import 'package:gausampada/screens/auth/widgets/custom_auth_buttons.dart';
 import 'package:gausampada/screens/auth/widgets/customtextformfield.dart';
@@ -52,8 +51,10 @@ class LoginScreenState extends State<LoginScreen> {
     String res = await authService.handleLoginWithEmail(
         email: email.text, password: password.text);
     if (res == "success") {
-      Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const HomeScreen()));
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (context) => const HomeScreen(
+                isLoginOrSignUp: true,
+              )));
     } else {
       toastMessage(
           context: context,
@@ -108,17 +109,19 @@ class LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: backgroundColor,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            padding: const EdgeInsets.symmetric(horizontal: 15.0),
             child: Form(
               key: formKey,
               child: Column(
                 children: [
-                  const SizedBox(height: 20.0),
+                  SizedBox(height: screenHeight * 0.03),
                   const Row(
                     crossAxisAlignment: CrossAxisAlignment.baseline,
                     textBaseline: TextBaseline.alphabetic,
@@ -146,11 +149,15 @@ class LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
+
                   Image.asset(
                     "assets/auth/login.jpg",
-                    width: 300,
-                    height: 200,
+                    width: screenWidth * 0.7,
+                    height: screenHeight * 0.25,
                   ),
+
+                  SizedBox(height: screenHeight * 0.02),
+
                   CustomTextFormField(
                     label: "Email",
                     hinttext: "Enter Your Email",
@@ -166,6 +173,7 @@ class LoginScreenState extends State<LoginScreen> {
                       return null;
                     },
                   ),
+
                   CustomTextFormField(
                       label: "password",
                       hinttext: "Enter Your Password",
@@ -187,15 +195,15 @@ class LoginScreenState extends State<LoginScreen> {
                         }
                         return null;
                       }),
-                  const SizedBox(
-                    height: 10,
-                  ),
+
+                  SizedBox(height: screenHeight * 0.01),
                   LoginSignupButtons(
                     label: "LogIn",
                     onTap: loginWithEmail,
                     isLoading: isLoading,
-                    backgroundColor: Colors.blue[500],
+                    backgroundColor: Colors.green[500],
                   ),
+
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(
@@ -207,22 +215,21 @@ class LoginScreenState extends State<LoginScreen> {
                           style: TextStyle(color: Colors.red, fontSize: 15),
                         )),
                   ),
+
                   const Text(
                     "Or",
                     style: TextStyle(
                         color: Colors.black, fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
+
+                  SizedBox(height: screenHeight * 0.01),
                   LoginSignupButtons(
                     imagepath: "assets/auth/google.jpg",
                     label: "Login With Google",
                     onTap: loginWithGoogle,
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
+
+                  // SizedBox(height: screenHeight*0.02,),
                   TextButton(
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(

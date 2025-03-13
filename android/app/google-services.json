@@ -1,26 +1,51 @@
 {
   "project_info": {
-    "project_number": "457935951014",
-    "project_id": "gausampada-gdg",
-    "storage_bucket": "gausampada-gdg.firebasestorage.app"
+    "project_number": "881088302375",
+    "project_id": "gausampada-c8a09",
+    "storage_bucket": "gausampada-c8a09.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:457935951014:android:e725e3d11ae7cab1b9d067",
+        "mobilesdk_app_id": "1:881088302375:android:a7f6bcbbe4c9ba8206ad02",
         "android_client_info": {
           "package_name": "com.example.gausampada"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "881088302375-ndi9jbgitlpiuc90vp8v8v11d06orj03.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gausampada",
+            "certificate_hash": "c8d8a3bb2feb3673f8798f652bd294f5b462a451"
+          }
+        },
+        {
+          "client_id": "881088302375-352ee3iflv3oj3n2sh2k84b6c3f142od.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyBA5BK-h6_WgJHReB-nY0Op4PRDa-t7KLw"
+          "current_key": "AIzaSyBuFAsKTok9iao_t7MAPFq_qcm8HFEgQJU"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "881088302375-352ee3iflv3oj3n2sh2k84b6c3f142od.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "881088302375-9rh28r5e2pdlvs4ksgpsdhdqa8e7idpg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.gausampada"
+              }
+            }
+          ]
         }
       }
     }

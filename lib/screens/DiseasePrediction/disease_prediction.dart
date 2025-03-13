@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:direct_caller_sim_choice/direct_caller_sim_choice.dart';
 import 'package:flutter/material.dart';
-import 'package:gausampada/app/provider/ai_provider.dart';
+import 'package:gausampada/backend/providers/ai_provider.dart';
 import 'package:gausampada/const/colors.dart';
 import 'package:gausampada/const/image_picker_.dart';
 import 'package:gausampada/screens/chat_bot/ai_assistance.dart';

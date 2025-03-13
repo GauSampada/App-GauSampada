@@ -38,32 +38,32 @@ class OnboardingMainScreenState extends State<OnboardingMainScreen> {
                     isLottie: false,
                     address: "assets/feed/cow_info.jpg",
                     description:
-                        "Connect with nearby farmers and buyers via local markets, cooperatives, and online platforms for fair pricing and efficient transactions."),
+                        "Connect with farmers and buyers via markets, cooperatives, and online platforms for fair pricing."),
                 OnboardingSubScreen(
                   title: "AI-Powered Disease Detection & Prevention",
                   isLottie: false,
                   address: "assets/feed/ai_assist.jpg",
                   description:
-                      "AI-driven analytics detect diseases early, monitor vitals, optimize nutrition, and send alerts for better cattle health and productivity.",
+                      "AI detects diseases early, monitors vitals, optimizes nutrition, and sends alerts for better cattle health.",
                 ),
                 OnboardingSubScreen(
                     title: "Sell Dairy Products Effortlessly",
                     isLottie: false,
                     address: "assets/feed/farmers.jpg",
                     description:
-                        "Successful product sales depend on smart pricing, inventory management, and customer engagement. Quality, timely supply, and marketing drive higher sales and satisfaction."),
+                        "Successful sales need smart pricing, inventory, and engagement, plus quality supply and marketing."),
                 OnboardingSubScreen(
                     title: "Find Nearby Farmers & Buyers",
                     isLottie: false,
                     address: "assets/feed/products.jpg",
                     description:
-                        "Strategic pricing, inventory management, and customer engagement boost sales, ensure quality, and enhance satisfaction."),
+                        "Smart pricing, inventory, and engagement boost sales and quality."),
                 OnboardingSubScreen(
                     title: "Veterinary Doctor Appoinments",
                     isLottie: false,
                     address: "assets/feed/vetenary.jpg",
                     description:
-                        "Veterinarians analyze cow health and farm data for accurate diagnosis, enabling timely treatment and appointment scheduling."),
+                        "Veterinarians analyze cow health data for accurate diagnosis, timely treatment, and scheduling.")
               ],
             ),
           ),
@@ -96,7 +96,7 @@ class OnboardingMainScreenState extends State<OnboardingMainScreen> {
                     onPressed: () {
                       Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
-                          builder: (context) => const HomeScreen(),
+                          builder: (context) => const LoginScreen(),
                         ),
                       );
                     },
