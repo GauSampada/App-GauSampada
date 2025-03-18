@@ -1,12 +1,13 @@
 import 'package:delightful_toast/toast/utils/enums.dart';
 import 'package:flutter/material.dart';
-import 'package:gausampada/backend/auth/auth_methods.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:gausampada/backend/localization/localization.dart';
 import 'package:gausampada/const/colors.dart';
 import 'package:gausampada/const/toast.dart';
-
 import 'package:gausampada/screens/auth/login.dart';
 import 'package:gausampada/screens/auth/widgets/custom_auth_buttons.dart';
 import 'package:gausampada/screens/auth/widgets/customtextformfield.dart';
+import 'package:gausampada/backend/auth/auth_methods.dart';
 import 'package:gausampada/screens/home/home_screen.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -42,7 +43,7 @@ class SignupScreenState extends State<SignupScreen> {
     if (!formKey.currentState!.validate()) {
       toastMessage(
           context: context,
-          message: 'Fill All Fields!',
+          message: AppLocale.signupFillAllFields.getString(context),
           leadingIcon: const Icon(Icons.message),
           toastColor: Colors.yellow[300],
           borderColor: Colors.orange,
@@ -64,7 +65,10 @@ class SignupScreenState extends State<SignupScreen> {
 
       if (res == "success") {
         Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const HomeScreen()),
+          MaterialPageRoute(
+              builder: (context) => const HomeScreen(
+                    isLoginOrSignUp: true,
+                  )),
         );
       } else {
         toastMessage(
@@ -74,7 +78,6 @@ class SignupScreenState extends State<SignupScreen> {
             toastColor: Colors.yellow[300],
             borderColor: Colors.orange,
             position: DelightSnackbarPosition.top);
-        print(res);
       }
     } catch (e) {
       toastMessage(
@@ -84,7 +87,6 @@ class SignupScreenState extends State<SignupScreen> {
           toastColor: Colors.red[200],
           borderColor: Colors.red,
           position: DelightSnackbarPosition.top);
-      print(e.toString());
     } finally {
       setState(() {
         isLoading = false;
@@ -100,9 +102,9 @@ class SignupScreenState extends State<SignupScreen> {
       String res = await authService.handleSignUpWithGoogle();
 
       if (res == "success") {
-        // Navigator.of(context).pushReplacement(
-        //   MaterialPageRoute(builder: (context) => const HomeScreen()),
-        // );
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
+        );
       } else {
         toastMessage(
             context: context,
@@ -129,82 +131,95 @@ class SignupScreenState extends State<SignupScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: backgroundColor,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 15.0),
             child: Form(
               key: formKey,
               child: Column(
                 children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.baseline,
-                    textBaseline: TextBaseline.alphabetic,
-                    children: [
-                      const Text(
-                        "O",
-                        style: TextStyle(
-                          fontSize: 60.0,
+                  Padding(
+                    padding: const EdgeInsets.only(left: 13.0),
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: screenHeight * 0.03,
                         ),
-                      ),
-                      Transform.translate(
-                        offset: const Offset(0, -4),
-                        child: const Text(
-                          "nboard!",
-                          style: TextStyle(
-                              fontSize: 30.0, fontWeight: FontWeight.bold),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: [
+                            const Text(
+                              "O",
+                              style: TextStyle(
+                                fontSize: 60.0,
+                              ),
+                            ),
+                            Transform.translate(
+                              offset: const Offset(0, -4),
+                              child: const Text(
+                                "nboard!",
+                                style: TextStyle(
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
-                  Transform.translate(
-                    offset: const Offset(0, -22),
-                    child: const Text(
-                      "Create an account to start your journey",
-                      style: TextStyle(
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.bold,
-                        color: themeColor,
-                      ),
+                        Transform.translate(
+                          offset: const Offset(0, -22),
+                          child: Text(
+                            AppLocale.signupScreenSubtitle.getString(context),
+                            style: const TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold,
+                              color: themeColor,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   Image.asset(
                     "assets/auth/signup.jpg",
-                    width: 270,
-                    height: 140,
+                    width: screenWidth * 0.65,
+                    height: screenHeight * .25,
                   ),
                   const SizedBox(
                     height: 20,
                   ),
                   CustomTextFormField(
-                    label: "Name",
-                    hinttext: "Enter Your Name",
+                    label: AppLocale.signupNameLabel.getString(context),
+                    hinttext: AppLocale.signupNameHint.getString(context),
                     controller: name,
                     prefixicon: Icons.person_2,
                     validator: (value) => value == null || value.isEmpty
-                        ? 'Name is required'
+                        ? AppLocale.signupNameRequired.getString(context)
                         : null,
                   ),
                   CustomTextFormField(
-                    label: "Email",
-                    hinttext: "Enter Your Email",
+                    label: AppLocale.signupEmailLabel.getString(context),
+                    hinttext: AppLocale.signupEmailHint.getString(context),
                     controller: email,
                     prefixicon: Icons.email_rounded,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Email is required';
+                        return AppLocale.signupEmailRequired.getString(context);
                       } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+')
                           .hasMatch(value)) {
-                        return 'Enter a valid email';
+                        return AppLocale.signupEmailInvalid.getString(context);
                       }
                       return null;
                     },
                   ),
                   CustomTextFormField(
-                    label: "Password",
-                    hinttext: "Enter Your Password",
+                    label: AppLocale.signupPasswordLabel.getString(context),
+                    hinttext: AppLocale.signupPasswordHint.getString(context),
                     controller: password,
                     prefixicon: Icons.lock,
                     isobsure: obscureText,
@@ -220,69 +235,62 @@ class SignupScreenState extends State<SignupScreen> {
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Password is required';
+                        return AppLocale.signupPasswordRequired
+                            .getString(context);
                       }
-                      //  else if (value.length < 8) {
-                      //   return 'Password must be at least 8 characters';
-                      // } else if (!RegExp(r'[A-Z]').hasMatch(value)) {
-                      //   return 'Password must contain at least one uppercase letter';
-                      // } else if (!RegExp(r'\d').hasMatch(value)) {
-                      //   return 'Password must contain at least one number';
-                      // } else if (!RegExp(r'[!@#$%^&*(),.?":{}|<>]')
-                      //     .hasMatch(value)) {
-                      //   return 'Password must contain at least one special character';
-                      // }
                       return null;
                     },
                   ),
                   CustomTextFormField(
-                    label: "Phone Number",
-                    hinttext: "Enter Your Mobile Number",
+                    label: AppLocale.signupPhoneLabel.getString(context),
+                    hinttext: AppLocale.signupPhoneHint.getString(context),
                     controller: phonenum,
                     prefixicon: Icons.phone,
                     keyboard: TextInputType.phone,
                     validator: (value) =>
                         value == null || value.isEmpty || value.length < 10
-                            ? 'Please enter a valid phone number'
+                            ? AppLocale.signupPhoneRequired.getString(context)
                             : null,
                   ),
-                  const SizedBox(
-                    height: 10,
+                  SizedBox(
+                    height: screenHeight * .01,
                   ),
                   LoginSignupButtons(
-                    label: "SignUP",
+                    label: AppLocale.signupButton.getString(context),
                     onTap: signUpEmail,
                     isLoading: isLoading,
-                    backgroundColor: Colors.blue[500],
+                    backgroundColor: Colors.green[500],
                   ),
-                  const SizedBox(
-                    height: 4,
+                  SizedBox(
+                    height: screenHeight * .015,
                   ),
                   const Text(
                     "Or",
                     style: TextStyle(
                         color: Colors.black, fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(
-                    height: 4,
+                  SizedBox(
+                    height: screenHeight * .015,
                   ),
                   LoginSignupButtons(
                     imagepath: "assets/auth/google.jpg",
-                    label: "SignUP With Google",
+                    label: AppLocale.signupGoogleButton.getString(context),
                     onTap: signUpWithGoogle,
                     isLoading: isgoogleLoading,
                   ),
-                  const SizedBox(height: 4),
                   TextButton(
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const LoginScreen()));
                     },
-                    child: const Text(
-                      "Already Have an Account?",
+                    child: Text(
+                      AppLocale.signupAlreadyHaveAccount.getString(context),
                       style: TextStyle(color: Colors.red, fontSize: 15),
                     ),
-                  )
+                  ),
+                  SizedBox(
+                    height: screenHeight * .05,
+                  ),
                 ],
               ),
             ),

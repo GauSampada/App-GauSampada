@@ -50,4 +50,6 @@ flutter {
 dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation platform('com.google.firebase:firebase-bom:33.1.1')
+    implementation 'com.google.android.gms:play-services-auth:20.7.0'  // Google Play Services Auth
+    implementation 'com.google.android.gms:play-services-base:18.2.0'  
 }

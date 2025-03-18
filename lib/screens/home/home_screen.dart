@@ -1,6 +1,8 @@
 import 'package:delightful_toast/toast/utils/enums.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 import 'package:gausampada/backend/auth/auth_methods.dart';
+import 'package:gausampada/backend/localization/localization.dart';
 import 'package:gausampada/backend/providers/user_provider.dart';
 import 'package:gausampada/const/colors.dart';
 import 'package:gausampada/screens/widgets/dialogs/logout_dialog.dart';
@@ -14,8 +16,8 @@ import 'package:gausampada/screens/market/market_screen.dart';
 import 'package:gausampada/screens/notifications/notification.dart';
 import 'package:gausampada/screens/profile/user_profile.dart';
 import 'package:gausampada/screens/settings/settings.dart';
-import 'package:gausampada/screens/widgets/appbar.dart';
 import 'package:provider/provider.dart';
+import 'package:google_api_availability/google_api_availability.dart';
 
 class HomeScreen extends StatefulWidget {
   final bool isLoginOrSignUp;
@@ -30,37 +32,20 @@ class HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
   @override
-  @override
   void initState() {
     super.initState();
-    // Display toast immediately
     if (widget.isLoginOrSignUp) {
       toastMessage(
         context: context,
-        message: "Welcome Back!",
+        message: AppLocale.welcomeBack.getString(context),
         leadingIcon: const Icon(Icons.emoji_emotions),
         position: DelightSnackbarPosition.top,
       );
     }
 
-    // // Delayed execution for dialogs
-    // Future.delayed(const Duration(seconds: 1), () {
-    //   const CustomDialog().showLogoutDialog(
-    //     context: context,
-    //     label: "Notifications",
-    //     message: "Allow SafeGaurd to send notifications",
-    //     option1: "Allow",
-    //     onPressed1: () {
-    //       Navigator.of(context).pop();
-    //     },
-    //     option2: "Deny",
-    //     onPressed2: () {
-    //     },
-    //   );
-    // });
-
     WidgetsBinding.instance.addPostFrameCallback((_) {
       getData();
+      checkGooglePlayServices();
     });
   }
 
@@ -69,9 +54,20 @@ class HomeScreenState extends State<HomeScreen> {
     await userProvider.fetchUser();
   }
 
+  void checkGooglePlayServices() async {
+    GooglePlayServicesAvailability availability = await GoogleApiAvailability
+        .instance
+        .checkGooglePlayServicesAvailability();
+
+    if (availability == GooglePlayServicesAvailability.success) {
+      print("✅ Google Play Services is available.");
+    } else {
+      print("❌ Google Play Services is unavailable: $availability");
+    }
+  }
+
   final List<Widget> screens = [
     const FeedScreen(),
-    // MapScreen(),
     const MarketAccessScreen(),
     DiseasePredictionScreen(),
     const BreadInfoScreen(),
@@ -96,26 +92,26 @@ class HomeScreenState extends State<HomeScreen> {
               body: screens[currentIndex],
               bottomNavigationBar: BottomNavigationBar(
                 currentIndex: currentIndex,
-                items: const [
+                items: [
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.home),
-                    label: 'Home',
+                    icon: const Icon(Icons.home),
+                    label: AppLocale.home.getString(context),
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.shopping_bag),
-                    label: 'Market',
+                    icon: const Icon(Icons.shopping_bag),
+                    label: AppLocale.market.getString(context),
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.smart_toy_outlined),
-                    label: 'AI Diagnosis',
+                    icon: const Icon(Icons.smart_toy_outlined),
+                    label: AppLocale.ai_diagnosis.getString(context),
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.pets),
-                    label: 'Breed Info',
+                    icon: const Icon(Icons.pets),
+                    label: AppLocale.breed_info.getString(context),
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.person_pin),
-                    label: 'Profile',
+                    icon: const Icon(Icons.person_pin),
+                    label: AppLocale.profile.getString(context),
                   ),
                 ],
                 onTap: (index) {
@@ -169,21 +165,17 @@ class HomeScreenState extends State<HomeScreen> {
                     ),
             ),
             const SizedBox(height: 10),
-
             Navbaritems(
               icon: Icons.home,
-              label: "Home",
+              label: AppLocale.home.getString(context),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => const HomeScreen()));
               },
             ),
-            // Navbaritems(icon: Icons.person, label: "Profile", onTap: () {
-            //     Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const UserProfileScreen()));
-            //   },),
             Navbaritems(
               icon: Icons.notifications,
-              label: "Notifications",
+              label: AppLocale.notifications.getString(context),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => const NotificationScreen()));
@@ -191,7 +183,7 @@ class HomeScreenState extends State<HomeScreen> {
             ),
             Navbaritems(
               icon: Icons.settings,
-              label: "Settings",
+              label: AppLocale.settings.getString(context),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => const SettingsScreen()));
@@ -199,17 +191,17 @@ class HomeScreenState extends State<HomeScreen> {
             ),
             Navbaritems(
               icon: Icons.logout,
-              label: "SignOut",
+              label: AppLocale.sign_out.getString(context),
               onTap: () {
                 const CustomDialog().showLogoutDialog(
                   context: context,
-                  label: "LogOut",
-                  message: "Are you sure you want to  Log Out?",
-                  option2: "Cancel",
+                  label: AppLocale.log_out.getString(context),
+                  message: AppLocale.confirm_logout.getString(context),
+                  option2: AppLocale.cancel.getString(context),
                   onPressed2: () {
                     Navigator.of(context).pop();
                   },
-                  option1: "Yes",
+                  option1: AppLocale.yes.getString(context),
                   onPressed1: () {
                     AuthService().logout();
                     Navigator.of(context).pushReplacement(MaterialPageRoute(

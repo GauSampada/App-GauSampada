@@ -19,9 +19,9 @@ toastMessage({
     builder: (context) => SizedBox(
       child: Container(
         decoration: BoxDecoration(
-          color: toastColor ?? Colors.blue[200],
+          color: toastColor ?? Colors.green[200],
           border: Border.all(
-            color: borderColor ?? Colors.grey[600]!,
+            color: borderColor ?? Colors.green[600]!,
             width: 3.0,
           ),
           borderRadius: BorderRadius.circular(25.0),

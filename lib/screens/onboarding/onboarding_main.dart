@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:gausampada/backend/localization/localization.dart';
 import 'package:gausampada/const/colors.dart';
 import 'package:gausampada/screens/auth/login.dart';
-import 'package:gausampada/screens/home/home_screen.dart';
 import 'package:gausampada/screens/onboarding/widgets/onboarding_sub.dart';
 import 'package:gausampada/screens/widgets/buttons/elevated.dart';
 import 'package:gausampada/screens/widgets/buttons/textfield.dart';
@@ -33,38 +34,42 @@ class OnboardingMainScreenState extends State<OnboardingMainScreen> {
                   isLastPage = index == 4;
                 });
               },
-              children: const [
+              children: [
                 OnboardingSubScreen(
-                    title: "Welcome to GauSampada!",
-                    isLottie: false,
-                    address: "assets/feed/cow_info.jpg",
-                    description:
-                        "Connect with farmers and buyers through markets, cooperatives, and online platforms for fair pricing."),
+                  title: AppLocale.onboarding_screen1_title.getString(context),
+                  isLottie: false,
+                  address: "assets/feed/cow_info.jpg",
+                  description:
+                      AppLocale.onboarding_screen1_desc.getString(context),
+                ),
                 OnboardingSubScreen(
-                  title: "AI-Powered Disease Detection & Prevention",
+                  title: AppLocale.onboarding_screen2_title.getString(context),
                   isLottie: false,
                   address: "assets/feed/ai_assist.jpg",
                   description:
-                      "AI detects diseases early, monitors vitals, optimizes nutrition, and sends alerts for better cattle health.",
+                      AppLocale.onboarding_screen2_desc.getString(context),
                 ),
                 OnboardingSubScreen(
-                    title: "Sell Dairy Products Effortlessly",
-                    isLottie: false,
-                    address: "assets/feed/farmers.jpg",
-                    description:
-                        "Successful sales need smart pricing, inventory, and engagement, plus quality supply and marketing."),
+                  title: AppLocale.onboarding_screen3_title.getString(context),
+                  isLottie: false,
+                  address: "assets/feed/farmers.jpg",
+                  description:
+                      AppLocale.onboarding_screen3_desc.getString(context),
+                ),
                 OnboardingSubScreen(
-                    title: "Find Nearby Farmers & Buyers",
-                    isLottie: false,
-                    address: "assets/feed/products.jpg",
-                    description:
-                        "Smart pricing, inventory, and engagement boost sales and quality."),
+                  title: AppLocale.onboarding_screen4_title.getString(context),
+                  isLottie: false,
+                  address: "assets/feed/products.jpg",
+                  description:
+                      AppLocale.onboarding_screen4_desc.getString(context),
+                ),
                 OnboardingSubScreen(
-                    title: "Veterinary Doctor Appoinments",
-                    isLottie: false,
-                    address: "assets/feed/vetenary.jpg",
-                    description:
-                        "Veterinarians analyze cow health data for accurate diagnosis, timely treatment, and scheduling.")
+                  title: AppLocale.onboarding_screen5_title.getString(context),
+                  isLottie: false,
+                  address: "assets/feed/vetenary.jpg",
+                  description:
+                      AppLocale.onboarding_screen5_desc.getString(context),
+                ),
               ],
             ),
           ),
@@ -90,7 +95,7 @@ class OnboardingMainScreenState extends State<OnboardingMainScreen> {
           isLastPage
               ? Positioned(
                   bottom: 25,
-                  left: 115,
+                  left: screenWidth * 0.33,
                   child: CustomElevatedButton(
                     backgroundColor: themeColor,
                     foregroundColor: backgroundColor,
@@ -101,7 +106,7 @@ class OnboardingMainScreenState extends State<OnboardingMainScreen> {
                         ),
                       );
                     },
-                    text: "Get Started",
+                    text: AppLocale.get_started_btn.getString(context),
                   ),
                 )
               : Positioned(
@@ -114,7 +119,7 @@ class OnboardingMainScreenState extends State<OnboardingMainScreen> {
                       CustomTextButton(
                         backgroundColor: themeColor,
                         foregroundColor: backgroundColor,
-                        text: "Skip",
+                        text: AppLocale.skip_btn.getString(context),
                         onPressed: () {
                           controller.jumpToPage(4);
                         },
@@ -122,7 +127,7 @@ class OnboardingMainScreenState extends State<OnboardingMainScreen> {
                       CustomTextButton(
                         backgroundColor: themeColor,
                         foregroundColor: backgroundColor,
-                        text: "Next",
+                        text: AppLocale.next_btn.getString(context),
                         onPressed: () {
                           controller.nextPage(
                             duration: const Duration(milliseconds: 300),

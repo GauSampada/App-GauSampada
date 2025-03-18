@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gausampada/const/colors.dart';
 
 class CustomTextFormField extends StatelessWidget {
   final String label;
@@ -15,8 +16,8 @@ class CustomTextFormField extends StatelessWidget {
     required this.label,
     required this.hinttext,
     required this.controller,
-    this.isobsure=false,
-    this.keyboard=TextInputType.name,
+    this.isobsure = false,
+    this.keyboard = TextInputType.name,
     required this.prefixicon,
     this.suffixicon,
     this.validator,
@@ -38,15 +39,15 @@ class CustomTextFormField extends StatelessWidget {
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
             borderSide: BorderSide(
-              color: Colors.blue[600] ?? Colors.blue,
+              color: Colors.green[600] ?? themeColor,
               width: 2,
             ),
           ),
-          fillColor: Colors.grey[200],
+          fillColor: Colors.grey[100],
           filled: true,
           labelText: label,
           labelStyle: const TextStyle(color: Colors.black),
-          floatingLabelStyle: TextStyle(color: Colors.blue[600] ?? Colors.blue), 
+          floatingLabelStyle: TextStyle(color: Colors.green[600] ?? themeColor),
           prefixIcon: Icon(prefixicon),
           suffixIcon: suffixicon,
         ),

@@ -41,53 +41,49 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCRhCuZqgLzf5VYUMs7gll2LBhGVqIgwzU',
-    appId: '1:881088302375:web:366a20fb126121cc06ad02',
-    messagingSenderId: '881088302375',
-    projectId: 'gausampada-c8a09',
-    authDomain: 'gausampada-c8a09.firebaseapp.com',
-    storageBucket: 'gausampada-c8a09.firebasestorage.app',
-    measurementId: 'G-JXS9RPRC2R',
+    apiKey: 'AIzaSyD3BuTwmAiHWck03lnIIbRuoDJNKzlxTkA',
+    appId: '1:73814158533:web:e72c0338d737f311a414ac',
+    messagingSenderId: '73814158533',
+    projectId: 'gausampada-48ab2',
+    authDomain: 'gausampada-48ab2.firebaseapp.com',
+    storageBucket: 'gausampada-48ab2.firebasestorage.app',
+    measurementId: 'G-GLD1CDMPX0',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBuFAsKTok9iao_t7MAPFq_qcm8HFEgQJU',
-    appId: '1:881088302375:android:a7f6bcbbe4c9ba8206ad02',
-    messagingSenderId: '881088302375',
-    projectId: 'gausampada-c8a09',
-    storageBucket: 'gausampada-c8a09.firebasestorage.app',
+    apiKey: 'AIzaSyA_6990eEI2EUzKYAwSkxRbLPx1XiLdJBQ',
+    appId: '1:73814158533:android:4bf2e45054b1c250a414ac',
+    messagingSenderId: '73814158533',
+    projectId: 'gausampada-48ab2',
+    storageBucket: 'gausampada-48ab2.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyByDavedHr-qbO3ZJ4MM5uE24hvOCWUQM8',
-    appId: '1:881088302375:ios:ba27329695cc600c06ad02',
-    messagingSenderId: '881088302375',
-    projectId: 'gausampada-c8a09',
-    storageBucket: 'gausampada-c8a09.firebasestorage.app',
-    androidClientId: '881088302375-4summ3oulohthmm1ogn4hmdpjoeu0s0t.apps.googleusercontent.com',
-    iosClientId: '881088302375-9rh28r5e2pdlvs4ksgpsdhdqa8e7idpg.apps.googleusercontent.com',
+    apiKey: 'AIzaSyASbrY53tQLzhlrHr4GbXM1gYYNSPMf_yQ',
+    appId: '1:73814158533:ios:07fe7778fcdfdcdba414ac',
+    messagingSenderId: '73814158533',
+    projectId: 'gausampada-48ab2',
+    storageBucket: 'gausampada-48ab2.firebasestorage.app',
     iosBundleId: 'com.example.gausampada',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyByDavedHr-qbO3ZJ4MM5uE24hvOCWUQM8',
-    appId: '1:881088302375:ios:ba27329695cc600c06ad02',
-    messagingSenderId: '881088302375',
-    projectId: 'gausampada-c8a09',
-    storageBucket: 'gausampada-c8a09.firebasestorage.app',
-    androidClientId: '881088302375-4summ3oulohthmm1ogn4hmdpjoeu0s0t.apps.googleusercontent.com',
-    iosClientId: '881088302375-9rh28r5e2pdlvs4ksgpsdhdqa8e7idpg.apps.googleusercontent.com',
+    apiKey: 'AIzaSyASbrY53tQLzhlrHr4GbXM1gYYNSPMf_yQ',
+    appId: '1:73814158533:ios:07fe7778fcdfdcdba414ac',
+    messagingSenderId: '73814158533',
+    projectId: 'gausampada-48ab2',
+    storageBucket: 'gausampada-48ab2.firebasestorage.app',
     iosBundleId: 'com.example.gausampada',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyCRhCuZqgLzf5VYUMs7gll2LBhGVqIgwzU',
-    appId: '1:881088302375:web:68b61d28b0e6287206ad02',
-    messagingSenderId: '881088302375',
-    projectId: 'gausampada-c8a09',
-    authDomain: 'gausampada-c8a09.firebaseapp.com',
-    storageBucket: 'gausampada-c8a09.firebasestorage.app',
-    measurementId: 'G-P9JBXWT111',
+    apiKey: 'AIzaSyD3BuTwmAiHWck03lnIIbRuoDJNKzlxTkA',
+    appId: '1:73814158533:web:0f82da1f32f0ef4fa414ac',
+    messagingSenderId: '73814158533',
+    projectId: 'gausampada-48ab2',
+    authDomain: 'gausampada-48ab2.firebaseapp.com',
+    storageBucket: 'gausampada-48ab2.firebasestorage.app',
+    measurementId: 'G-Q2Y5GTQ3E7',
   );
 
 }

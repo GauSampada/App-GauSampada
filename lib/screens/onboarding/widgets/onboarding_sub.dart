@@ -18,6 +18,8 @@ class OnboardingSubScreen extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: backgroundColor,
       body: Column(
@@ -37,22 +39,16 @@ class OnboardingSubScreen extends StatelessWidget {
           isLottie
               ? Lottie.asset(
                   address,
-                  height: 330,
+                  height: screenHeight * 0.4,
                   width: 420,
                 )
               : Column(
                   children: [
-                    const SizedBox(
-                      height: 15,
-                    ),
                     Image.asset(
                       address,
-                      height: 300,
-                      width: 400,
+                      height: screenHeight * 0.38,
+                      width: screenWidth * 0.85,
                       fit: BoxFit.fitWidth,
-                    ),
-                    const SizedBox(
-                      height: 15,
                     ),
                   ],
                 ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gausampada/const/colors.dart';
 
 class LoginSignupButtons extends StatelessWidget {
   final String? imagepath;
@@ -23,7 +24,7 @@ class LoginSignupButtons extends StatelessWidget {
     return ElevatedButton(
         onPressed: isLoading ? null : onTap,
         style: ElevatedButton.styleFrom(
-          side: const BorderSide(color: Colors.blue, width: 2),
+          side: const BorderSide(color: themeColor, width: 2),
           backgroundColor: backgroundColor ?? Colors.white,
         ),
         child: SizedBox(
@@ -32,7 +33,7 @@ class LoginSignupButtons extends StatelessWidget {
           child: isLoading
               ? Center(
                   child: CircularProgressIndicator(
-                    color: Colors.blue[800],
+                    color: Colors.green[800],
                     strokeWidth: 2.0,
                   ),
                 )
@@ -43,12 +44,14 @@ class LoginSignupButtons extends StatelessWidget {
                               fontSize: 16, color: Colors.white)))
                   : Row(
                       children: [
-                        ClipOval(child: Image.asset(imagepath!, height: buttonHeight*0.7)),
-                        SizedBox(width: buttonWidth*0.05),
+                        ClipOval(
+                            child: Image.asset(imagepath!,
+                                height: buttonHeight * 0.7)),
+                        SizedBox(width: buttonWidth * 0.025),
                         Text(
                           label,
                           style:
-                              TextStyle(fontSize: 13, color: Colors.blue[800]),
+                              TextStyle(fontSize: 13, color: Colors.green[800]),
                         )
                       ],
                     ),

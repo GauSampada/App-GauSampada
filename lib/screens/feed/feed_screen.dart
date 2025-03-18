@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:gausampada/backend/localization/localization.dart';
 import 'package:gausampada/const/colors.dart';
 import 'package:gausampada/screens/bread/bread_info_screen.dart';
 import 'package:gausampada/screens/bread/breed_details.dart';
@@ -51,7 +53,7 @@ class _FeedScreenState extends State<FeedScreen> {
         backgroundColor: themeColor,
         toolbarHeight: 70,
         title: Text(
-          "GauSampada",
+          AppLocale.gau_sampada.getString(context),
           style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -112,7 +114,7 @@ class _FeedScreenState extends State<FeedScreen> {
               child: Column(
                 children: [
                   CustomHeadingsScreen(
-                    label: "Breed Information",
+                    label: AppLocale.breed_information.getString(context),
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
@@ -128,9 +130,9 @@ class _FeedScreenState extends State<FeedScreen> {
                       borderRadius: BorderRadius.circular(20),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.05),
+                          color: Colors.black.withOpacity(0.2),
                           blurRadius: 8,
-                          offset: const Offset(0, 2),
+                          offset: Offset(0, 2),
                         ),
                       ],
                     ),
@@ -148,7 +150,7 @@ class _FeedScreenState extends State<FeedScreen> {
               child: Column(
                 children: [
                   CustomHeadingsScreen(
-                    label: "Dairy Products",
+                    label: AppLocale.dairy_products.getString(context),
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
@@ -183,7 +185,7 @@ class _FeedScreenState extends State<FeedScreen> {
               child: Column(
                 children: [
                   CustomHeadingsScreen(
-                    label: "My Orders",
+                    label: AppLocale.dairy_products.getString(context),
                     onPressed: () {},
                     icon: Icons.shopping_bag_rounded,
                   ),
