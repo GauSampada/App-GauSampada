@@ -58,6 +58,8 @@ dependencies:
   direct_caller_sim_choice: ^1.0.5
   flutter_localization: ^0.3.1
   google_api_availability: ^5.0.1
+  flutter_localizations:
+    sdk: flutter
   
 
 dev_dependencies:
@@ -97,6 +99,7 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  generate: true
 
   # To add assets to your application, add an assets section, like this:
   assets:

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localization/flutter_localization.dart';
-import 'package:gausampada/backend/localization/localization.dart';
 import 'package:gausampada/const/colors.dart';
 import 'package:gausampada/screens/auth/login.dart';
 import 'package:gausampada/screens/onboarding/widgets/onboarding_sub.dart';
 import 'package:gausampada/screens/widgets/buttons/elevated.dart';
 import 'package:gausampada/screens/widgets/buttons/textfield.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OnboardingMainScreen extends StatefulWidget {
   const OnboardingMainScreen({super.key});
@@ -36,39 +35,39 @@ class OnboardingMainScreenState extends State<OnboardingMainScreen> {
               },
               children: [
                 OnboardingSubScreen(
-                  title: AppLocale.onboarding_screen1_title.getString(context),
+                  title: AppLocalizations.of(context)!.onboardingScreen1Title,
                   isLottie: false,
                   address: "assets/feed/cow_info.jpg",
                   description:
-                      AppLocale.onboarding_screen1_desc.getString(context),
+                      AppLocalizations.of(context)!.onboardingScreen1Desc,
                 ),
                 OnboardingSubScreen(
-                  title: AppLocale.onboarding_screen2_title.getString(context),
+                  title: AppLocalizations.of(context)!.onboardingScreen2Title,
                   isLottie: false,
                   address: "assets/feed/ai_assist.jpg",
                   description:
-                      AppLocale.onboarding_screen2_desc.getString(context),
+                      AppLocalizations.of(context)!.onboardingScreen2Desc,
                 ),
                 OnboardingSubScreen(
-                  title: AppLocale.onboarding_screen3_title.getString(context),
+                  title: AppLocalizations.of(context)!.onboardingScreen3Title,
                   isLottie: false,
                   address: "assets/feed/farmers.jpg",
                   description:
-                      AppLocale.onboarding_screen3_desc.getString(context),
+                      AppLocalizations.of(context)!.onboardingScreen3Desc,
                 ),
                 OnboardingSubScreen(
-                  title: AppLocale.onboarding_screen4_title.getString(context),
+                  title: AppLocalizations.of(context)!.onboardingScreen4Title,
                   isLottie: false,
                   address: "assets/feed/products.jpg",
                   description:
-                      AppLocale.onboarding_screen4_desc.getString(context),
+                      AppLocalizations.of(context)!.onboardingScreen4Desc,
                 ),
                 OnboardingSubScreen(
-                  title: AppLocale.onboarding_screen5_title.getString(context),
+                  title: AppLocalizations.of(context)!.onboardingScreen5Title,
                   isLottie: false,
                   address: "assets/feed/vetenary.jpg",
                   description:
-                      AppLocale.onboarding_screen5_desc.getString(context),
+                      AppLocalizations.of(context)!.onboardingScreen5Desc,
                 ),
               ],
             ),
@@ -106,7 +105,7 @@ class OnboardingMainScreenState extends State<OnboardingMainScreen> {
                         ),
                       );
                     },
-                    text: AppLocale.get_started_btn.getString(context),
+                    text: AppLocalizations.of(context)!.getStartedBtn,
                   ),
                 )
               : Positioned(
@@ -119,7 +118,7 @@ class OnboardingMainScreenState extends State<OnboardingMainScreen> {
                       CustomTextButton(
                         backgroundColor: themeColor,
                         foregroundColor: backgroundColor,
-                        text: AppLocale.skip_btn.getString(context),
+                        text: AppLocalizations.of(context)!.skipBtn,
                         onPressed: () {
                           controller.jumpToPage(4);
                         },
@@ -127,7 +126,7 @@ class OnboardingMainScreenState extends State<OnboardingMainScreen> {
                       CustomTextButton(
                         backgroundColor: themeColor,
                         foregroundColor: backgroundColor,
-                        text: AppLocale.next_btn.getString(context),
+                        text: AppLocalizations.of(context)!.nextBtn,
                         onPressed: () {
                           controller.nextPage(
                             duration: const Duration(milliseconds: 300),

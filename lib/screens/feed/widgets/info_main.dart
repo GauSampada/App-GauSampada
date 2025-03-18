@@ -6,6 +6,7 @@ import 'package:gausampada/screens/feed/widgets/info_cards.dart';
 import 'package:gausampada/screens/onboarding/widgets/onboarding_sub.dart';
 import 'package:gausampada/screens/widgets/buttons/elevated.dart';
 import 'package:gausampada/screens/widgets/buttons/textfield.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class InfoMainScreen extends StatefulWidget {
   const InfoMainScreen({super.key});
@@ -47,34 +48,35 @@ class InfoMainScreenState extends State<InfoMainScreen>
     final theme = Theme.of(context);
     final List<Map<String, dynamic>> _features = [
       {
-        "title": AppLocale.onboarding_screen2_title.getString(context),
+        "title": AppLocalizations.of(context)!.onboardingScreen2Title,
         "image": "assets/feed/cow_info.jpg",
         "color": const Color(0xFF4CAF50),
       },
       {
-        "title": AppLocale.onboarding_screen3_title.getString(context),
+        "title": AppLocalizations.of(context)!.onboardingScreen3Title,
         "image": "assets/feed/products.jpg",
         "color": const Color(0xFFF57C00),
       },
       {
-        "title": AppLocale.onboarding_screen4_title.getString(context),
+        "title": AppLocalizations.of(context)!.onboardingScreen4Title,
         "image": "assets/feed/farmers.jpg",
         "color": const Color(0xFF9C27B0),
       },
       {
-        "title": AppLocale.onboarding_screen2_title.getString(context),
+        "title": AppLocalizations.of(context)!.feedScreen4Title,
         "image": "assets/feed/ai_assist.jpg",
         "color": const Color(0xFFE91E63),
       },
       {
-        "title": AppLocale.onboarding_screen5_title.getString(context),
+        "title": AppLocalizations.of(context)!.onboardingScreen5Title,
         "image": "assets/feed/vetenary.jpg",
         "color": const Color(0xFF2196F3),
         "width": 0.7,
       },
     ];
-    double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
+
+    // double screenHeight = MediaQuery.of(context).size.height;
+    // double screenWidth = MediaQuery.of(context).size.width;
 
     return AnimatedBuilder(
         animation: _animationController,
@@ -103,14 +105,12 @@ class InfoMainScreenState extends State<InfoMainScreen>
               clipBehavior: Clip.antiAlias,
               child: Stack(
                 children: [
-                  // Main PageView
                   PageView.builder(
                     controller: controller,
                     onPageChanged: (index) {
                       setState(() {
                         isLastPage = index == _features.length - 1;
                         currentPage = index;
-                        // Reset and forward animation for each page change
                         _animationController.reset();
                         _animationController.forward();
                       });
@@ -283,7 +283,7 @@ class InfoMainScreenState extends State<InfoMainScreen>
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Text(
-                      AppLocale.learn_more.getString(context),
+                      AppLocalizations.of(context)!.learnMore,
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 12,

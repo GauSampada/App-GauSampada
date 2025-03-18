@@ -14,6 +14,7 @@ import 'package:gausampada/screens/maps/maps.dart';
 import 'package:gausampada/screens/market/market_screen.dart';
 import 'package:gausampada/screens/notifications/notification.dart';
 import 'package:gausampada/screens/widgets/appbar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FeedScreen extends StatefulWidget {
   const FeedScreen({super.key});
@@ -53,7 +54,7 @@ class _FeedScreenState extends State<FeedScreen> {
         backgroundColor: themeColor,
         toolbarHeight: 70,
         title: Text(
-          AppLocale.gau_sampada.getString(context),
+          AppLocalizations.of(context)!.gauSampada,
           style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -114,7 +115,7 @@ class _FeedScreenState extends State<FeedScreen> {
               child: Column(
                 children: [
                   CustomHeadingsScreen(
-                    label: AppLocale.breed_information.getString(context),
+                    label: AppLocalizations.of(context)!.breedInformation,
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
@@ -150,7 +151,7 @@ class _FeedScreenState extends State<FeedScreen> {
               child: Column(
                 children: [
                   CustomHeadingsScreen(
-                    label: AppLocale.dairy_products.getString(context),
+                    label: AppLocalizations.of(context)!.dairyProducts,
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
@@ -185,7 +186,7 @@ class _FeedScreenState extends State<FeedScreen> {
               child: Column(
                 children: [
                   CustomHeadingsScreen(
-                    label: AppLocale.dairy_products.getString(context),
+                    label: AppLocalizations.of(context)!.dairyProducts,
                     onPressed: () {},
                     icon: Icons.shopping_bag_rounded,
                   ),
