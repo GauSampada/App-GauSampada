@@ -81,22 +81,27 @@ class HomeScreenState extends State<HomeScreen> {
                   BottomNavigationBarItem(
                     icon: const Icon(Icons.home),
                     label: AppLocalizations.of(context)!.home,
+                    tooltip: AppLocalizations.of(context)!.home,
                   ),
                   BottomNavigationBarItem(
                     icon: const Icon(Icons.shopping_bag),
                     label: AppLocalizations.of(context)!.market,
+                    tooltip: AppLocalizations.of(context)!.market,
                   ),
                   BottomNavigationBarItem(
                     icon: const Icon(Icons.smart_toy_outlined),
                     label: AppLocalizations.of(context)!.aiDiagnosis,
+                    tooltip: AppLocalizations.of(context)!.aiDiagnosis,
                   ),
                   BottomNavigationBarItem(
                     icon: const Icon(Icons.pets),
                     label: AppLocalizations.of(context)!.breedInfo,
+                    tooltip: AppLocalizations.of(context)!.breedInfo,
                   ),
                   BottomNavigationBarItem(
                     icon: const Icon(Icons.person_pin),
                     label: AppLocalizations.of(context)!.profile,
+                    tooltip: AppLocalizations.of(context)!.profile,
                   ),
                 ],
                 onTap: (index) {
@@ -128,7 +133,7 @@ class HomeScreenState extends State<HomeScreen> {
                   MaterialPageRoute(
                       builder: (context) => const UserProfileScreen())),
               accountName: Text(
-                provider.user.name,
+                AppLocalizations.of(context)!.userName(provider.user.name),
                 style:
                     const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),

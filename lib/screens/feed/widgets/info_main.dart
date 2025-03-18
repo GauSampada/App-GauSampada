@@ -1,11 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localization/flutter_localization.dart';
-import 'package:gausampada/backend/localization/localization.dart';
-import 'package:gausampada/screens/auth/login.dart';
-import 'package:gausampada/screens/feed/widgets/info_cards.dart';
-import 'package:gausampada/screens/onboarding/widgets/onboarding_sub.dart';
-import 'package:gausampada/screens/widgets/buttons/elevated.dart';
-import 'package:gausampada/screens/widgets/buttons/textfield.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class InfoMainScreen extends StatefulWidget {

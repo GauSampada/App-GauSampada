@@ -1,7 +1,6 @@
 import 'package:delightful_toast/toast/utils/enums.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localization/flutter_localization.dart';
-import 'package:gausampada/backend/localization/localization.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:gausampada/const/colors.dart';
 import 'package:gausampada/const/toast.dart';
 import 'package:gausampada/screens/auth/login.dart';
@@ -43,7 +42,7 @@ class SignupScreenState extends State<SignupScreen> {
     if (!formKey.currentState!.validate()) {
       toastMessage(
           context: context,
-          message: AppLocale.signupFillAllFields.getString(context),
+          message: AppLocalizations.of(context)!.signupFillAllFields,
           leadingIcon: const Icon(Icons.message),
           toastColor: Colors.yellow[300],
           borderColor: Colors.orange,
@@ -174,7 +173,7 @@ class SignupScreenState extends State<SignupScreen> {
                         Transform.translate(
                           offset: const Offset(0, -22),
                           child: Text(
-                            AppLocale.signupScreenSubtitle.getString(context),
+                            AppLocalizations.of(context)!.signupScreenSubtitle,
                             style: const TextStyle(
                               fontSize: 18.0,
                               fontWeight: FontWeight.bold,
@@ -194,32 +193,33 @@ class SignupScreenState extends State<SignupScreen> {
                     height: 20,
                   ),
                   CustomTextFormField(
-                    label: AppLocale.signupNameLabel.getString(context),
-                    hinttext: AppLocale.signupNameHint.getString(context),
+                    label: AppLocalizations.of(context)!.signupNameLabel,
+                    hinttext: AppLocalizations.of(context)!.signupNameHint,
                     controller: name,
                     prefixicon: Icons.person_2,
                     validator: (value) => value == null || value.isEmpty
-                        ? AppLocale.signupNameRequired.getString(context)
+                        ? AppLocalizations.of(context)!.signupNameRequired
                         : null,
                   ),
                   CustomTextFormField(
-                    label: AppLocale.signupEmailLabel.getString(context),
-                    hinttext: AppLocale.signupEmailHint.getString(context),
+                    label: AppLocalizations.of(context)!.signupEmailLabel,
+                    hinttext: AppLocalizations.of(context)!.signupEmailHint,
                     controller: email,
                     prefixicon: Icons.email_rounded,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return AppLocale.signupEmailRequired.getString(context);
+                        return AppLocalizations.of(context)!
+                            .signupEmailRequired;
                       } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+')
                           .hasMatch(value)) {
-                        return AppLocale.signupEmailInvalid.getString(context);
+                        return AppLocalizations.of(context)!.signupEmailInvalid;
                       }
                       return null;
                     },
                   ),
                   CustomTextFormField(
-                    label: AppLocale.signupPasswordLabel.getString(context),
-                    hinttext: AppLocale.signupPasswordHint.getString(context),
+                    label: AppLocalizations.of(context)!.signupPasswordLabel,
+                    hinttext: AppLocalizations.of(context)!.signupPasswordHint,
                     controller: password,
                     prefixicon: Icons.lock,
                     isobsure: obscureText,
@@ -235,28 +235,28 @@ class SignupScreenState extends State<SignupScreen> {
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return AppLocale.signupPasswordRequired
-                            .getString(context);
+                        return AppLocalizations.of(context)!
+                            .signupPasswordRequired;
                       }
                       return null;
                     },
                   ),
                   CustomTextFormField(
-                    label: AppLocale.signupPhoneLabel.getString(context),
-                    hinttext: AppLocale.signupPhoneHint.getString(context),
+                    label: AppLocalizations.of(context)!.signupPhoneLabel,
+                    hinttext: AppLocalizations.of(context)!.signupPhoneHint,
                     controller: phonenum,
                     prefixicon: Icons.phone,
                     keyboard: TextInputType.phone,
                     validator: (value) =>
                         value == null || value.isEmpty || value.length < 10
-                            ? AppLocale.signupPhoneRequired.getString(context)
+                            ? AppLocalizations.of(context)!.signupPhoneRequired
                             : null,
                   ),
                   SizedBox(
                     height: screenHeight * .01,
                   ),
                   LoginSignupButtons(
-                    label: AppLocale.signupButton.getString(context),
+                    label: AppLocalizations.of(context)!.signupButton,
                     onTap: signUpEmail,
                     isLoading: isLoading,
                     backgroundColor: Colors.green[500],
@@ -274,7 +274,7 @@ class SignupScreenState extends State<SignupScreen> {
                   ),
                   LoginSignupButtons(
                     imagepath: "assets/auth/google.jpg",
-                    label: AppLocale.signupGoogleButton.getString(context),
+                    label: AppLocalizations.of(context)!.signupGoogleButton,
                     onTap: signUpWithGoogle,
                     isLoading: isgoogleLoading,
                   ),
@@ -284,7 +284,7 @@ class SignupScreenState extends State<SignupScreen> {
                           builder: (context) => const LoginScreen()));
                     },
                     child: Text(
-                      AppLocale.signupAlreadyHaveAccount.getString(context),
+                      AppLocalizations.of(context)!.signupAlreadyHaveAccount,
                       style: TextStyle(color: Colors.red, fontSize: 15),
                     ),
                   ),

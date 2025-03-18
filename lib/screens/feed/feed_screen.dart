@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localization/flutter_localization.dart';
-import 'package:gausampada/backend/localization/localization.dart';
 import 'package:gausampada/const/colors.dart';
 import 'package:gausampada/screens/bread/bread_info_screen.dart';
-import 'package:gausampada/screens/bread/breed_details.dart';
 import 'package:gausampada/screens/chat_bot/ai_assistance.dart';
 import 'package:gausampada/screens/feed/widgets/bookings_swiper.dart';
 import 'package:gausampada/screens/feed/widgets/breed_info_card.dart';
-import 'package:gausampada/screens/feed/widgets/custom_headings.dart';
 import 'package:gausampada/screens/feed/widgets/info_main.dart';
 import 'package:gausampada/screens/feed/widgets/products.dart';
 import 'package:gausampada/screens/maps/maps.dart';
 import 'package:gausampada/screens/market/market_screen.dart';
 import 'package:gausampada/screens/notifications/notification.dart';
-import 'package:gausampada/screens/widgets/appbar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FeedScreen extends StatefulWidget {

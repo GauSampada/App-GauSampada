@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
 import 'package:gausampada/backend/models/user_model.dart';
 
 class AuthService {
@@ -31,7 +29,6 @@ class AuthService {
       await firestore.collection('users').doc(user.uid).set(data.toMap());
       res = "success";
     } on FirebaseAuthException catch (e) {
-      print(e.toString());
       if (e.code == 'weak-password') {
         res = 'The password provided is too weak.';
       } else if (e.code == 'email-already-in-use') {

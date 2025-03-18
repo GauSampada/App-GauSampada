@@ -1,8 +1,6 @@
 import 'package:delightful_toast/toast/utils/enums.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localization/flutter_localization.dart';
 import 'package:gausampada/backend/auth/auth_methods.dart';
-import 'package:gausampada/backend/localization/localization.dart';
 import 'package:gausampada/const/colors.dart';
 import 'package:gausampada/const/toast.dart';
 import 'package:gausampada/screens/auth/forgot_password.dart';
@@ -10,6 +8,7 @@ import 'package:gausampada/screens/auth/signup.dart';
 import 'package:gausampada/screens/auth/widgets/custom_auth_buttons.dart';
 import 'package:gausampada/screens/auth/widgets/customtextformfield.dart';
 import 'package:gausampada/screens/home/home_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -39,7 +38,7 @@ class LoginScreenState extends State<LoginScreen> {
     if (!formKey.currentState!.validate()) {
       toastMessage(
           context: context,
-          message: "Please Fill All Fields",
+          message: AppLocalizations.of(context)!.signupFillAllFields,
           leadingIcon: const Icon(Icons.message),
           toastColor: Colors.yellow[300],
           borderColor: Colors.orange,
@@ -60,7 +59,7 @@ class LoginScreenState extends State<LoginScreen> {
     } else {
       toastMessage(
           context: context,
-          message: "Invalid Email Or Password",
+          message: AppLocalizations.of(context)!.invalidEmailOrPassword,
           leadingIcon: const Icon(Icons.error),
           toastColor: Colors.red[200],
           borderColor: Colors.red,
@@ -128,18 +127,21 @@ class LoginScreenState extends State<LoginScreen> {
                     padding: const EdgeInsets.only(left: 13),
                     child: Column(
                       children: [
-                        const Row(
+                        Row(
                           crossAxisAlignment: CrossAxisAlignment.baseline,
                           textBaseline: TextBaseline.alphabetic,
                           children: [
                             Text(
-                              "W",
-                              style: TextStyle(
+                              AppLocalizations.of(context)!
+                                  .signupScreenTitle[0],
+                              style: const TextStyle(
                                   fontSize: 50.0, fontWeight: FontWeight.bold),
                             ),
                             Text(
-                              "elcome back!",
-                              style: TextStyle(
+                              AppLocalizations.of(context)!
+                                  .signupScreenTitle
+                                  .substring(1),
+                              style: const TextStyle(
                                   fontSize: 30.0, fontWeight: FontWeight.bold),
                             ),
                           ],
@@ -147,7 +149,7 @@ class LoginScreenState extends State<LoginScreen> {
                         Transform.translate(
                           offset: const Offset(0, -14),
                           child: Text(
-                            AppLocale.accessYourAccount.getString(context),
+                            AppLocalizations.of(context)!.accessYourAccount,
                             style: const TextStyle(
                               fontSize: 16.5,
                               fontWeight: FontWeight.bold,
@@ -167,23 +169,24 @@ class LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: screenHeight * 0.02),
 
                   CustomTextFormField(
-                    label: AppLocale.signupEmailLabel.getString(context),
-                    hinttext: AppLocale.signupEmailHint.getString(context),
+                    label: AppLocalizations.of(context)!.signupEmailLabel,
+                    hinttext: AppLocalizations.of(context)!.signupEmailHint,
                     controller: email,
                     prefixicon: Icons.email_rounded,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return AppLocale.signupEmailRequired.getString(context);
+                        return AppLocalizations.of(context)!
+                            .signupEmailRequired;
                       } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+')
                           .hasMatch(value)) {
-                        return AppLocale.signupEmailInvalid.getString(context);
+                        return AppLocalizations.of(context)!.signupEmailInvalid;
                       }
                       return null;
                     },
                   ),
                   CustomTextFormField(
-                    label: AppLocale.signupPasswordLabel.getString(context),
-                    hinttext: AppLocale.signupPasswordHint.getString(context),
+                    label: AppLocalizations.of(context)!.signupPasswordLabel,
+                    hinttext: AppLocalizations.of(context)!.signupPasswordHint,
                     controller: password,
                     prefixicon: Icons.lock,
                     isobsure: obscureText,
@@ -199,8 +202,8 @@ class LoginScreenState extends State<LoginScreen> {
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return AppLocale.signupPasswordRequired
-                            .getString(context);
+                        return AppLocalizations.of(context)!
+                            .signupPasswordRequired;
                       }
                       return null;
                     },
@@ -208,7 +211,7 @@ class LoginScreenState extends State<LoginScreen> {
 
                   SizedBox(height: screenHeight * 0.01),
                   LoginSignupButtons(
-                    label: AppLocale.login.getString(context),
+                    label: AppLocalizations.of(context)!.login,
                     onTap: loginWithEmail,
                     isLoading: isLoading,
                     backgroundColor: Colors.green[500],
@@ -221,14 +224,14 @@ class LoginScreenState extends State<LoginScreen> {
                             MaterialPageRoute(
                                 builder: (context) => const ForgotPassword())),
                         child: Text(
-                          AppLocale.forgotPassword.getString(context),
+                          AppLocalizations.of(context)!.forgotPassword,
                           style:
                               const TextStyle(color: Colors.red, fontSize: 15),
                         )),
                   ),
 
                   Text(
-                    AppLocale.or.getString(context),
+                    AppLocalizations.of(context)!.or,
                     style: const TextStyle(
                         color: Colors.black, fontWeight: FontWeight.bold),
                   ),
@@ -236,7 +239,7 @@ class LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: screenHeight * 0.01),
                   LoginSignupButtons(
                     imagepath: "assets/auth/google.jpg",
-                    label: AppLocale.loginWithGoogle.getString(context),
+                    label: AppLocalizations.of(context)!.loginWithGoogle,
                     onTap: loginWithGoogle,
                   ),
 
@@ -247,7 +250,7 @@ class LoginScreenState extends State<LoginScreen> {
                             builder: (context) => const SignupScreen()));
                       },
                       child: Text(
-                        AppLocale.dontHaveAccount.getString(context),
+                        AppLocalizations.of(context)!.dontHaveAccount,
                         style: const TextStyle(
                             color: Colors.black54,
                             fontSize: 15,

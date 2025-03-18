@@ -4,6 +4,16 @@
   "@title": {
     "description": "App title"
   },
+
+   "userName": "{name}",
+  "@userName": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
   
   "onboardingScreen1Title": "Welcome to GauSampada!",
   "@onboardingScreen1Title": {
@@ -262,5 +272,122 @@
   "yes": "Yes",
   "@yes": {
     "description": "Button text for yes"
-  }
+  },
+
+  "pleaseFillAllFields": "Please Fill All Fields",
+  "@pleaseFillAllFields": {
+    "description": "Error message for empty fields"
+  },
+
+  "invalidEmailOrPassword": "Invalid Email Or Password",
+  "@invalidEmailOrPassword": {
+    "description": "Error message for incorrect credentials"
+  },
+
+  "receiveEmailToResetPassword": "Receive an Email to Reset Your Password",
+  "@receiveEmailToResetPassword": {
+    "description": "Message for password reset request"
+  },
+
+  "resetPassword": "Reset Password",
+  "@resetPassword": {
+    "description": "Button text for resetting password"
+  },
+
+  "success": "success",
+  "@success": {
+    "description": "Success message"
+  },
+
+  "weakPassword": "The password provided is too weak.",
+  "@weakPassword": {
+    "description": "Error message for weak password"
+  },
+
+  "accountExists": "The account already exists for that email.",
+  "@accountExists": {
+    "description": "Error message for existing account"
+  },
+
+  "emailBadlyFormatted": "Email is badly formatted.",
+  "@emailBadlyFormatted": {
+    "description": "Error message for invalid email format"
+  },
+
+  "errorCreatingUser": "Error creating user: ",
+  "@errorCreatingUser": {
+    "description": "Prefix for user creation errors"
+  },
+
+  "noUserFound": "No user found for that email.",
+  "@noUserFound": {
+    "description": "Error message for non-existent user"
+  },
+
+  "incorrectPassword": "Incorrect password.",
+  "@incorrectPassword": {
+    "description": "Error message for wrong password"
+  },
+
+  "errorSigningIn": "Error signing in: ",
+  "@errorSigningIn": {
+    "description": "Prefix for sign-in errors"
+  },
+
+  "googleSignInAborted": "Google sign-in aborted.",
+  "@googleSignInAborted": {
+    "description": "Message when Google sign-in is canceled"
+  },
+
+  "unknown": "Unknown",
+  "@unknown": {
+    "description": "Fallback text for unknown cases"
+  },
+
+  "noEmail": "No email",
+  "@noEmail": {
+    "description": "Fallback text for missing email"
+  },
+
+  "errorSigningInGoogle": "Error signing in with Google: ",
+  "@errorSigningInGoogle": {
+    "description": "Prefix for Google sign-in errors"
+  },
+
+  "passwordResetEmailSent": "Password Reset Email Sent to ",
+  "@passwordResetEmailSent": {
+    "description": "Message for successful password reset email"
+  },
+
+  "documentSnapshotNull": "Document snapshot data is null",
+  "@documentSnapshotNull": {
+    "description": "Error message when document snapshot is empty"
+  },
+
+  "pleaseEnterPrompt": "Please enter a prompt",
+  "@pleaseEnterPrompt": {
+    "description": "Message requesting user input"
+  },
+
+  "error": "Error",
+  "@error": {
+    "description": "General error message"
+  },
+
+  "errorProcessingImage": "Error: Unable to process image. Status code",
+  "@errorProcessingImage": {
+    "description": "Error message for image processing failures"
+  },
+
+  "errorPickingImage": "Error picking image",
+  "@errorPickingImage": {
+    "description": "Error message for image selection failure"
+  },
+
+  "forgotPassword": "Forgot Password",
+  "@forgotPassword": {
+    "description": "Button text for forgot password"
+  },
+  
+  
 }

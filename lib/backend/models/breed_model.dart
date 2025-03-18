@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class Breed {
   String breedName;
   String origin;
@@ -17,6 +20,27 @@ class Breed {
     required this.cost,
     required this.imageURl,
   });
+}
+
+// Get localized values
+String getBreedName(BuildContext context) {
+  return AppLocalizations.of(context)!.translate(breedNameKey) ?? breedNameKey;
+}
+
+String getOrigin(BuildContext context) {
+  return AppLocalizations.of(context)!.translate(originKey) ?? originKey;
+}
+
+List<String> getLocalNames(BuildContext context) {
+  if (localNamesKeys.isEmpty) return [];
+  return localNamesKeys
+      .map((key) => AppLocalizations.of(context)!.translate(key) ?? key)
+      .toList();
+}
+
+String getDescription(BuildContext context) {
+  return AppLocalizations.of(context)!.translate(descriptionKey) ??
+      descriptionKey;
 }
 
 List<Breed> breeds = [
@@ -56,17 +80,6 @@ List<Breed> breeds = [
     imageURl:
         "https://timesofagriculture.in/wp-content/uploads/2023/12/7ebbae.jpg",
   ),
-  // Breed(
-  //   breedName: "Rathi",
-  //   origin: "Rajasthan",
-  //   localNames: [],
-  //   milkYield: "6-10 liters/day",
-  //   lactationPeriod: "250-280 days",
-  //   description:
-  //       "Rathi cattle are known for their high milk yield and excellent adaptability to arid climates. They have a brown coat with white patches and a compact body structure. Their milk has a good fat percentage, making it suitable for dairy-based products like curd and ghee. These cows are known for their good fertility rates and regular calving cycles. Due to their heat tolerance, they are preferred in Rajasthan and other dry regions.",
-  //   cost: "₹35,000 - ₹1,00,000",
-  //   imageURl: "",
-  // ),
   Breed(
     breedName: "Tharparkar",
     origin: "Rajasthan",
@@ -103,7 +116,6 @@ List<Breed> breeds = [
     imageURl:
         "https://timesofagriculture.in/wp-content/uploads/2023/12/133b3f.jpg",
   ),
-
   Breed(
     breedName: "Hariana",
     origin: "Haryana",
@@ -116,7 +128,6 @@ List<Breed> breeds = [
     imageURl:
         "https://timesofagriculture.in/wp-content/uploads/2023/12/7d6ee1.jpg",
   ),
-
   Breed(
     breedName: "Kankrej",
     origin: "Gujarat, Rajasthan",
@@ -129,7 +140,6 @@ List<Breed> breeds = [
     imageURl:
         "https://timesofagriculture.in/wp-content/uploads/2023/12/58b291.jpg",
   ),
-
   Breed(
     breedName: "Khillari",
     origin: "Karnataka, Maharashtra",
@@ -154,7 +164,6 @@ List<Breed> breeds = [
     imageURl:
         "https://timesofagriculture.in/wp-content/uploads/2023/12/80427b.jpg",
   ),
-
   Breed(
     breedName: "Amrit Mahal",
     origin: "Karnataka",
@@ -167,7 +176,6 @@ List<Breed> breeds = [
     imageURl:
         "https://timesofagriculture.in/wp-content/uploads/2023/12/6afde2.jpg",
   ),
-
   Breed(
     breedName: "Khillari",
     origin: "Maharashtra, Karnataka",
@@ -180,7 +188,6 @@ List<Breed> breeds = [
     imageURl:
         "https://timesofagriculture.in/wp-content/uploads/2023/12/d8dd9c.jpg",
   ),
-
   Breed(
     breedName: "Kangayam",
     origin: "Tamil Nadu",
@@ -193,7 +200,6 @@ List<Breed> breeds = [
     imageURl:
         "https://timesofagriculture.in/wp-content/uploads/2023/12/d3bd97.jpg",
   ),
-
   Breed(
     breedName: "Bargur",
     origin: "Tamil Nadu",

@@ -9,11 +9,7 @@ import 'package:image_picker/image_picker.dart';
 class UserProvider extends ChangeNotifier {
   final String uid = FirebaseAuth.instance.currentUser?.uid ?? "";
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  UserModel? _user = UserModel(
-      uid: "1234567889900987",
-      name: "Naidu testing",
-      email: "naidu@gmail.com",
-      phonenumber: "8125150264");
+  UserModel? _user;
   UserModel get user => _user!;
   bool _isLoading = true;
   bool get isLoading => _isLoading;

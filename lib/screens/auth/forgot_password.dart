@@ -5,6 +5,7 @@ import 'package:gausampada/const/colors.dart';
 import 'package:gausampada/const/toast.dart';
 import 'package:gausampada/screens/auth/widgets/custom_auth_buttons.dart';
 import 'package:gausampada/screens/auth/widgets/customtextformfield.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ForgotPassword extends StatefulWidget {
   final String? email;
@@ -31,7 +32,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
   void resetPassword() async {
     if (emailController.text.isEmpty) {
-      message('Email is Required', navigate: false);
+      message(AppLocalizations.of(context)!.signupEmailRequired,
+          navigate: false);
       return;
     }
     setState(() {
@@ -88,15 +90,15 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 ),
                 CustomTextFormField(
                   controller: emailController,
-                  label: 'Email',
-                  hinttext: 'Enter Email Address',
+                  label: AppLocalizations.of(context)!.signupEmailLabel,
+                  hinttext: AppLocalizations.of(context)!.signupEmailHint,
                   prefixicon: Icons.email,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Email is required';
+                      return AppLocalizations.of(context)!.signupEmailRequired;
                     } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+')
                         .hasMatch(value)) {
-                      return 'Enter a valid email';
+                      return AppLocalizations.of(context)!.signupEmailInvalid;
                     }
                     return null;
                   },
