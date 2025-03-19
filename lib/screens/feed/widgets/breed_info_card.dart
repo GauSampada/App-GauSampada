@@ -67,7 +67,7 @@ class _BreedInfoCardScreenState extends State<BreedInfoCardScreen> {
             scrollDirection: Axis.horizontal,
             physics: const BouncingScrollPhysics(),
             child: Row(
-              children: breeds.map((breed) {
+              children: getBreeds(context).map((breed) {
                 final bool isLiked = likedBreeds.contains(breed.breedName);
 
                 return Padding(

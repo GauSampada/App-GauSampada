@@ -60,7 +60,9 @@ dependencies:
   google_api_availability: ^5.0.1
   flutter_localizations:
     sdk: flutter
-  
+
+
+
 
 dev_dependencies:
   flutter_test:
