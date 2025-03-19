@@ -10,6 +10,7 @@ class BreadInfoScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Breed> breeds = getBreeds(context);
     return Scaffold(
       appBar: AppBar(
           title: const Text(
