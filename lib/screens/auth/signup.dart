@@ -153,17 +153,19 @@ class SignupScreenState extends State<SignupScreen> {
                           crossAxisAlignment: CrossAxisAlignment.baseline,
                           textBaseline: TextBaseline.alphabetic,
                           children: [
-                            const Text(
-                              "O",
-                              style: TextStyle(
+                            Text(
+                              AppLocalizations.of(context)!.onboard[0],
+                              style: const TextStyle(
                                 fontSize: 60.0,
                               ),
                             ),
                             Transform.translate(
                               offset: const Offset(0, -4),
-                              child: const Text(
-                                "nboard!",
-                                style: TextStyle(
+                              child: Text(
+                                AppLocalizations.of(context)!
+                                    .onboard
+                                    .substring(1),
+                                style: const TextStyle(
                                     fontSize: 30.0,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -285,7 +287,7 @@ class SignupScreenState extends State<SignupScreen> {
                     },
                     child: Text(
                       AppLocalizations.of(context)!.signupAlreadyHaveAccount,
-                      style: TextStyle(color: Colors.red, fontSize: 15),
+                      style: const TextStyle(color: Colors.red, fontSize: 15),
                     ),
                   ),
                   SizedBox(

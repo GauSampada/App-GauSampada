@@ -1,6 +1,7 @@
 // breed_detail_screen.dart
 import 'package:flutter/material.dart';
 import 'package:gausampada/backend/models/breed_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BreedDetailScreen extends StatelessWidget {
   final Breed breed;
@@ -57,16 +58,22 @@ class BreedDetailScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 16),
-                    _buildInfoRow('Origin', breed.origin),
-                    _buildInfoRow('Milk Yield', breed.milkYield),
-                    _buildInfoRow('Lactation Period', breed.lactationPeriod),
-                    _buildInfoRow('Cost', breed.cost),
+                    _buildInfoRow(
+                        AppLocalizations.of(context)!.origin, breed.origin),
+                    _buildInfoRow(AppLocalizations.of(context)!.milk_yield,
+                        breed.milkYield),
+                    _buildInfoRow(
+                        AppLocalizations.of(context)!.lactation_period,
+                        breed.lactationPeriod),
+                    _buildInfoRow(
+                        AppLocalizations.of(context)!.cost, breed.cost),
                     if (breed.localNames.isNotEmpty)
-                      _buildInfoRow('Local Names', breed.localNames.join(', ')),
+                      _buildInfoRow(AppLocalizations.of(context)!.local_names,
+                          breed.localNames.join(', ')),
                     const SizedBox(height: 24),
-                    const Text(
-                      'Description',
-                      style: TextStyle(
+                    Text(
+                      AppLocalizations.of(context)!.description,
+                      style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
@@ -91,7 +98,8 @@ class BreedDetailScreen extends StatelessWidget {
             // This could be implemented to add to favorites or contact seller
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text('Interested in ${breed.breedName}'),
+                content: Text(
+                    '${AppLocalizations.of(context)!.interested_in} ${breed.breedName}'),
                 behavior: SnackBarBehavior.floating,
               ),
             );
@@ -100,9 +108,9 @@ class BreedDetailScreen extends StatelessWidget {
             Icons.phone,
             color: Colors.white,
           ),
-          label: const Text(
-            'Contact Seller',
-            style: TextStyle(color: Colors.white),
+          label: Text(
+            AppLocalizations.of(context)!.contact_seller,
+            style: const TextStyle(color: Colors.white),
           ),
           backgroundColor: Colors.green[700],
         ),

@@ -14,6 +14,7 @@
     }
   },
 
+  "onboard": "Onboard!",
   
   "onboardingScreen1Title": "Welcome to GauSampada!",
   "@onboardingScreen1Title": {
@@ -478,5 +479,20 @@
   "bargur_localNames": "Bargur Gidda",
   "bargur_milkYield": "2-4 liters/day",
   "bargur_lactationPeriod": "200-240 days",
-  "bargur_description": "Bargur cattle are small, agile, and well-suited for working in hilly and rugged terrains. They are recognized by their reddish-brown coat, lean frame, and quick movements. These cattle are commonly used for plowing in regions with uneven land and for pulling carts in remote areas. Though they produce a small quantity of milk, it has high nutritional value and is used by local farmers."
+  "bargur_description": "Bargur cattle are small, agile, and well-suited for working in hilly and rugged terrains. They are recognized by their reddish-brown coat, lean frame, and quick movements. These cattle are commonly used for plowing in regions with uneven land and for pulling carts in remote areas. Though they produce a small quantity of milk, it has high nutritional value and is used by local farmers.",
+
+  "indian_cow_breeds_title": "Indian Cow Breeds",
+
+  "breed": "Breed",
+  "origin": "Origin",
+  "cost_approx": "Cost (Approx)",
+  "booking": "Booking",
+  "book_now": "Book Now",
+  "milk_yield": "Milk Yield",
+  "lactation_period": "Lactation Period",
+  "cost": "Cost",
+  "local_names": "Local Names",
+  "description": "Description",
+  "interested_in": "Interested in",
+  "contact_seller": "Contact Seller"
 }

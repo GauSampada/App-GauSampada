@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ImagePickerService extends ChangeNotifier {
   final ImagePicker _picker = ImagePicker();
@@ -25,7 +26,9 @@ class ImagePickerService extends ChangeNotifier {
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Error picking image: $e")),
+        SnackBar(
+            content:
+                Text("${AppLocalizations.of(context)!.errorPickingImage}: $e")),
       );
     }
   }
