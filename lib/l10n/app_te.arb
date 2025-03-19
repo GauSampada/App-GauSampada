@@ -112,7 +112,7 @@
   "@signupButton": {
     "description": "Button text for sign up"
   },
-  "signupGoogleButton": "   తో సైన్ అప్ చేయండి",
+  "signupGoogleButton": "తో సైన్ అప్ చేయండి",
   "@signupGoogleButton": {
     "description": "Button text for sign up with Google"
   },
@@ -153,7 +153,7 @@
   "@accessYourAccount": {
     "description": "Subtitle for login screen"
   },
-  "loginWithGoogle": "    తో లాగిన్ అవ్వండి",
+  "loginWithGoogle": "తో లాగిన్ అవ్వండి",
   "@loginWithGoogle": {
     "description": "Button text for login with Google"
   },
@@ -478,5 +478,7 @@
   "local_names": "స్థానిక పేర్లు",
   "description": "వివరణ",
   "interested_in": "రుచి ఉంది",
-  "contact_seller": "అమ్మకందారును సంప్రదించండి"
+  "contact_seller": "అమ్మకందారును సంప్రదించండి",
+
+  "onboard": "సభ్యుడిగా తీసుకోవడం!"
 }

@@ -2,6 +2,7 @@
   "hi": [
     "title",
     "userName",
+    "onboard",
     "onboardingScreen1Title",
     "onboardingScreen2Title",
     "onboardingScreen3Title",

@@ -14,6 +14,7 @@
     }
   },
 
+  "onboard": "Onboard!",
   
   "onboardingScreen1Title": "Welcome to GauSampada!",
   "@onboardingScreen1Title": {

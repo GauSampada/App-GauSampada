@@ -76,11 +76,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 const SizedBox(
                   height: 40,
                 ),
-                const Text(
+                Text(
                   textAlign: TextAlign.center,
-                  'Receive an Email to\nReset Your Password',
+                  AppLocalizations.of(context)!.receiveEmailToResetPassword,
                   maxLines: 2,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: themeColor),
@@ -108,7 +108,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 ),
                 LoginSignupButtons(
                   onTap: () => resetPassword(),
-                  label: 'Reset Password',
+                  label: AppLocalizations.of(context)!.resetPassword,
                   backgroundColor: Colors.blue,
                   isLoading: isLoading,
                 ),
