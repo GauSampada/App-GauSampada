@@ -2,40 +2,71 @@
 import 'package:flutter/material.dart';
 import 'package:gausampada/backend/models/breed_model.dart';
 import 'package:gausampada/const/colors.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'breed_details.dart';
 
-class BreadInfoScreen extends StatelessWidget {
+class BreadInfoScreen extends StatefulWidget {
   const BreadInfoScreen({super.key});
 
   @override
+  State<BreadInfoScreen> createState() => _BreadInfoScreenState();
+}
+
+class _BreadInfoScreenState extends State<BreadInfoScreen> {
+  Locale? _currentLocale;
+  late List<Breed> _breeds;
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize breeds
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _updateBreeds();
+    });
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final newLocale = Localizations.localeOf(context);
+    // Only update if locale has changed
+    if (_currentLocale != newLocale) {
+      _currentLocale = newLocale;
+      _updateBreeds();
+    }
+  }
+
+  void _updateBreeds() {
+    setState(() {
+      _breeds = getBreeds(context);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    List<Breed> breeds = getBreeds(context);
     return Scaffold(
       appBar: AppBar(
-          title: const Text(
-            'Indian Cow Breeds',
-            style: TextStyle(color: Colors.white),
-          ),
-          backgroundColor: themeColor),
+        title: Text(
+          AppLocalizations.of(context)!.indian_cow_breeds_title,
+          style: const TextStyle(color: Colors.white),
+        ),
+        backgroundColor: themeColor,
+      ),
       body: ListView.builder(
         padding: const EdgeInsets.symmetric(vertical: 12),
-        itemCount: breeds.length,
+        itemCount: _breeds.length,
         itemBuilder: (context, index) {
-          final breed = breeds[index];
-          // Alternate between dark green and light yellow backgrounds
+          final breed = _breeds[index];
           final backgroundColor = index % 2 == 0
-              ? const Color(0xFF2AA76F) // Dark green
-              : const Color(0xFFE5E7E9); // Light yellow/cream
-
-          // Text color based on background for better contrast
+              ? const Color(0xFF2AA76F)
+              : const Color(0xFFE5E7E9);
           final textColor = index % 2 == 0 ? Colors.white : Colors.black;
 
           return BreedListTile(
             breed: breed,
             backgroundColor: backgroundColor,
             textColor: textColor,
-            showBookButton: false, // Show "Book Now" button every third item
+            showBookButton: false,
           );
         },
       ),
@@ -119,7 +150,7 @@ class BreedListTile extends StatelessWidget {
                     child: Material(
                       color: Colors.transparent,
                       child: Text(
-                        'Breed: ${breed.breedName}',
+                        '${AppLocalizations.of(context)!.breed}: ${breed.breedName}',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -131,7 +162,7 @@ class BreedListTile extends StatelessWidget {
                   const SizedBox(height: 4),
                   // Origin
                   Text(
-                    'Origin: ${breed.origin}',
+                    '${AppLocalizations.of(context)!.origin}: ${breed.origin}',
                     style: TextStyle(
                       fontSize: 14,
                       color: textColor,
@@ -140,7 +171,7 @@ class BreedListTile extends StatelessWidget {
                   const SizedBox(height: 4),
                   // Cost
                   Text(
-                    'Cost (Approx): ${breed.cost}',
+                    '${AppLocalizations.of(context)!.cost_approx}: ${breed.cost}',
                     style: TextStyle(
                       fontSize: 14,
                       color: textColor,
@@ -154,7 +185,8 @@ class BreedListTile extends StatelessWidget {
                         onPressed: () {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
-                              content: Text('Booking ${breed.breedName}'),
+                              content: Text(
+                                  '${AppLocalizations.of(context)!.booking} ${breed.breedName}'),
                               behavior: SnackBarBehavior.floating,
                             ),
                           );
@@ -168,7 +200,7 @@ class BreedListTile extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 16, vertical: 8),
                         ),
-                        child: const Text('Book Now'),
+                        child: Text(AppLocalizations.of(context)!.book_now),
                       ),
                     ),
                   ],
