@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gausampada/backend/models/breed_model.dart';
 import 'package:gausampada/const/colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:gausampada/screens/bread/bread_list_tile.dart';
+import 'package:gausampada/screens/breed/bread_list_tile.dart';
 
 class BreadInfoScreen extends StatefulWidget {
   const BreadInfoScreen({super.key});
