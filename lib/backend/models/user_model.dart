@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:gausampada/backend/enums/user_type.dart';
 
 class UserModel {
   final String uid;
@@ -7,6 +8,7 @@ class UserModel {
   final String phonenumber;
   final String? photoURL;
   final String? location;
+  final UserType userType;
 
   UserModel({
     required this.uid,
@@ -15,6 +17,7 @@ class UserModel {
     required this.phonenumber,
     this.photoURL = "",
     this.location = "Bhimavaram",
+    required this.userType,
   });
 
   Map<String, dynamic> toMap() {
@@ -25,6 +28,7 @@ class UserModel {
       'phonenumber': phonenumber,
       'photoURL': photoURL,
       'location': location,
+      'userType': userType.name,
     };
   }
 
@@ -42,6 +46,7 @@ class UserModel {
       phonenumber: map['phonenumber'] ?? '',
       photoURL: map['photoURL'] ?? '',
       location: map['location'] ?? '',
+      userType: fromStringToEnum(map['userType'] as String),
     );
   }
 }

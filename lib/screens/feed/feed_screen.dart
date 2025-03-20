@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:gausampada/backend/auth/auth_methods.dart';
+import 'package:gausampada/backend/providers/user_provider.dart';
 import 'package:gausampada/const/colors.dart';
+import 'package:gausampada/screens/auth/login.dart';
 import 'package:gausampada/screens/breed/breed_info_screen.dart';
 import 'package:gausampada/screens/chat_bot/ai_assistance.dart';
 import 'package:gausampada/screens/feed/widgets/bookings_swiper.dart';
 import 'package:gausampada/screens/feed/widgets/breed_info_card.dart';
+import 'package:gausampada/screens/feed/widgets/custom_headings.dart';
 import 'package:gausampada/screens/feed/widgets/info_main.dart';
 import 'package:gausampada/screens/feed/widgets/products.dart';
+import 'package:gausampada/screens/home/home_screen.dart';
+import 'package:gausampada/screens/home/widgets/nav_bar_items.dart';
 import 'package:gausampada/screens/maps/maps.dart';
 import 'package:gausampada/screens/market/market_screen.dart';
 import 'package:gausampada/screens/notifications/notification.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:gausampada/screens/profile/user_profile.dart';
+import 'package:gausampada/screens/settings/settings.dart';
+import 'package:gausampada/screens/widgets/dialogs/logout_dialog.dart';
+import 'package:provider/provider.dart';
 
 class FeedScreen extends StatefulWidget {
   const FeedScreen({super.key});
@@ -45,6 +55,7 @@ class _FeedScreenState extends State<FeedScreen> {
           );
         },
       ),
+      drawer: customNavigationBar(provider: Provider.of<UserProvider>(context)),
       appBar: AppBar(
         backgroundColor: themeColor,
         toolbarHeight: 70,
@@ -208,66 +219,89 @@ class _FeedScreenState extends State<FeedScreen> {
       ),
     );
   }
-}
 
-// You should also update your CustomHeadingsScreen widget to include an icon
-// Here's what it might look like:
-
-class CustomHeadingsScreen extends StatelessWidget {
-  final String label;
-  final VoidCallback onPressed;
-  final IconData? icon;
-
-  const CustomHeadingsScreen({
-    super.key,
-    required this.label,
-    required this.onPressed,
-    this.icon,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 12.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              if (icon != null) ...[
-                Icon(
-                  icon,
-                  color: Theme.of(context).primaryColor,
-                  size: 20,
-                ),
-                const SizedBox(width: 8),
-              ],
-              Text(
-                label,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                ),
+  Drawer customNavigationBar({required UserProvider provider}) {
+    return Drawer(
+      backgroundColor: backgroundColor,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            UserAccountsDrawerHeader(
+              decoration: const BoxDecoration(color: themeColor),
+              onDetailsPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                      builder: (context) => const UserProfileScreen())),
+              accountName: Text(
+                AppLocalizations.of(context)!.userName(provider.user.name),
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-            ],
-          ),
-          InkWell(
-            onTap: onPressed,
-            borderRadius: BorderRadius.circular(50),
-            child: Container(
-              padding: const EdgeInsets.all(6),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
-                color: Colors.grey.withOpacity(0.1),
+              accountEmail: Text(
+                provider.user.email,
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
-              child: Icon(
-                Icons.arrow_forward_ios,
-                size: 16,
-                color: Theme.of(context).primaryColor,
-              ),
+              currentAccountPicture: provider.user.photoURL != ''
+                  ? CircleAvatar(
+                      backgroundImage: NetworkImage(provider.user.photoURL!),
+                    )
+                  : CircleAvatar(
+                      child: Text(
+                        provider.user.name[0],
+                        style: const TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.bold),
+                      ),
+                    ),
             ),
-          ),
-        ],
+            const SizedBox(height: 10),
+            Navbaritems(
+              icon: Icons.home,
+              label: AppLocalizations.of(context)!.home,
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const HomeScreen()));
+              },
+            ),
+            Navbaritems(
+              icon: Icons.notifications,
+              label: AppLocalizations.of(context)!.notifications,
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const NotificationScreen()));
+              },
+            ),
+            Navbaritems(
+              icon: Icons.settings,
+              label: AppLocalizations.of(context)!.settings,
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const SettingsScreen()));
+              },
+            ),
+            Navbaritems(
+              icon: Icons.logout,
+              label: AppLocalizations.of(context)!.signOut,
+              onTap: () {
+                const CustomDialog().showLogoutDialog(
+                  context: context,
+                  label: AppLocalizations.of(context)!.logOut,
+                  message: AppLocalizations.of(context)!.confirmLogout,
+                  option2: AppLocalizations.of(context)!.cancel,
+                  onPressed2: () {
+                    Navigator.of(context).pop();
+                  },
+                  option1: AppLocalizations.of(context)!.yes,
+                  onPressed1: () {
+                    AuthService().logout();
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => const LoginScreen()));
+                  },
+                );
+              },
+              labelColor: Colors.red,
+            ),
+          ],
+        ),
       ),
     );
   }

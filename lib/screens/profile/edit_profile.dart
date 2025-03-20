@@ -135,6 +135,7 @@ class EditProfileScreen extends StatelessWidget {
                   text: "Update",
                   onPressed: () async {
                     String res = await provider.updateUserDetails(
+                        userType: provider.user.userType,
                         name: nameController.text,
                         email: emailController.text,
                         phonenumber: phoneNumberController.text,
