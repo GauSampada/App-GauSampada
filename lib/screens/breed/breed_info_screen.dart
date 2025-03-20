@@ -5,7 +5,7 @@ import 'package:gausampada/const/colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:gausampada/screens/breed/bread_list_tile.dart';
 
-import '../bread/widgets/ai_breed_chat.dart';
+import 'widgets/ai_breed_chat.dart';
 
 class BreadInfoScreen extends StatefulWidget {
   const BreadInfoScreen({super.key});
