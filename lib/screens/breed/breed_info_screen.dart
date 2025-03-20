@@ -6,6 +6,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:gausampada/screens/breed/bread_list_tile.dart';
 
 import 'widgets/ai_breed_chat.dart';
+import 'widgets/grid_layout.dart';
+import 'widgets/list_schemes.dart';
 
 class BreadInfoScreen extends StatefulWidget {
   const BreadInfoScreen({super.key});
@@ -55,18 +57,6 @@ class _BreadInfoScreenState extends State<BreadInfoScreen> {
         ),
         backgroundColor: themeColor,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (_) => const AiBreedChat()));
-        },
-        backgroundColor: Colors.white,
-        tooltip: "AI Breed Info",
-        child: const Icon(
-          Icons.chat,
-          color: Colors.green,
-        ),
-      ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -89,7 +79,7 @@ class _BreadInfoScreenState extends State<BreadInfoScreen> {
               height: 200,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                padding: const EdgeInsets.only(left: 16, right: 8),
+                padding: const EdgeInsets.only(left: 12, right: 8),
                 itemCount: _breeds.length,
                 itemBuilder: (context, index) {
                   return BreedCard(
@@ -110,7 +100,16 @@ class _BreadInfoScreenState extends State<BreadInfoScreen> {
                   topRight: Radius.circular(24),
                 ),
               ),
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 16),
+              child: const Column(
+                children: [
+                  ImageCarousel(),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  CattleServicesGrid(),
+                ],
+              ),
             )
           ],
         ),

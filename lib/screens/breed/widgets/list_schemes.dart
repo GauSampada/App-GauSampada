@@ -9,7 +9,7 @@ class ImageCarousel extends StatefulWidget {
 }
 
 class _ImageCarouselState extends State<ImageCarousel> {
-  final PageController _pageController = PageController(viewportFraction: 0.8);
+  final PageController _pageController = PageController();
   int _currentIndex = 0;
 
   final List<String> imageUrls = [
@@ -20,85 +20,85 @@ class _ImageCarouselState extends State<ImageCarousel> {
   ];
 
   final List<String> links = [
-    'https://example.com/1',
-    'https://example.com/2',
-    'https://example.com/3',
+    'https://agriwelfare.gov.in/en/Major',
+    'https://pmkisan.gov.in/',
+    'https://pmkisan.gov.in/',
     "https://dahd.gov.in/schemes/programmes/rashtriya_gokul_mission"
   ];
 
-  Future<void> _launchURL(String url) async {
-    if (await canLaunchUrl(Uri.parse(url))) {
-      await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
-    } else {
-      throw 'Could not launch $url';
+  void _launchURL(String url) async {
+    final Uri uri = Uri.parse(url);
+    try {
+      if (!await launchUrl(
+        uri,
+        mode: LaunchMode.externalApplication,
+      )) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Could not open $url')),
+        );
+      }
+    } catch (e) {
+      debugPrint('Error launching URL: $e');
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Image Carousel')),
-      body: Column(
-        children: [
-          const SizedBox(height: 20),
-          SizedBox(
-            height: 200, // Carousel height
-            child: PageView.builder(
-              controller: _pageController,
-              itemCount: imageUrls.length,
-              onPageChanged: (index) {
-                setState(() {
-                  _currentIndex = index;
-                });
-              },
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () => _launchURL(links[index]),
-                  child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 300),
-                    margin: const EdgeInsets.symmetric(horizontal: 8),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.black26,
-                          blurRadius: 5,
-                          spreadRadius: 2,
-                          offset: Offset(0, 3),
-                        )
-                      ],
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(16),
-                      child: Image.network(
-                        imageUrls[index],
-                        fit: BoxFit.cover,
-                        width: double.infinity,
-                      ),
+    return Column(
+      children: [
+        SizedBox(
+          height: 200,
+          width: MediaQuery.of(context).size.width * 0.9,
+          child: PageView.builder(
+            controller: _pageController,
+            itemCount: imageUrls.length,
+            onPageChanged: (index) {
+              setState(() {
+                _currentIndex = index;
+              });
+            },
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () => _launchURL(links[index]),
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 12.0),
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    child: Image.asset(
+                      imageUrls[index],
+                      fit: BoxFit.fill,
+                      width: double.infinity,
+                      height: double.infinity,
                     ),
                   ),
-                );
-              },
-            ),
-          ),
-          const SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(
-              imageUrls.length,
-              (index) => Container(
-                margin: const EdgeInsets.symmetric(horizontal: 4),
-                width: _currentIndex == index ? 12 : 8,
-                height: 8,
-                decoration: BoxDecoration(
-                  color: _currentIndex == index ? Colors.blue : Colors.grey,
-                  shape: BoxShape.circle,
                 ),
+              );
+            },
+          ),
+        ),
+        const SizedBox(height: 10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: List.generate(
+            imageUrls.length,
+            (index) => Container(
+              margin: const EdgeInsets.symmetric(horizontal: 4),
+              width: _currentIndex == index ? 12 : 8,
+              height: 8,
+              decoration: BoxDecoration(
+                color: _currentIndex == index ? Colors.blue : Colors.grey,
+                shape: BoxShape.circle,
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 }
