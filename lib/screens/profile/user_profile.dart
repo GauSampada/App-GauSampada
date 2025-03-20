@@ -125,18 +125,6 @@ class UserProfileScreen extends StatelessWidget {
                       },
                     ),
                     ProfileMenuItem(
-                      icon: Icons.lock,
-                      text: AppLocalizations.of(context)!.changePassword,
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const ChangePasswordScreen(),
-                          ),
-                        );
-                      },
-                    ),
-                    ProfileMenuItem(
                       icon: Icons.notifications,
                       text: AppLocalizations.of(context)!.notifications,
                       onTap: () {
