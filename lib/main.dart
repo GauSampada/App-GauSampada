@@ -60,6 +60,7 @@ class MyApp extends StatelessWidget {
                   stream: FirebaseAuth.instance.authStateChanges(),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
+                      //  await prefs.setString('user_id', user?.uid ?? "id----");
                       return const HomeScreen();
                     } else if (snapshot.hasError) {
                       return const Center(

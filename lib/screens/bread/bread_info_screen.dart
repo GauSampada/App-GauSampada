@@ -5,6 +5,8 @@ import 'package:gausampada/const/colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:gausampada/screens/bread/bread_list_tile.dart';
 
+import 'widgets/ai_breed_chat.dart';
+
 class BreadInfoScreen extends StatefulWidget {
   const BreadInfoScreen({super.key});
 
@@ -52,6 +54,18 @@ class _BreadInfoScreenState extends State<BreadInfoScreen> {
           style: const TextStyle(color: Colors.white),
         ),
         backgroundColor: themeColor,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (_) => const AiBreedChat()));
+        },
+        backgroundColor: Colors.white,
+        tooltip: "AI Breed Info",
+        child: const Icon(
+          Icons.chat,
+          color: Colors.green,
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(

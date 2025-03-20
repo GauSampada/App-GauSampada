@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:gausampada/main.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:gausampada/backend/models/user_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -21,6 +22,7 @@ class AuthService {
       final UserCredential result = await auth.createUserWithEmailAndPassword(
           email: email, password: password);
       final User user = result.user!;
+      await prefs.setString('user_id', user.uid);
       UserModel data = UserModel(
           uid: user.uid,
           name: name,
@@ -56,6 +58,7 @@ class AuthService {
       final UserCredential result = await auth.signInWithEmailAndPassword(
           email: email, password: password);
       final User? user = result.user;
+      await prefs.setString('user_id', user?.uid ?? "id----");
       if (user != null) {
         res = "success";
       }
