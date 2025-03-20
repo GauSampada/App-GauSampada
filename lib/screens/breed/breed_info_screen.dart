@@ -46,7 +46,7 @@ class _BreadInfoScreenState extends State<BreadInfoScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    // final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -86,7 +86,7 @@ class _BreadInfoScreenState extends State<BreadInfoScreen> {
               ),
             ),
             SizedBox(
-              height: 200, // Adjusted height for the horizontal list
+              height: 200,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.only(left: 16, right: 8),

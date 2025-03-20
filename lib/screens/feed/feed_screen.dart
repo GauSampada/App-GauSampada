@@ -84,7 +84,7 @@ class _FeedScreenState extends State<FeedScreen> {
           ),
           IconButton(
             icon: const Icon(
-              Icons.notifications,
+              Icons.chat,
               color: Colors.white,
             ),
             tooltip: 'Notifications',

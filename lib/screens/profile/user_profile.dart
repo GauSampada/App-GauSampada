@@ -6,7 +6,6 @@ import 'package:gausampada/screens/settings/change_language.dart';
 import 'package:gausampada/screens/widgets/dialogs/logout_dialog.dart';
 import 'package:gausampada/screens/auth/login.dart';
 import 'package:gausampada/screens/notifications/notification.dart';
-import 'package:gausampada/screens/profile/change_password.dart';
 import 'package:gausampada/screens/profile/edit_profile.dart';
 import 'package:gausampada/screens/settings/settings.dart';
 import 'package:gausampada/screens/support&help/help.dart';
@@ -21,6 +20,10 @@ class UserProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<UserProvider>(builder: (context, provider, _) {
       return Scaffold(
+        appBar: AppBar(
+          title: Text(AppLocalizations.of(context)!.profile),
+          backgroundColor: themeColor,
+        ),
         body: SafeArea(
           child: Column(
             children: [
@@ -160,7 +163,7 @@ class UserProfileScreen extends StatelessWidget {
                         );
                       },
                     ),
-                    const SizedBox(height: 10),
+                    // const SizedBox(height: 10),
                     ProfileMenuItem(
                       icon: Icons.logout,
                       text: AppLocalizations.of(context)!.logOut,

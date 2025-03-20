@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:gausampada/backend/providers/user_provider.dart';
 import 'package:gausampada/const/colors.dart';
-import 'package:gausampada/screens/maps/maps.dart';
-import 'package:gausampada/screens/notifications/notification.dart';
 import 'package:provider/provider.dart';
 
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
