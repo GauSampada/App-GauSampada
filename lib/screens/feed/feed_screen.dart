@@ -97,7 +97,7 @@ class _FeedScreenState extends State<FeedScreen> {
           ),
           IconButton(
             icon: const Icon(
-              Icons.notifications,
+              Icons.chat,
               color: Colors.white,
             ),
             tooltip: 'Notifications',
@@ -239,32 +239,35 @@ class _FeedScreenState extends State<FeedScreen> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            UserAccountsDrawerHeader(
-              decoration: const BoxDecoration(color: themeColor),
-              onDetailsPressed: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                      builder: (context) => const UserProfileScreen())),
-              accountName: Text(
-                AppLocalizations.of(context)!.userName(provider.user.name),
-                style:
-                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              accountEmail: Text(
-                provider.user.email,
-                style:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-              ),
-              currentAccountPicture: provider.user.photoURL != ''
-                  ? CircleAvatar(
-                      backgroundImage: NetworkImage(provider.user.photoURL!),
-                    )
-                  : CircleAvatar(
-                      child: Text(
-                        provider.user.name[0],
-                        style: const TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.bold),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const UserProfileScreen()));
+              },
+              child: UserAccountsDrawerHeader(
+                decoration: const BoxDecoration(color: themeColor),
+                accountName: Text(
+                  AppLocalizations.of(context)!.userName(provider.user.name),
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                accountEmail: Text(
+                  provider.user.email,
+                  style: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.w600),
+                ),
+                currentAccountPicture: provider.user.photoURL != ''
+                    ? CircleAvatar(
+                        backgroundImage: NetworkImage(provider.user.photoURL!),
+                      )
+                    : CircleAvatar(
+                        child: Text(
+                          provider.user.name[0],
+                          style: const TextStyle(
+                              fontSize: 24, fontWeight: FontWeight.bold),
+                        ),
                       ),
-                    ),
+              ),
             ),
             const SizedBox(height: 10),
             Navbaritems(
