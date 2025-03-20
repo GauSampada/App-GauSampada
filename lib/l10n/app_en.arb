@@ -531,5 +531,9 @@
   "results": "Results:",
   "recommendedDoctor": "Recommended Doctor",
   "viewAll": "View All",
-  "india": "India"
+  "india": "India",
+
+
+
+  "breadAIDescription":"Start a conversation about Indian cow breeds. You can send text or images of cows for identification."
 }

@@ -46,7 +46,8 @@
     "bargur_localNames",
     "bargur_milkYield",
     "bargur_lactationPeriod",
-    "bargur_description"
+    "bargur_description",
+    "breadAIDescription"
   ],
 
   "ta": [
@@ -111,7 +112,8 @@
     "bargur_localNames",
     "bargur_milkYield",
     "bargur_lactationPeriod",
-    "bargur_description"
+    "bargur_description",
+    "breadAIDescription"
   ],
 
   "te": [
@@ -120,6 +122,7 @@
     "khillari_localNames",
     "hallikar_localNames",
     "amritmahal_localNames",
-    "kangayam_localNames"
+    "kangayam_localNames",
+    "breadAIDescription"
   ]
 }

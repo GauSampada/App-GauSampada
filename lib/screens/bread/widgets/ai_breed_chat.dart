@@ -6,6 +6,7 @@ import 'package:formatted_text/formatted_text.dart';
 import 'package:gausampada/backend/models/message.dart';
 import 'package:gausampada/backend/providers/ai_chat_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AiBreedChat extends StatefulWidget {
   const AiBreedChat({super.key});
@@ -194,7 +195,8 @@ class _AiBreedChatState extends State<AiBreedChat> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32.0),
               child: Text(
-                'Start a conversation about Indian cow breeds.\nYou can send text or images of cows for identification.',
+                // 'Start a conversation about Indian cow breeds. You can send text or images of cows for identification.',
+                AppLocalizations.of(context)!.breadAIDescription,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 16,
