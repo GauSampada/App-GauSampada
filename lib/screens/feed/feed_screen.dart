@@ -4,6 +4,7 @@ import 'package:gausampada/backend/providers/user_provider.dart';
 import 'package:gausampada/const/colors.dart';
 import 'package:gausampada/screens/auth/login.dart';
 import 'package:gausampada/screens/breed/breed_info_screen.dart';
+import 'package:gausampada/screens/breed/widgets/ai_breed_chat.dart';
 import 'package:gausampada/screens/chat_bot/ai_assistance.dart';
 import 'package:gausampada/screens/feed/widgets/bookings_swiper.dart';
 import 'package:gausampada/screens/feed/widgets/breed_info_card.dart';
@@ -37,23 +38,35 @@ class _FeedScreenState extends State<FeedScreen> {
     return Scaffold(
       backgroundColor: Colors.grey[50],
       extendBody: true,
+      // floatingActionButton: FloatingActionButton(
+      //   backgroundColor: Theme.of(context).primaryColor,
+      //   elevation: 6,
+      //   shape: RoundedRectangleBorder(
+      //     borderRadius: BorderRadius.circular(30),
+      //   ),
+      //   child: const Icon(
+      //     Icons.chat_bubble_rounded,
+      //     color: Colors.white,
+      //   ),
+      //   onPressed: () {
+      //     Navigator.of(context).push(
+      //       MaterialPageRoute(
+      //         builder: (context) => const ChatScreen(),
+      //       ),
+      //     );
+      //   },
+      // ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Theme.of(context).primaryColor,
-        elevation: 6,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30),
-        ),
-        child: const Icon(
-          Icons.chat_bubble_rounded,
-          color: Colors.white,
-        ),
         onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const ChatScreen(),
-            ),
-          );
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (_) => const AiBreedChat()));
         },
+        backgroundColor: Colors.white,
+        tooltip: "AI Breed Info",
+        child: const Icon(
+          Icons.chat,
+          color: Colors.green,
+        ),
       ),
       drawer: customNavigationBar(provider: Provider.of<UserProvider>(context)),
       appBar: AppBar(
@@ -139,7 +152,7 @@ class _FeedScreenState extends State<FeedScreen> {
                         BoxShadow(
                           color: Colors.black.withOpacity(0.2),
                           blurRadius: 8,
-                          offset: Offset(0, 2),
+                          offset: const Offset(0, 2),
                         ),
                       ],
                     ),

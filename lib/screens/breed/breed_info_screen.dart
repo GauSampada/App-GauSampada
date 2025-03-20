@@ -99,6 +99,19 @@ class _BreadInfoScreenState extends State<BreadInfoScreen> {
                 },
               ),
             ),
+            const SizedBox(
+              height: 16,
+            ),
+            Container(
+              decoration: const BoxDecoration(
+                color: Colors.lightGreen,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(24),
+                  topRight: Radius.circular(24),
+                ),
+              ),
+              padding: const EdgeInsets.all(16),
+            )
           ],
         ),
       ),

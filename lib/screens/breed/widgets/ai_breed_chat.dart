@@ -48,7 +48,7 @@ class _AiBreedChatState extends State<AiBreedChat> {
       // resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text(
-          'Indian Cow Breeds Expert',
+          'AI Breed Information',
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
@@ -211,7 +211,7 @@ class _AiBreedChatState extends State<AiBreedChat> {
               Wrap(
                 spacing: 16,
                 children: [
-                  _buildSuggestionChip('Tell me about Gir cows'),
+                  _buildSuggestionChip('Tell me about Andhra Pradesh cows'),
                   _buildSuggestionChip('Identify best milking breeds'),
                   _buildSuggestionChip('Indigenous cow benefits'),
                 ],
