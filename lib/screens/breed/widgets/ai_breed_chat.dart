@@ -45,6 +45,7 @@ class _AiBreedChatState extends State<AiBreedChat> {
     final theme = Theme.of(context);
 
     return Scaffold(
+      // resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text(
           'Indian Cow Breeds Expert',
@@ -167,53 +168,56 @@ class _AiBreedChatState extends State<AiBreedChat> {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Colors.green[100],
-                shape: BoxShape.circle,
-              ),
-              child: Icon(
-                Icons.pets,
-                size: 60,
-                color: Colors.green[800],
-              ),
-            ),
-            const SizedBox(height: 24),
-            const Text(
-              'Welcome to the Indian Cow Breeds Expert',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 16),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32.0),
-              child: Text(
-                // 'Start a conversation about Indian cow breeds. You can send text or images of cows for identification.',
-                AppLocalizations.of(context)!.breadAIDescription,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey[700],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Colors.green[100],
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  Icons.pets,
+                  size: 60,
+                  color: Colors.green[800],
                 ),
               ),
-            ),
-            const SizedBox(height: 32),
-            Wrap(
-              spacing: 16,
-              children: [
-                _buildSuggestionChip('Tell me about Gir cows'),
-                _buildSuggestionChip('Identify best milking breeds'),
-                _buildSuggestionChip('Indigenous cow benefits'),
-              ],
-            ),
-          ],
+              const SizedBox(height: 24),
+              const Text(
+                'Welcome to the Indian Cow Breeds Expert',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 16),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                child: Text(
+                  // 'Start a conversation about Indian cow breeds. You can send text or images of cows for identification.',
+                  AppLocalizations.of(context)!.breadAIDescription,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey[700],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 32),
+              Wrap(
+                spacing: 16,
+                children: [
+                  _buildSuggestionChip('Tell me about Gir cows'),
+                  _buildSuggestionChip('Identify best milking breeds'),
+                  _buildSuggestionChip('Indigenous cow benefits'),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
