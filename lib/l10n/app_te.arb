@@ -480,5 +480,41 @@
   "interested_in": "రుచి ఉంది",
   "contact_seller": "అమ్మకందారును సంప్రదించండి",
 
-  "onboard": "సభ్యుడిగా తీసుకోవడం!"
+  "onboard": "సభ్యుడిగా తీసుకోవడం!",
+
+  "removed_from_favorites": "ఇష్టపడినవాటిలో నుంచి తీసివేయబడింది",
+  "added_to_favorites": "ఇష్టపడినవాటికి చేర్చబడింది",
+
+  "select_language": "భాషను ఎంచుకోండి",
+  "apply_language": "భాషను వర్తించండి", 
+
+  "editProfile": "ప్రొఫైల్ మార్చండి",
+  "changePassword": "పాస్‌వర్డ్ మార్చండి",
+  "settings": "సెట్టింగ్‌లు",
+  "changeLanguage": "భాషను మార్చండి",
+  "help": "సహాయం",
+  "logoutConfirmation": "మీరు నిజంగా లాగ్ అవుట్ చేయాలనుకుంటున్నారా?",
+  "diseasePrediction": "రోగం ఊహించడం",
+  "noImageSelected": "చిత్రాన్ని ఎంచుకోలేదు",
+  "gallery": "గ్యాలరీ",
+  "camera": "కెమెరా",
+  "enterYourDetails": "మీ వివరాలను నమోదు చేయండి",
+  "analyzeImage": "చిత్రాన్ని విశ్లేషించండి",
+  "aiAssistant": "ఏఐ అసిస్టెంట్",
+  "errorEncountered": "క్షమించండి, నేను లోపాన్ని ఎదుర్కొన్నాను",
+  "failedToGetResponse": "స్పందన పొందడం విఫలమైంది",
+  "askQuestion": "ఒక ప్రశ్న అడగండి లేదా హలో చెప్పండి",
+  "assistantGreeting": "నేను మీకు సహాయపడేందుకు ఉన్నాను!",
+  "cowBreedsInfo": "గేదెలు మరియు వాటి జాతుల గురించి ప్రశ్నలు అడగండి.",
+  "askYourQuestions": "మీ ప్రశ్నలు ఇక్కడ అడగండి",
+  "failedToMakeCall": "కాల్ చేయడం విఫలమైంది. దయచేసి మళ్లీ ప్రయత్నించండి.",
+  "permissionDenied": "అనుమతి నిరాకరించబడింది. కాల్ చేయడం సాధ్యం కాదు.",
+  "permissionPermanentlyDenied": "అనుమతి శాశ్వతంగా నిరాకరించబడింది. సెట్టింగ్‌లలో ఎనేబుల్ చేయండి.",
+  "describeSymptoms": "లక్షణాలను వివరించండి లేదా నిర్దిష్టమైన ప్రశ్న అడగండి",
+  "analyzing": "విశ్లేషిస్తోంది...",
+  "analysisReport": "విశ్లేషణ నివేదిక",
+  "yourQuestion": "మీ ప్రశ్న:",
+  "results": "ఫలితాలు:",
+  "recommendedDoctor": "సిఫార్సు చేసిన డాక్టర్",
+  "viewAll": "అన్ని చూడండి"
 }

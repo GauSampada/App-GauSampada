@@ -17,7 +17,7 @@ class NotificationScreen extends StatelessWidget {
             SizedBox(
                 width: screenWidth,
                 height: screenHeight * 0.5,
-                child: Image.asset("assets/all_images/notification.jpg")),
+                child: Image.asset("assets/profile/notification.jpg")),
             const SizedBox(height: 16),
             const Text(
               "No Notifications",

@@ -7,7 +7,7 @@ import 'package:gausampada/screens/widgets/dialogs/logout_dialog.dart';
 import 'package:gausampada/const/toast.dart';
 import 'package:gausampada/screens/DiseasePrediction/disease_prediction.dart';
 import 'package:gausampada/screens/auth/login.dart';
-import 'package:gausampada/screens/bread/bread_info_screen.dart';
+import 'package:gausampada/screens/breed/breed_info_screen.dart';
 import 'package:gausampada/screens/feed/feed_screen.dart';
 import 'package:gausampada/screens/home/widgets/nav_bar_items.dart';
 import 'package:gausampada/screens/market/market_screen.dart';

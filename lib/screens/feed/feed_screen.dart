@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gausampada/const/colors.dart';
-import 'package:gausampada/screens/bread/bread_info_screen.dart';
+import 'package:gausampada/screens/breed/breed_info_screen.dart';
 import 'package:gausampada/screens/chat_bot/ai_assistance.dart';
 import 'package:gausampada/screens/feed/widgets/bookings_swiper.dart';
 import 'package:gausampada/screens/feed/widgets/breed_info_card.dart';

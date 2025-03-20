@@ -64,7 +64,7 @@ class _MyAppState extends State<MyApp> {
                 GlobalCupertinoLocalizations.delegate,
               ],
               locale: Provider.of<LocaleProvider>(context).locale,
-              supportedLocales: L10n.all,
+              supportedLocales: L10n.locales,
 
               home: StreamBuilder(
                   stream: FirebaseAuth.instance.authStateChanges(),
