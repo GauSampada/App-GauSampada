@@ -33,7 +33,10 @@ class BreedDetailScreen extends StatelessWidget {
                     color: Colors.white60,
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: const Icon(Icons.arrow_back),
+                  child: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.black,
+                  ),
                 ),
                 onPressed: () => Navigator.pop(context),
               ),

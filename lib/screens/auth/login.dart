@@ -173,6 +173,7 @@ class LoginScreenState extends State<LoginScreen> {
                     hinttext: AppLocalizations.of(context)!.signupEmailHint,
                     controller: email,
                     prefixicon: Icons.email_rounded,
+                    keyboard: TextInputType.emailAddress,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return AppLocalizations.of(context)!

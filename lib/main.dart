@@ -24,18 +24,8 @@ void main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -94,3 +84,5 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+
+/// For generating local files translations use "flutter gen-l10n"
