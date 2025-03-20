@@ -10,7 +10,7 @@ class LocaleProvider extends ChangeNotifier {
       _locale ?? Locale(prefs.getString(LocalPrefKeys.localeLanguage) ?? 'en');
 
   void setLocale(Locale locale) {
-    if (!L10n.all.contains(locale)) return;
+    if (!L10n.locales.contains(locale)) return;
     prefs.setString(LocalPrefKeys.localeLanguage, locale.toString());
     _locale = locale;
     notifyListeners();

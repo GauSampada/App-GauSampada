@@ -1,9 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:gausampada/main.dart';
+import 'package:gausampada/backend/enums/user_type.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:gausampada/backend/models/user_model.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AuthService {
   final FirebaseAuth auth = FirebaseAuth.instance;
@@ -15,6 +14,7 @@ class AuthService {
     required String email,
     required String password,
     required String phoneNumber,
+    required UserType userType,
     String photoURL = "",
   }) async {
     String res = "";
@@ -28,7 +28,8 @@ class AuthService {
           name: name,
           email: email,
           phonenumber: phoneNumber,
-          photoURL: photoURL);
+          photoURL: photoURL,
+          userType: userType);
       await firestore.collection('users').doc(user.uid).set(data.toMap());
       res = "success";
     } on FirebaseAuthException catch (e) {
@@ -79,6 +80,7 @@ class AuthService {
   // Signup with Google
   Future<String> handleSignUpWithGoogle() async {
     String res = "";
+    // UserType userType=UserType.user;
     try {
       final GoogleSignIn googleSignIn = GoogleSignIn();
       await googleSignIn.signOut();
@@ -108,6 +110,7 @@ class AuthService {
           email: user.email ?? "No email",
           phonenumber: user.phoneNumber ?? "",
           photoURL: user.photoURL ?? "",
+          userType: UserType.user,
         );
         await FirebaseFirestore.instance
             .collection('users')

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gausampada/backend/models/breed_model.dart';
-import 'package:gausampada/screens/bread/breed_details.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:gausampada/screens/breed/breed_details.dart';
 
 // The individual card that will be displayed in the horizontal list
 class BreedCard extends StatelessWidget {
@@ -100,13 +100,19 @@ class BreedCard extends StatelessWidget {
 
                         // Details with icons
                         _buildInfoRow(
-                            Icons.location_on_outlined, 'Origin', 'India'),
+                            Icons.location_on_outlined,
+                            AppLocalizations.of(context)!.origin,
+                            AppLocalizations.of(context)!.india),
                         const SizedBox(height: 6),
                         _buildInfoRow(
-                            Icons.currency_rupee, 'Cost', '₹30,000 - ₹50,000'),
+                            Icons.currency_rupee,
+                            AppLocalizations.of(context)!.cost,
+                            '₹30,000 - ₹50,000'),
                         const SizedBox(height: 6),
                         _buildInfoRow(
-                            Icons.opacity, 'Milk Yield', breed.milkYield),
+                            Icons.opacity,
+                            AppLocalizations.of(context)!.milk_yield,
+                            breed.milkYield),
                       ],
                     ),
                   ),
