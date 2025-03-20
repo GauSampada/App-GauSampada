@@ -47,7 +47,8 @@
     "bargur_milkYield",
     "bargur_lactationPeriod",
     "bargur_description",
-    "breadAIDescription"
+    "breadAIDescription",
+    "farmVet"
   ],
 
   "ta": [
@@ -113,7 +114,8 @@
     "bargur_milkYield",
     "bargur_lactationPeriod",
     "bargur_description",
-    "breadAIDescription"
+    "breadAIDescription",
+    "farmVet"
   ],
 
   "te": [
