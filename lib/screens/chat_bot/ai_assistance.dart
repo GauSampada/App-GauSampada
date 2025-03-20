@@ -55,9 +55,12 @@ class ChatProvider extends ChangeNotifier {
 
   // Call the text_to_text API
   Future<String> _getTextResponse(String prompt) async {
+    String urlHosting = "https://ai-model-gausampada.onrender.com/text_to_text";
+    String urlLocal = "http://10.0.42.125:5000/text_to_text";
+
     // Using your existing API client
     final response = await http.post(
-      Uri.parse('https://ai-model-gausampada.onrender.com/text_to_text'),
+      Uri.parse(urlLocal),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({'prompt': prompt}),
     );

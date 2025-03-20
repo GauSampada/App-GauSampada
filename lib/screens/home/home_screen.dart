@@ -27,11 +27,19 @@ class HomeScreen extends StatefulWidget {
 
 class HomeScreenState extends State<HomeScreen> {
   late int currentIndex = 0;
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+  final GlobalKey _scaffoldKey = GlobalKey();
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      getData();
+    });
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     if (widget.isLoginOrSignUp) {
       toastMessage(
         context: context,
@@ -40,10 +48,6 @@ class HomeScreenState extends State<HomeScreen> {
         position: DelightSnackbarPosition.top,
       );
     }
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      getData();
-    });
   }
 
   void getData() async {
