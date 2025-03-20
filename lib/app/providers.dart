@@ -1,5 +1,6 @@
 import 'package:gausampada/backend/providers/ai_chat_provider.dart';
 import 'package:gausampada/backend/providers/ai_provider.dart';
+import 'package:gausampada/backend/providers/booking_provider.dart';
 import 'package:gausampada/backend/providers/locale_provider.dart';
 import 'package:gausampada/backend/providers/user_provider.dart';
 import 'package:gausampada/const/image_picker_.dart';
@@ -16,6 +17,7 @@ class AppProviders {
     ChangeNotifierProvider(create: (_) => ChatProvider()),
     ChangeNotifierProvider(create: (_) => UserProvider()),
     ChangeNotifierProvider(create: (_) => CartProvider()),
-    ChangeNotifierProvider(create: (_) => BreedChatProvider())
+    ChangeNotifierProvider(create: (_) => BreedChatProvider()),
+    ChangeNotifierProvider(create: (_) => AppointmentProvider()),
   ];
 }

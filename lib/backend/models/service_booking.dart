@@ -1,63 +1,55 @@
-import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 
-class ServiceBooking {
-  final String name;
-  final String uid;
-  // final Service service;
-  final String bookingDate;
-  final String location;
-  final String timeSlot;
-  final String phoneNumber;
-  final String? alternateTimeSlot;
-  final String? note;
-  ServiceBooking(
-      {required this.name,
-      required this.uid,
-      // required this.service,
-      required this.bookingDate,
-      required this.location,
-      required this.phoneNumber,
-      this.alternateTimeSlot,
-      this.note,
-      required this.timeSlot});
+class Appointment {
+  final String id;
+  final String doctorId;
+  final String farmerId;
+  final String doctorName;
+  final String farmerName;
+  final DateTime appointmentDate;
+  final String status; // 'scheduled', 'completed', 'cancelled'
+  final String notes;
+  final DateTime createdAt;
 
-  Map<String, dynamic> toMap() {
-    return {
-      'name': name,
-      'uid': uid,
-      // 'service': service.toString(),
-      'bookingDate': bookingDate,
-      'location': location,
-      'timeSlot': timeSlot,
-      'phoneNumber': phoneNumber,
-      'note': note ?? '',
-      'alternateTimeSlot': alternateTimeSlot ?? '',
-    };
-  }
+  Appointment({
+    required this.id,
+    required this.doctorId,
+    required this.farmerId,
+    required this.doctorName,
+    required this.farmerName,
+    required this.appointmentDate,
+    required this.status,
+    this.notes = '',
+    required this.createdAt,
+  });
 
-  static ServiceBooking fromSnapshot(DocumentSnapshot documentSnapshot) {
-    var map = documentSnapshot.data() as Map<String, dynamic>;
-    return ServiceBooking(
-      name: map['name'] as String,
-      uid: map['uid'] as String,
-      // service: stringToService(map['service']),
-      bookingDate: map['bookingDate'],
-      phoneNumber: map['phoneNumber'],
-      location: map['location'] as String,
-      timeSlot: map['timeSlot'],
-      alternateTimeSlot: map['alternateTimeSlot'],
-      note: map['note'] ?? '',
+  // Convert from Map (Firebase) to Appointment object
+  factory Appointment.fromMap(Map<String, dynamic> map, String docId) {
+    return Appointment(
+      id: docId,
+      doctorId: map['doctorId'] ?? '',
+      farmerId: map['farmerId'] ?? '',
+      doctorName: map['doctorName'] ?? '',
+      farmerName: map['farmerName'] ?? '',
+      appointmentDate: (map['appointmentDate'] as Timestamp).toDate(),
+      status: map['status'] ?? 'scheduled',
+      notes: map['notes'] ?? '',
+      createdAt: (map['createdAt'] as Timestamp).toDate(),
     );
   }
 
-  // static Service stringToService(String service) {
-  //   return Service.values.firstWhere((e) => e.toString() == service);
-  // }
-
-  // static IssueType stringToIssue(String issue) {
-  //   return IssueType.values.firstWhere((e) => e.toString() == issue);
-  // }
-
-  String toJson() => json.encode(toMap());
+  // Convert from Appointment object to Map (Firebase)
+  Map<String, dynamic> toMap() {
+    return {
+      'doctorId': doctorId,
+      'farmerId': farmerId,
+      'doctorName': doctorName,
+      'farmerName': farmerName,
+      'appointmentDate': Timestamp.fromDate(appointmentDate),
+      'status': status,
+      'notes': notes,
+      'createdAt': Timestamp.fromDate(createdAt),
+    };
+  }
 }

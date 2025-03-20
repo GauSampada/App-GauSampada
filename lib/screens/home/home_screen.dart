@@ -57,7 +57,7 @@ class HomeScreenState extends State<HomeScreen> {
       const BreadInfoScreen(),
       (userProvider.user.userType == UserType.doctor ||
               userProvider.user.userType == UserType.farmer)
-          ? const ConnectionScreen()
+          ? const AppointmentScreen()
           : const UserProfileScreen(),
     ];
   }
