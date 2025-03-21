@@ -1,10 +1,12 @@
 import 'package:delightful_toast/toast/utils/enums.dart';
 import 'package:flutter/material.dart';
+import 'package:gausampada/backend/enums/user_type.dart';
 import 'package:gausampada/backend/providers/user_provider.dart';
 import 'package:gausampada/const/colors.dart';
 import 'package:gausampada/screens/breed/breed_info_screen.dart';
 import 'package:gausampada/const/toast.dart';
 import 'package:gausampada/screens/DiseasePrediction/disease_prediction.dart';
+import 'package:gausampada/screens/communication/connect.dart';
 import 'package:gausampada/screens/feed/feed_screen.dart';
 import 'package:gausampada/screens/market/market_screen.dart';
 import 'package:gausampada/screens/profile/user_profile.dart';
@@ -20,20 +22,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 class HomeScreenState extends State<HomeScreen> {
-  late int currentIndex = 0;
-  final GlobalKey _scaffoldKey = GlobalKey();
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      getData();
-    });
-  }
+  int currentIndex = 0;
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  UserProvider? userProvider;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+
+    userProvider ??= Provider.of<UserProvider>(context, listen: false);
+
     if (widget.isLoginOrSignUp) {
       toastMessage(
         context: context,
@@ -42,57 +40,73 @@ class HomeScreenState extends State<HomeScreen> {
         position: DelightSnackbarPosition.top,
       );
     }
+
+    fetchData();
   }
 
-  void getData() async {
-    UserProvider userProvider = Provider.of(context, listen: false);
-    await userProvider.fetchUser();
+  void fetchData() async {
+    await userProvider?.fetchUser();
+    setState(() {});
   }
 
-  final List<Widget> screens = [
-    const FeedScreen(),
-    const MarketAccessScreen(),
-    DiseasePredictionScreen(),
-    const BreadInfoScreen(),
-    const UserProfileScreen(),
-  ];
+  List<Widget> getScreensList(UserProvider userProvider) {
+    return [
+      const FeedScreen(),
+      const MarketAccessScreen(),
+      DiseasePredictionScreen(),
+      const BreadInfoScreen(),
+      (userProvider.user.userType == UserType.doctor ||
+              userProvider.user.userType == UserType.farmer)
+          ? const AppointmentScreen()
+          : const UserProfileScreen(),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
     return Consumer<UserProvider>(builder: (context, userProvider, _) {
-      return userProvider.isLoading
-          ? const Scaffold(
-              backgroundColor: Colors.white,
-              body: Center(
-                child: CircularProgressIndicator(
-                  color: themeColor,
-                ),
+      if (userProvider.isLoading) {
+        return const Scaffold(
+          backgroundColor: Colors.white,
+          body: Center(
+            child: CircularProgressIndicator(
+              color: themeColor,
+            ),
+          ),
+        );
+      }
+
+      final screens = getScreensList(userProvider);
+
+      return Scaffold(
+        key: _scaffoldKey,
+        body: screens[currentIndex],
+        bottomNavigationBar: BottomAppBar(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              _buildNavItem(0, Icons.home, AppLocalizations.of(context)!.home),
+              _buildNavItem(
+                  1, Icons.shopping_bag, AppLocalizations.of(context)!.market),
+              _buildNavItem(2, Icons.smart_toy_outlined,
+                  AppLocalizations.of(context)!.aiDiagnosis),
+              _buildNavItem(
+                  3, Icons.pets, AppLocalizations.of(context)!.breedInfo),
+              _buildNavItem(
+                4,
+                Icons.person_pin,
+                (userProvider.user.userType == UserType.doctor ||
+                        userProvider.user.userType == UserType.farmer)
+                    ? AppLocalizations.of(context)!.farmVet
+                    : AppLocalizations.of(context)!.profile,
               ),
-            )
-          : Scaffold(
-              key: _scaffoldKey,
-              body: screens[currentIndex],
-              bottomNavigationBar: BottomAppBar(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    _buildNavItem(
-                        0, Icons.home, AppLocalizations.of(context)!.home),
-                    _buildNavItem(1, Icons.shopping_bag,
-                        AppLocalizations.of(context)!.market),
-                    _buildNavItem(2, Icons.smart_toy_outlined,
-                        AppLocalizations.of(context)!.aiDiagnosis),
-                    _buildNavItem(
-                        3, Icons.pets, AppLocalizations.of(context)!.breedInfo),
-                    _buildNavItem(4, Icons.person_pin,
-                        AppLocalizations.of(context)!.profile),
-                  ],
-                ),
-              ));
+            ],
+          ),
+        ),
+      );
     });
   }
 
-// Add this method to your class
   Widget _buildNavItem(int index, IconData icon, String label) {
     bool isSelected = currentIndex == index;
     return InkWell(
