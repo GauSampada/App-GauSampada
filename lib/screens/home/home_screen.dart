@@ -83,15 +83,15 @@ class HomeScreenState extends State<HomeScreen> {
         body: screens[currentIndex],
         bottomNavigationBar: BottomAppBar(
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _buildNavItem(0, Icons.home, AppLocalizations.of(context)!.home),
               _buildNavItem(
                   1, Icons.shopping_bag, AppLocalizations.of(context)!.market),
               _buildNavItem(2, Icons.smart_toy_outlined,
                   AppLocalizations.of(context)!.aiDiagnosis),
-              _buildNavItem(
-                  3, Icons.pets, AppLocalizations.of(context)!.breedInfo),
+              _buildNavItem(3, Icons.pets,
+                  AppLocalizations.of(context)!.breedInformation),
               _buildNavItem(
                 4,
                 Icons.person_pin,
@@ -116,7 +116,7 @@ class HomeScreenState extends State<HomeScreen> {
         });
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 5.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

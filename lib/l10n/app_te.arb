@@ -207,7 +207,7 @@
   "@notifications": {
     "description": "Text for notifications"
   },
-  "breedInformation": "జాతి సమాచారం",
+  "breedInformation": "జాతిసమాచారం",
   "@breedInformation": {
     "description": "Text for breed information"
   },
