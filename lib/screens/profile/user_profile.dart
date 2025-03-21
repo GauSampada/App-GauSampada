@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:gausampada/backend/auth/auth_methods.dart';
 import 'package:gausampada/backend/providers/user_provider.dart';
 import 'package:gausampada/const/colors.dart';
+import 'package:gausampada/screens/profile/faqs.dart';
 import 'package:gausampada/screens/settings/change_language.dart';
 import 'package:gausampada/screens/widgets/dialogs/logout_dialog.dart';
 import 'package:gausampada/screens/auth/login.dart';
 import 'package:gausampada/screens/notifications/notification.dart';
 import 'package:gausampada/screens/profile/edit_profile.dart';
 import 'package:gausampada/screens/settings/settings.dart';
-import 'package:gausampada/screens/support&help/help.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -158,7 +158,7 @@ class UserProfileScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const SupportHelpScreen(),
+                            builder: (context) => FAQScreens(),
                           ),
                         );
                       },
