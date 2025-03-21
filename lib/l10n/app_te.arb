@@ -519,5 +519,23 @@
   "viewAll": "అన్ని చూడండి",
   "india": "భారత్",
 
-  "farmVet": "పశువైద్యం"
+  "farmVet": "పశువైద్యం",
+
+  "ai_breed_information": "ఏఐ జాతి సమాచారం",
+  "new_conversation": "కొత్త సంభాషణ",
+  "thinking": "ఆలోచిస్తున్నాను...",
+  "welcome_message": "భారతీయ గేదెల జాతుల నిపుణుడికి స్వాగతం",
+  "tell_about_ap_cows": "ఆంధ్రప్రదేశ్ గేదెల గురించి చెప్పండి",
+  "identify_best_milking_breeds": "మంచి పాలిచ్చే గేదెలను గుర్తించండి",
+  "indigenous_cow_benefits": "స్థానిక గేదె ప్రయోజనాలు",
+  "add_image": "చిత్రాన్ని జోడించండి",
+  "ask_about_indian_cow_breeds": "భారతీయ గేదెల జాతుల గురించి అడగండి...",
+  "add_cow_image": "గేదె చిత్రాన్ని జోడించండి",
+  "choose_from_gallery": "గ్యాలరీ నుండి ఎంచుకోండి",
+  "take_a_photo": "ఒక ఫోటో తీయండి",
+
+  "finance": "ఆర్థిక వ్యవహారాలు",
+  "insurance": "భీమా",
+  "medicines": "ఔషధాలు",
+  "cattle_Feeds": "పశువుల ఆహారం"
 }

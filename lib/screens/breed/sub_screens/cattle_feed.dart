@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CattleFeedsScreen extends StatefulWidget {
   const CattleFeedsScreen({super.key});
@@ -21,8 +22,8 @@ class _CattleFeedsScreenState extends State<CattleFeedsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:
-            const Text('Cattle Feeds', style: TextStyle(color: Colors.white)),
+        title: Text(AppLocalizations.of(context)!.cattle_Feeds,
+            style: TextStyle(color: Colors.white)),
         backgroundColor: const Color(0xFF8BC34A),
         iconTheme: const IconThemeData(color: Colors.white),
         actions: [

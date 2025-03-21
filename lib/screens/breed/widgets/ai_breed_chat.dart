@@ -7,6 +7,7 @@ import 'package:gausampada/backend/models/message.dart';
 import 'package:gausampada/backend/providers/ai_chat_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AiBreedChat extends StatefulWidget {
   const AiBreedChat({super.key});
@@ -47,16 +48,16 @@ class _AiBreedChatState extends State<AiBreedChat> {
     return Scaffold(
       // resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: const Text(
-          'AI Breed Information',
-          style: TextStyle(
+        title: Text(
+          AppLocalizations.of(context)!.ai_breed_information,
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
           ),
         ),
         elevation: 2,
         actions: [
           Tooltip(
-            message: 'New Conversation',
+            message: AppLocalizations.of(context)!.new_conversation,
             child: IconButton(
               icon: const Icon(Icons.add_circle_outline),
               onPressed: () {
@@ -124,7 +125,7 @@ class _AiBreedChatState extends State<AiBreedChat> {
                         ),
                         const SizedBox(width: 12),
                         Text(
-                          "Thinking...",
+                          AppLocalizations.of(context)!.thinking,
                           style: TextStyle(
                             color: Colors.grey[600],
                             fontStyle: FontStyle.italic,
@@ -186,9 +187,9 @@ class _AiBreedChatState extends State<AiBreedChat> {
                 ),
               ),
               const SizedBox(height: 24),
-              const Text(
-                'Welcome to the Indian Cow Breeds Expert',
-                style: TextStyle(
+              Text(
+                AppLocalizations.of(context)!.welcome_message,
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
@@ -211,9 +212,12 @@ class _AiBreedChatState extends State<AiBreedChat> {
               Wrap(
                 spacing: 16,
                 children: [
-                  _buildSuggestionChip('Tell me about Andhra Pradesh cows'),
-                  _buildSuggestionChip('Identify best milking breeds'),
-                  _buildSuggestionChip('Indigenous cow benefits'),
+                  _buildSuggestionChip(
+                      AppLocalizations.of(context)!.tell_about_ap_cows),
+                  _buildSuggestionChip(AppLocalizations.of(context)!
+                      .identify_best_milking_breeds),
+                  _buildSuggestionChip(
+                      AppLocalizations.of(context)!.indigenous_cow_benefits),
                 ],
               ),
             ],
@@ -263,7 +267,7 @@ class _AiBreedChatState extends State<AiBreedChat> {
               shape: BoxShape.circle,
             ),
             child: Tooltip(
-              message: 'Add Image',
+              message: AppLocalizations.of(context)!.add_image,
               child: IconButton(
                 icon: Icon(
                   Icons.add_photo_alternate,
@@ -283,7 +287,8 @@ class _AiBreedChatState extends State<AiBreedChat> {
                 controller: _textController,
                 focusNode: _focusNode,
                 decoration: InputDecoration(
-                  hintText: 'Ask about Indian cow breeds...',
+                  hintText:
+                      AppLocalizations.of(context)!.ask_about_indian_cow_breeds,
                   hintStyle: TextStyle(color: Colors.grey[400]),
                   filled: true,
                   fillColor: Colors.grey[100],
@@ -334,7 +339,7 @@ class _AiBreedChatState extends State<AiBreedChat> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text(
-          'Add Cow Image',
+          AppLocalizations.of(context)!.add_cow_image,
           style: TextStyle(
             color: Colors.green[800],
             fontWeight: FontWeight.bold,
@@ -345,7 +350,7 @@ class _AiBreedChatState extends State<AiBreedChat> {
           children: [
             ListTile(
               leading: Icon(Icons.photo_library, color: Colors.green[800]),
-              title: const Text('Choose from Gallery'),
+              title: Text(AppLocalizations.of(context)!.choose_from_gallery),
               onTap: () {
                 Navigator.pop(context);
                 chatProvider.pickImageFromGallery();
@@ -354,7 +359,7 @@ class _AiBreedChatState extends State<AiBreedChat> {
             const Divider(),
             ListTile(
               leading: Icon(Icons.camera_alt, color: Colors.green[800]),
-              title: const Text('Take a Photo'),
+              title: Text(AppLocalizations.of(context)!.take_a_photo),
               onTap: () {
                 Navigator.pop(context);
                 chatProvider.takePhoto();

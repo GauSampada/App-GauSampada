@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:gausampada/screens/breed/sub_screens/cattle_feed.dart';
 import 'package:gausampada/screens/breed/sub_screens/finance.dart';
 import 'package:gausampada/screens/breed/sub_screens/insurance.dart';
@@ -23,7 +23,7 @@ class CattleServicesGrid extends StatelessWidget {
           ServiceTile(
             svgAsset: 'assets/schemes/finance.png',
             fallbackIcon: Icons.attach_money,
-            label: 'Finance',
+            label: AppLocalizations.of(context)!.finance,
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const FinanceScreen()));
@@ -32,21 +32,21 @@ class CattleServicesGrid extends StatelessWidget {
           ServiceTile(
             svgAsset: 'assets/schemes/insurance.png',
             fallbackIcon: Icons.shield,
-            label: 'Insurance',
+            label: AppLocalizations.of(context)!.insurance,
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => const InsuranceScreen())),
           ),
           ServiceTile(
             svgAsset: 'assets/schemes/medicines.png',
             fallbackIcon: Icons.medical_services,
-            label: 'Medicines',
+            label: AppLocalizations.of(context)!.medicines,
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => const MedicinesScreen())),
           ),
           ServiceTile(
             svgAsset: 'assets/schemes/cattle_feeds.png',
             fallbackIcon: Icons.grass,
-            label: 'Cattle Feeds',
+            label: AppLocalizations.of(context)!.cattle_Feeds,
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => const CattleFeedsScreen())),
           ),

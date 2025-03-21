@@ -560,5 +560,23 @@
   "appointmentBookedWith": "Appointment Booked With",
   "all": "All",
   "pleaseLogin": "Please Login",
-  "selectReason": "Select Reason"
+  "selectReason": "Select Reason",
+
+  "ai_breed_information": "AI Breed Information",
+  "new_conversation": "New Conversation",
+  "thinking": "Thinking...",
+  "welcome_message": "Welcome to the Indian Cow Breeds Expert",
+  "tell_about_ap_cows": "Tell me about Andhra Pradesh cows",
+  "identify_best_milking_breeds": "Identify best milking breeds",
+  "indigenous_cow_benefits": "Indigenous cow benefits",
+  "add_image": "Add Image",
+  "ask_about_indian_cow_breeds": "Ask about Indian cow breeds...",
+  "add_cow_image": "Add Cow Image",
+  "choose_from_gallery": "Choose from Gallery",
+  "take_a_photo": "Take a Photo",
+
+  "finance": "Finance",
+  "insurance": "Insurance",
+  "medicines": "Medicines",
+  "cattle_Feeds": "Cattle Feeds"
 }

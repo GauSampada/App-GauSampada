@@ -357,7 +357,25 @@
   "results": "परिणाम:",
   "recommendedDoctor": "सिफारिश किया गया डॉक्टर",
   "viewAll": "सभी देखें",
-  "india": "भारत"
+  "india": "भारत",
+
+  "ai_breed_information": "एआई नस्ल की जानकारी",
+  "new_conversation": "नई बातचीत",
+  "thinking": "सोच रहा हूँ...",
+  "welcome_message": "भारतीय गाय नस्ल विशेषज्ञ में आपका स्वागत है",
+  "tell_about_ap_cows": "आंध्र प्रदेश की गायों के बारे में बताएं",
+  "identify_best_milking_breeds": "सबसे अच्छी दूध देने वाली नस्लों की पहचान करें",
+  "indigenous_cow_benefits": "स्वदेशी गायों के फायदे",
+  "add_image": "छवि जोड़ें",
+  "ask_about_indian_cow_breeds": "भारतीय गायों की नस्लों के बारे में पूछें...",
+  "add_cow_image": "गाय की छवि जोड़ें",
+  "choose_from_gallery": "गैलरी से चुनें",
+  "take_a_photo": "फोटो खींचें",
+
+  "finance": "वित्त",
+  "insurance": "बीमा",
+  "medicines": "दवाइयाँ",
+  "cattle_Feeds": "पशु आहार"
 }
 
   
