@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gausampada/backend/enums/user_type.dart';
 import 'package:gausampada/backend/models/user_model.dart';
 import 'package:gausampada/const/profile_image_picker.dart';
 import 'package:image_picker/image_picker.dart';
@@ -16,9 +17,11 @@ class UserProvider extends ChangeNotifier {
 
   Future<void> fetchUser() async {
     try {
-      //print("📥 Fetching user data...");
+      print(uid);
+      print("📥 Fetching user data...");
       var snap = await _firestore.collection('users').doc(uid).get();
       _user = UserModel.fromSnapshot(snap);
+      print(user);
       //print("✅ User data fetched successfully!");
     } catch (e) {
       //print("❌ Error fetching user data: $e");
@@ -78,18 +81,19 @@ class UserProvider extends ChangeNotifier {
     required String email,
     required String phonenumber,
     required String location,
+    required UserType userType,
   }) async {
     String res = '';
 
     try {
       final updatedUser = UserModel(
-        uid: uid,
-        name: name,
-        email: email,
-        phonenumber: phonenumber,
-        photoURL: "",
-        location: location,
-      );
+          uid: uid,
+          name: name,
+          email: email,
+          phonenumber: phonenumber,
+          photoURL: "",
+          location: location,
+          userType: userType);
 
       _isUpdate = true;
       notifyListeners();

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gausampada/backend/auth/auth_methods.dart';
 import 'package:gausampada/backend/providers/user_provider.dart';
 import 'package:gausampada/const/colors.dart';
+import 'package:gausampada/screens/settings/change_language.dart';
 import 'package:gausampada/screens/widgets/dialogs/logout_dialog.dart';
 import 'package:gausampada/screens/auth/login.dart';
 import 'package:gausampada/screens/notifications/notification.dart';
@@ -10,6 +11,7 @@ import 'package:gausampada/screens/profile/edit_profile.dart';
 import 'package:gausampada/screens/settings/settings.dart';
 import 'package:gausampada/screens/support&help/help.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class UserProfileScreen extends StatelessWidget {
   final Function()? onTap;
@@ -97,7 +99,7 @@ class UserProfileScreen extends StatelessWidget {
                   children: [
                     ProfileMenuItem(
                       icon: Icons.person,
-                      text: 'Edit Profile',
+                      text: AppLocalizations.of(context)!.editProfile,
                       onTap: () {
                         Navigator.push(
                           context,
@@ -110,32 +112,21 @@ class UserProfileScreen extends StatelessWidget {
                       },
                     ),
                     ProfileMenuItem(
-                      icon: Icons.lock,
-                      text: 'Change Password',
+                      icon: Icons.translate,
+                      text: AppLocalizations.of(context)!.changeLanguage,
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const ChangePasswordScreen(),
-                          ),
-                        );
-                      },
-                    ),
-                    ProfileMenuItem(
-                      icon: Icons.settings,
-                      text: 'Settings',
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const SettingsScreen(),
+                            builder: (context) =>
+                                const LanguageSelectionScreen(),
                           ),
                         );
                       },
                     ),
                     ProfileMenuItem(
                       icon: Icons.notifications,
-                      text: 'Notifications',
+                      text: AppLocalizations.of(context)!.notifications,
                       onTap: () {
                         Navigator.push(
                           context,
@@ -146,8 +137,20 @@ class UserProfileScreen extends StatelessWidget {
                       },
                     ),
                     ProfileMenuItem(
+                      icon: Icons.settings,
+                      text: AppLocalizations.of(context)!.settings,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SettingsScreen(),
+                          ),
+                        );
+                      },
+                    ),
+                    ProfileMenuItem(
                       icon: Icons.help,
-                      text: 'Help',
+                      text: AppLocalizations.of(context)!.help,
                       onTap: () {
                         Navigator.push(
                           context,
@@ -160,17 +163,18 @@ class UserProfileScreen extends StatelessWidget {
                     const SizedBox(height: 10),
                     ProfileMenuItem(
                       icon: Icons.logout,
-                      text: 'Logout',
+                      text: AppLocalizations.of(context)!.logOut,
                       onTap: () {
                         const CustomDialog().showLogoutDialog(
                           context: context,
-                          label: "LogOut",
-                          message: "Are you sure you want to  Log Out?",
-                          option2: "Cancel",
+                          label: AppLocalizations.of(context)!.logOut,
+                          message:
+                              AppLocalizations.of(context)!.logoutConfirmation,
+                          option2: AppLocalizations.of(context)!.cancel,
                           onPressed2: () {
                             Navigator.of(context).pop();
                           },
-                          option1: "Yes",
+                          option1: AppLocalizations.of(context)!.yes,
                           onPressed1: () {
                             AuthService().logout();
                             Navigator.of(context).pushReplacement(

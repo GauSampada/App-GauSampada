@@ -1,6 +1,7 @@
 import 'package:delightful_toast/toast/utils/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:gausampada/backend/enums/user_type.dart';
 import 'package:gausampada/const/colors.dart';
 import 'package:gausampada/const/toast.dart';
 import 'package:gausampada/screens/auth/login.dart';
@@ -10,7 +11,8 @@ import 'package:gausampada/backend/auth/auth_methods.dart';
 import 'package:gausampada/screens/home/home_screen.dart';
 
 class SignupScreen extends StatefulWidget {
-  const SignupScreen({super.key});
+  final UserType? userType;
+  const SignupScreen({super.key, required this.userType});
 
   @override
   State<SignupScreen> createState() => SignupScreenState();
@@ -60,6 +62,7 @@ class SignupScreenState extends State<SignupScreen> {
         password: password.text.trim(),
         name: name.text.trim(),
         phoneNumber: phonenum.text.trim(),
+        userType: widget.userType ?? UserType.user,
       );
 
       if (res == "success") {
@@ -153,17 +156,19 @@ class SignupScreenState extends State<SignupScreen> {
                           crossAxisAlignment: CrossAxisAlignment.baseline,
                           textBaseline: TextBaseline.alphabetic,
                           children: [
-                            const Text(
-                              "O",
-                              style: TextStyle(
+                            Text(
+                              AppLocalizations.of(context)!.onboard[0],
+                              style: const TextStyle(
                                 fontSize: 60.0,
                               ),
                             ),
                             Transform.translate(
                               offset: const Offset(0, -4),
-                              child: const Text(
-                                "nboard!",
-                                style: TextStyle(
+                              child: Text(
+                                AppLocalizations.of(context)!
+                                    .onboard
+                                    .substring(1),
+                                style: const TextStyle(
                                     fontSize: 30.0,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -285,7 +290,7 @@ class SignupScreenState extends State<SignupScreen> {
                     },
                     child: Text(
                       AppLocalizations.of(context)!.signupAlreadyHaveAccount,
-                      style: TextStyle(color: Colors.red, fontSize: 15),
+                      style: const TextStyle(color: Colors.red, fontSize: 15),
                     ),
                   ),
                   SizedBox(

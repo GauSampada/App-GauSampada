@@ -9,6 +9,7 @@ import 'package:gausampada/screens/doctors/doctors.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:formatted_text/formatted_text.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DiseasePredictionScreen extends StatelessWidget {
   DiseasePredictionScreen({super.key});
@@ -21,18 +22,19 @@ class DiseasePredictionScreen extends StatelessWidget {
       bool? result = await DirectCaller().makePhoneCall(phoneNumber);
       if (result != true) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-              content: Text("Failed to make the call. Please try again.")),
+          SnackBar(
+              content: Text(AppLocalizations.of(context)!.failedToMakeCall)),
         );
       }
     } else if (status.isDenied) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Permission denied. Cannot make a call.")),
+        SnackBar(content: Text(AppLocalizations.of(context)!.permissionDenied)),
       );
     } else if (status.isPermanentlyDenied) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Permission permanently denied. Enable in settings."),
+        SnackBar(
+          content:
+              Text(AppLocalizations.of(context)!.permissionPermanentlyDenied),
         ),
       );
     }
@@ -62,7 +64,7 @@ class DiseasePredictionScreen extends StatelessWidget {
       // ),
       appBar: AppBar(
         backgroundColor: themeColor,
-        title: const Text("Disease Prediction"),
+        title: Text(AppLocalizations.of(context)!.diseasePrediction),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -85,7 +87,9 @@ class DiseasePredictionScreen extends StatelessWidget {
                         fit: BoxFit.cover,
                       ),
                     )
-                  : const Center(child: Text("No image selected")),
+                  : Center(
+                      child:
+                          Text(AppLocalizations.of(context)!.noImageSelected)),
             ),
 
             // Image Source Selection - Always available
@@ -100,7 +104,7 @@ class DiseasePredictionScreen extends StatelessWidget {
                       isCamera: false,
                     ),
                     icon: const Icon(Icons.photo_library),
-                    label: const Text("Gallery"),
+                    label: Text(AppLocalizations.of(context)!.gallery),
                   ),
                   const SizedBox(width: 16),
                   OutlinedButton.icon(
@@ -109,7 +113,7 @@ class DiseasePredictionScreen extends StatelessWidget {
                       isCamera: true,
                     ),
                     icon: const Icon(Icons.camera_alt),
-                    label: const Text("Camera"),
+                    label: Text(AppLocalizations.of(context)!.camera),
                   ),
                 ],
               ),
@@ -118,10 +122,10 @@ class DiseasePredictionScreen extends StatelessWidget {
             // Prompt Input - Always available for new input
             TextField(
               controller: _promptController,
-              decoration: const InputDecoration(
-                labelText: "Enter your details",
-                hintText: "Describe symptoms or ask a specific question",
-                border: OutlineInputBorder(),
+              decoration: InputDecoration(
+                labelText: AppLocalizations.of(context)!.enterYourDetails,
+                hintText: AppLocalizations.of(context)!.describeSymptoms,
+                border: const OutlineInputBorder(),
               ),
               maxLines: 2,
             ),
@@ -150,19 +154,19 @@ class DiseasePredictionScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 16),
                 ),
                 child: aiProvider.isLoading
-                    ? const Row(
+                    ? Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 20,
                             height: 20,
                             child: CircularProgressIndicator(strokeWidth: 2),
                           ),
-                          SizedBox(width: 12),
-                          Text("Analyzing..."),
+                          const SizedBox(width: 12),
+                          Text(AppLocalizations.of(context)!.analyzing),
                         ],
                       )
-                    : const Text("Analyze Image"),
+                    : Text(AppLocalizations.of(context)!.analyzeImage),
               ),
             ),
 
@@ -179,9 +183,9 @@ class DiseasePredictionScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      "Analysis Report",
-                      style: TextStyle(
+                    Text(
+                      AppLocalizations.of(context)!.analysisReport,
+                      style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
@@ -211,9 +215,9 @@ class DiseasePredictionScreen extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Text(
-                                    "Your Question:",
-                                    style: TextStyle(
+                                  Text(
+                                    AppLocalizations.of(context)!.yourQuestion,
+                                    style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 14,
                                     ),
@@ -231,9 +235,9 @@ class DiseasePredictionScreen extends StatelessWidget {
                       ),
 
                     // Analysis Results
-                    const Text(
-                      "Results:",
-                      style: TextStyle(
+                    Text(
+                      AppLocalizations.of(context)!.results,
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 14,
                       ),
@@ -264,9 +268,9 @@ class DiseasePredictionScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        const Text(
-                          "Recommended Doctor",
-                          style: TextStyle(
+                        Text(
+                          AppLocalizations.of(context)!.recommendedDoctor,
+                          style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -276,7 +280,7 @@ class DiseasePredictionScreen extends StatelessWidget {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => DoctorListScreen()));
                             },
-                            child: Text("View All"))
+                            child: Text(AppLocalizations.of(context)!.viewAll))
                       ],
                     ),
                     const Divider(),

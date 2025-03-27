@@ -24,18 +24,8 @@ void main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,12 +54,13 @@ class _MyAppState extends State<MyApp> {
                 GlobalCupertinoLocalizations.delegate,
               ],
               locale: Provider.of<LocaleProvider>(context).locale,
-              supportedLocales: L10n.all,
+              supportedLocales: L10n.locales,
 
               home: StreamBuilder(
                   stream: FirebaseAuth.instance.authStateChanges(),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
+                      //  await prefs.setString('user_id', user?.uid ?? "id----");
                       return const HomeScreen();
                     } else if (snapshot.hasError) {
                       return const Center(
@@ -94,3 +85,5 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+
+/// For generating local files translations use "flutter gen-l10n"

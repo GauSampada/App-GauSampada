@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gausampada/backend/models/breed_model.dart';
-import 'package:gausampada/screens/bread/bread_info_screen.dart';
-
-import 'package:gausampada/screens/bread/breed_details.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:gausampada/screens/breed/breed_details.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class BreedInfoCardScreen extends StatefulWidget {
@@ -67,7 +66,7 @@ class _BreedInfoCardScreenState extends State<BreedInfoCardScreen> {
             scrollDirection: Axis.horizontal,
             physics: const BouncingScrollPhysics(),
             child: Row(
-              children: breeds.map((breed) {
+              children: getBreeds(context).map((breed) {
                 final bool isLiked = likedBreeds.contains(breed.breedName);
 
                 return Padding(
@@ -205,8 +204,8 @@ class _BreedInfoCardScreenState extends State<BreedInfoCardScreen> {
                                       SnackBar(
                                         content: Text(
                                           isLiked
-                                              ? '${breed.breedName} removed from favorites'
-                                              : '${breed.breedName} added to favorites',
+                                              ? '${breed.breedName} ${AppLocalizations.of(context)!.removed_from_favorites}'
+                                              : '${breed.breedName} ${AppLocalizations.of(context)!.added_to_favorites}',
                                         ),
                                         duration: const Duration(seconds: 1),
                                         behavior: SnackBarBehavior.floating,

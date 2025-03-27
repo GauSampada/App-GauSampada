@@ -5,6 +5,7 @@ import 'package:gausampada/const/colors.dart';
 import 'package:gausampada/const/toast.dart';
 import 'package:gausampada/screens/auth/forgot_password.dart';
 import 'package:gausampada/screens/auth/signup.dart';
+import 'package:gausampada/screens/auth/userTyoeSelection.dart';
 import 'package:gausampada/screens/auth/widgets/custom_auth_buttons.dart';
 import 'package:gausampada/screens/auth/widgets/customtextformfield.dart';
 import 'package:gausampada/screens/home/home_screen.dart';
@@ -173,6 +174,7 @@ class LoginScreenState extends State<LoginScreen> {
                     hinttext: AppLocalizations.of(context)!.signupEmailHint,
                     controller: email,
                     prefixicon: Icons.email_rounded,
+                    keyboard: TextInputType.emailAddress,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return AppLocalizations.of(context)!
@@ -247,7 +249,8 @@ class LoginScreenState extends State<LoginScreen> {
                   TextButton(
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const SignupScreen()));
+                            builder: (context) =>
+                                const UserTypeSelectionScreen()));
                       },
                       child: Text(
                         AppLocalizations.of(context)!.dontHaveAccount,

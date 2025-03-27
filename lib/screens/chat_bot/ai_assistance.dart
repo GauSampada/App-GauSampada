@@ -1,10 +1,9 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
-
 import 'widgets/typing_indicator.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ChatMessage {
   final String text;
@@ -56,9 +55,12 @@ class ChatProvider extends ChangeNotifier {
 
   // Call the text_to_text API
   Future<String> _getTextResponse(String prompt) async {
+    String urlHosting = "https://ai-model-gausampada.onrender.com/text_to_text";
+    String urlLocal = "http://10.0.42.125:5000/text_to_text";
+
     // Using your existing API client
     final response = await http.post(
-      Uri.parse('https://ai-model-gausampada.onrender.com/text_to_text'),
+      Uri.parse(urlLocal),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({'prompt': prompt}),
     );
@@ -113,7 +115,7 @@ class _ChatScreenContent extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('AI Assistant'),
+        title: Text(AppLocalizations.of(context)!.aiAssistant),
         centerTitle: true,
         actions: [
           IconButton(
@@ -146,7 +148,7 @@ class _ChatScreenContent extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  'Ask a question or just say hello',
+                  AppLocalizations.of(context)!.askQuestion,
                   style: TextStyle(
                     color: Colors.grey.shade500,
                     fontSize: 16,
@@ -155,7 +157,7 @@ class _ChatScreenContent extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  "I'm here to help you!",
+                  AppLocalizations.of(context)!.assistantGreeting,
                   style: TextStyle(
                     color: Colors.grey.shade500,
                     fontSize: 14,
@@ -163,7 +165,7 @@ class _ChatScreenContent extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  "Feel free to ask about cows and their breeds.",
+                  AppLocalizations.of(context)!.cowBreedsInfo,
                   style: TextStyle(
                     color: Colors.grey.shade500,
                     fontSize: 14,
@@ -279,7 +281,7 @@ class _ChatScreenContent extends StatelessWidget {
                 controller: controller,
                 textCapitalization: TextCapitalization.sentences,
                 decoration: InputDecoration(
-                  hintText: 'Ask Your Questions Here',
+                  hintText: AppLocalizations.of(context)!.askYourQuestions,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(24),
                     borderSide: BorderSide.none,

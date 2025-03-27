@@ -14,7 +14,8 @@
     }
   },
 
-  
+  "onboard": "Onboard!",
+
   "onboardingScreen1Title": "Welcome to GauSampada!",
   "@onboardingScreen1Title": {
     "description": "Title for the first onboarding screen"
@@ -43,7 +44,7 @@
   "@learnMore": {
     "description": "Button text to learn more"
   },
-  
+
   "onboardingScreen1Desc": "Connect with farmers and buyers through markets, cooperatives, and online platforms for fair pricing.",
   "@onboardingScreen1Desc": {
     "description": "Description for the first onboarding screen"
@@ -64,7 +65,7 @@
   "@onboardingScreen5Desc": {
     "description": "Description for the fifth onboarding screen"
   },
-  
+
   "nextBtn": "Next",
   "@nextBtn": {
     "description": "Button text for next"
@@ -77,7 +78,7 @@
   "@getStartedBtn": {
     "description": "Button text for get started"
   },
-  
+
   "signupScreenTitle": "Onboard!",
   "@signupScreenTitle": {
     "description": "Title for signup screen"
@@ -154,7 +155,7 @@
   "@signupPhoneRequired": {
     "description": "Error message for required phone number"
   },
-  
+
   "welcomeBack": "Welcome back!",
   "@welcomeBack": {
     "description": "Welcome back text"
@@ -183,7 +184,7 @@
   "@forgotPassword": {
     "description": "Button text for forgot password"
   },
-  
+
   "cowHealthMonitoring": "Monitor cow health in real-time",
   "@cowHealthMonitoring": {
     "description": "Feature for cow health monitoring"
@@ -204,7 +205,7 @@
   "@automatedBreedingGuidance": {
     "description": "Feature for breeding guidance"
   },
-  
+
   "gauSampada": "GauSampada",
   "@gauSampada": {
     "description": "App name"
@@ -395,49 +396,49 @@
   "gir_milkYield": "10-15 liters/day",
   "gir_lactationPeriod": "270-300 days",
   "gir_description": "Gir cows are well-adapted to hot climates and have a strong immune system, making them highly disease-resistant. They have a distinctive reddish-brown coat and curved horns. Known for their high milk yield, they produce milk rich in A2 protein, making it highly nutritious. These cows are also easy to maintain as they require minimal veterinary care. Due to their adaptability, they are exported worldwide for dairy breeding programs.",
-  
+
   "sahiwal_breedName": "Sahiwal",
   "sahiwal_origin": "Punjab, Haryana, Uttar Pradesh",
   "sahiwal_localNames": "",
   "sahiwal_milkYield": "15-20 liters/day",
   "sahiwal_lactationPeriod": "280-320 days",
   "sahiwal_description": "Sahiwal is one of the best indigenous dairy breeds, known for its high milk production and resistance to tropical diseases. These cows have a reddish-brown coat, a loose skin structure, and short horns. They can adapt to both stall feeding and grazing conditions, making them highly versatile. Their milk contains a high percentage of fat, making it suitable for dairy-based products. Sahiwal cattle are also used in crossbreeding programs to improve the milk yield of other breeds.",
-  
+
   "red_sindhi_breedName": "Red Sindhi",
   "red_sindhi_origin": "Sindh (Pakistan), now found in India",
   "red_sindhi_localNames": "Sindhi, Red Karachi",
   "red_sindhi_milkYield": "12-15 liters/day",
   "red_sindhi_lactationPeriod": "270-300 days",
   "red_sindhi_description": "Red Sindhi cows have a deep red coat, high disease resistance, and adapt well to hot, humid climates. They are widely used in crossbreeding to improve productivity. Their milk has a good fat percentage, making it ideal for ghee and butter production.",
-  
+
   "tharparkar_breedName": "Tharparkar",
   "tharparkar_origin": "Rajasthan",
   "tharparkar_localNames": "Thari",
   "tharparkar_milkYield": "8-12 liters/day",
   "tharparkar_lactationPeriod": "260-290 days",
   "tharparkar_description": "Tharparkar is a dual-purpose breed known for both milk production and draught work. It has a white or grey coat, making it distinct from other indigenous breeds. This breed is highly resistant to drought conditions and can thrive on minimal fodder. The milk is rich in nutrients and has a good fat percentage, making it valuable for dairy farms. Due to their sturdy build, they are often used in farming activities in desert regions.",
-  
+
   "deoni_breedName": "Deoni",
   "deoni_origin": "Maharashtra, Telangana, Karnataka",
   "deoni_localNames": "Dongerpati, Wannera",
   "deoni_milkYield": "5-10 liters/day",
   "deoni_lactationPeriod": "250-280 days",
   "deoni_description": "Deoni cattle are medium-sized, with a black-and-white coat and a strong muscular build. They are excellent milk producers and also perform well in draught work. These cows are known for their disease resistance and adaptability to both dry and wet climates. Their milk is high in fat content, making it useful for various dairy products. Due to their dual-purpose nature, they are widely reared by farmers across different regions.",
-  
+
   "ongole_breedName": "Ongole",
   "ongole_origin": "Andhra Pradesh",
   "ongole_localNames": "Nellore",
   "ongole_milkYield": "5-8 liters/day",
   "ongole_lactationPeriod": "220-250 days",
   "ongole_description": "Ongole cattle are large, muscular, and mainly used for draught work, though they also provide a decent amount of milk. They have a white coat, a strong body, and a calm temperament. This breed is well-known for its endurance and ability to thrive in harsh climatic conditions. Ongole bulls are widely used for plowing and transport due to their strength. They have a long lifespan and require minimal maintenance, making them cost-effective.",
-  
+
   "hariana_breedName": "Hariana",
   "hariana_origin": "Haryana",
   "hariana_localNames": "",
   "hariana_milkYield": "8-10 liters/day",
   "hariana_lactationPeriod": "250-280 days",
   "hariana_description": "Hariana cattle are known for their ability to perform both as dairy and draught animals. They have a white or grey coat and a well-proportioned body structure. These cows are highly resistant to diseases and can survive on low-quality fodder. They produce milk with a moderate fat percentage, suitable for domestic dairy production. Due to their strong build, they are often used for plowing and transportation in rural areas.",
-  
+
   "kankrej_breedName": "Kankrej",
   "kankrej_origin": "Gujarat, Rajasthan",
   "kankrej_localNames": "Wadhiar",
@@ -451,32 +452,88 @@
   "khillari_milkYield": "2-5 liters/day",
   "khillari_lactationPeriod": "200-250 days",
   "khillari_description": "The Khillari breed is known for its agility, speed, and strength, making it ideal for farm work and transportation. These cattle are small to medium-sized with a compact, muscular build and a short, fine coat, often seen in shades of grey, white, or reddish-brown. Their horns curve backward in a distinctive manner. They are widely used in hilly and semi-arid regions for tilling fields and pulling heavy loads.",
-  
+
   "hallikar_breedName": "Hallikar",
   "hallikar_origin": "Karnataka",
   "hallikar_localNames": "",
   "hallikar_milkYield": "2-4 liters/day",
   "hallikar_lactationPeriod": "200-250 days",
   "hallikar_description": "One of the oldest and most well-known draught breeds in India, Hallikar cattle are valued for their endurance, speed, and strength. They have a sleek, well-muscled body with a white or greyish coat and long, curved horns. They are highly active and commonly used for plowing fields and pulling carts, particularly in Karnataka’s agricultural regions.",
-  
+
   "amritmahal_breedName": "Amrit Mahal",
   "amritmahal_origin": "Karnataka",
   "amritmahal_localNames": "",
   "amritmahal_milkYield": "2-3 liters/day",
   "amritmahal_lactationPeriod": "200-230 days",
   "amritmahal_description": "Amrit Mahal cattle are a powerful draught breed, known for their incredible stamina and endurance. They have a compact, strong body with a well-developed hump and a predominantly grey or white coat. These cattle are extensively used in military and transport applications due to their ability to travel long distances under harsh conditions. Their aggressive nature makes them more suitable for work rather than dairy production.",
-  
+
   "kangayam_breedName": "Kangayam",
   "kangayam_origin": "Tamil Nadu",
   "kangayam_localNames": "",
   "kangayam_milkYield": "3-6 liters/day",
   "kangayam_lactationPeriod": "220-260 days",
   "kangayam_description": "Kangayam cattle are medium-sized, well-built, and well-adapted to the dry climate of Tamil Nadu. They are typically white or grey, with short, strong legs and an upright posture. Their strength and endurance make them highly suitable for plowing, cart-pulling, and other agricultural activities. Though not primarily used for milk production, they provide a moderate yield that is sufficient for household dairy needs.",
-  
+
   "bargur_breedName": "Bargur",
   "bargur_origin": "Tamil Nadu",
   "bargur_localNames": "Bargur Gidda",
   "bargur_milkYield": "2-4 liters/day",
   "bargur_lactationPeriod": "200-240 days",
-  "bargur_description": "Bargur cattle are small, agile, and well-suited for working in hilly and rugged terrains. They are recognized by their reddish-brown coat, lean frame, and quick movements. These cattle are commonly used for plowing in regions with uneven land and for pulling carts in remote areas. Though they produce a small quantity of milk, it has high nutritional value and is used by local farmers."
+  "bargur_description": "Bargur cattle are small, agile, and well-suited for working in hilly and rugged terrains. They are recognized by their reddish-brown coat, lean frame, and quick movements. These cattle are commonly used for plowing in regions with uneven land and for pulling carts in remote areas. Though they produce a small quantity of milk, it has high nutritional value and is used by local farmers.",
+
+  "indian_cow_breeds_title": "Indian Cow Breeds",
+
+  "breed": "Breed",
+  "origin": "Origin",
+  "cost_approx": "Cost (Approx)",
+  "booking": "Booking",
+  "book_now": "Book Now",
+  "milk_yield": "Milk Yield",
+  "lactation_period": "Lactation Period",
+  "cost": "Cost",
+  "local_names": "Local Names",
+  "description": "Description",
+  "interested_in": "Interested in",
+  "contact_seller": "Contact Seller",
+
+  "removed_from_favorites": "Removed from Favorites",
+  "added_to_favorites": "Added to Favorites",
+
+  "select_language": "Select Language",
+  "apply_language": "Apply Language",
+
+  "editProfile": "Edit Profile",
+  "changePassword": "Change Password",
+  "settings": "Settings",
+  "changeLanguage": "Change Language",
+  "help": "Help",
+  "logoutConfirmation": "Are you sure you want to Log Out?",
+  "diseasePrediction": "Disease Prediction",
+  "noImageSelected": "No Image Selected",
+  "gallery": "Gallery",
+  "camera": "Camera",
+  "enterYourDetails": "Enter your details",
+  "analyzeImage": "Analyze image",
+  "aiAssistant": "AI Assistant",
+  "errorEncountered": "Sorry, I encountered an error",
+  "failedToGetResponse": "Failed to get response",
+  "askQuestion": "Ask a question or just say hello",
+  "assistantGreeting": "I'm here to help you!",
+  "cowBreedsInfo": "Feel free to ask about cows and their breeds.",
+  "askYourQuestions": "Ask Your Questions Here",
+  "failedToMakeCall": "Failed to make the call. Please try again.",
+  "permissionDenied": "Permission denied. Cannot make a call.",
+  "permissionPermanentlyDenied": "Permission permanently denied. Enable in settings.",
+  "describeSymptoms": "Describe symptoms or ask a specific question",
+  "analyzing": "Analyzing...",
+  "analysisReport": "Analysis Report",
+  "yourQuestion": "Your Question:",
+  "results": "Results:",
+  "recommendedDoctor": "Recommended Doctor",
+  "viewAll": "View All",
+  "india": "India",
+
+
+
+  "breadAIDescription":"Start a conversation about Indian cow breeds. You can send text or images of cows for identification."
 }
