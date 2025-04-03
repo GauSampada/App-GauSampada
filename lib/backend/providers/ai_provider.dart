@@ -72,7 +72,7 @@ class AiProvider extends ChangeNotifier {
   }) async {
     // String urlHosting =
     //     "https://ai-model-gausampada.onrender.com/image_to_text";
-    String urlLocal = "http://10.0.42.125:5000/image_to_text";
+    String urlLocal = "http://192.168.0.166:5000/image_to_text";
     final response = await http.post(
       Uri.parse(urlLocal),
       headers: {"Content-Type": "application/json"},
